@@ -13,7 +13,7 @@ services:
     depends_on:
       php:
         condition: service_healthy
-    container_name: nginx
+    container_name: su-nginx
 
   php:
     build:
@@ -26,7 +26,7 @@ services:
       - ./docker/dev/php/overrides.ini:/usr/local/etc/php/conf.d/overrides.ini
       - ./docker/dev/php/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
       - ./docker/dev/php/logs/supervisor:/var/log/supervisor
-    container_name: php
+    container_name: su-php
     depends_on:
       db:
         condition: service_healthy
@@ -54,12 +54,12 @@ services:
     depends_on:
       php:
         condition: service_started
-    container_name: encore
+    container_name: su-encore
 
   db:
     image: mariadb:10.10.2
     restart: unless-stopped
-    container_name: db
+    container_name: su-db
     # TODO look into it, seems to not work properly
     # volumes:
     #   - ./data/mysql:/var/lib/mysql/data
@@ -74,7 +74,7 @@ services:
   phpmyadmin:
     image: phpmyadmin
     restart: unless-stopped
-    container_name: phpmyadmin
+    container_name: su-phpmyadmin
     ports:
       - 8080:80
     depends_on:
@@ -89,12 +89,12 @@ services:
     image: schickling/mailcatcher:latest
     ports:
       - "1080:1080"
-    container_name: mailcatcher
+    container_name: su-mailcatcher
 
   rabbitmq:
     image: rabbitmq:3-management
     restart: unless-stopped
-    container_name: rabbitmq
+    container_name: su-rabbitmq
     ports:
       - 15672:15672
 
@@ -102,12 +102,12 @@ services:
     image: redis:7.0-alpine
     restart: unless-stopped
     command: "redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_AUTH:?err}"
-    container_name: redis
+    container_name: su-redis
     volumes:
       - ./data/cache/redis:/data
 
   redis-commander:
-    container_name: redis-commander
+    container_name: su-redis-commander
     hostname: redis-commander
     image: rediscommander/redis-commander:latest
     restart: unless-stopped
@@ -129,7 +129,7 @@ services:
       MERCURE_SUBSCRIBER_JWT_KEY: "${MERCURE_JWT_SECRET:?err}"
     # Uncomment the following line to enable the development mode
     command: /usr/bin/caddy run --config /etc/caddy/Caddyfile.dev
-    container_name: mercure
+    container_name: su-mercure
     ports:
       - 3000:80
       # - 443:443
@@ -139,7 +139,7 @@ services:
 
   meilisearch:
     image: getmeili/meilisearch:v1.0
-    container_name: meilisearch
+    container_name: su-meilisearch
     restart: unless-stopped
     ports:
       - 7700:7700
