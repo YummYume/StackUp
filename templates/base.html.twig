@@ -46,7 +46,7 @@
 
                 {% block nav %}
                     <nav class="navbar bg-base-100">
-                        <div class="navbar-start">
+                        <div class="navbar-start gap-2">
                             <div
                                 id="global-search"
                                 class="form-control hidden lg:block"
@@ -79,6 +79,22 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+
+                            <div class="lg:flex gap-2 hidden">
+                                {{ component('button', {
+                                    content: 'Stacks',
+                                    ghost: true,
+                                    href: path('app_stack_index'),
+                                    isButton: false
+                                }) }}
+
+                                {{ component('button', {
+                                    content: 'Techs',
+                                    ghost: true,
+                                    href: path('app_tech_index'),
+                                    isButton: false
+                                }) }}
                             </div>
                         </div>
                         <div class="navbar-center">
@@ -191,6 +207,23 @@
                                 {% endfor %}
                             {% endblock %}
                         {% endcomponent %}
+                    </div>
+
+                    <div class="flex flex-col w-max">
+                        {{ component('button', {
+                            content: 'Stacks',
+                            ghost: true,
+                            href: path('app_stack_index'),
+                            isButton: false
+                        }) }}
+
+                        {{ component('button', {
+                            centered: false,
+                            content: 'Techs',
+                            ghost: true,
+                            href: path('app_tech_index'),
+                            isButton: false
+                        }) }}
                     </div>
                 </div>
             </div>
