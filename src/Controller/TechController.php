@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Route('/tech')]
-class TechController extends AbstractController
+final class TechController extends AbstractController
 {
     #[Route('/', name: 'app_tech_index')]
     public function index(): Response

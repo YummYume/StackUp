@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Route('/stack')]
-class StackController extends AbstractController
+final class StackController extends AbstractController
 {
     #[Route('/', name: 'app_stack_index')]
     public function index(): Response
