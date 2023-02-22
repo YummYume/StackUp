@@ -1,6 +1,6 @@
 ## Common
 common.app_name: AppName
-common.description: Bienvenue sur MyApp !
+common.description: Bienvenue sur StackUp !
 common.login: Connexion
 common.logout: Déconnexion
 common.register: Enregistrement
@@ -54,15 +54,15 @@ flash.delete_profile.success: Compte supprimé. Vous devriez recevoir un email s
 ## Pages
 # Homepage
 page.homepage.title: Page d'accueil
-page.homepage.description: Bienvenue sur MyApp ! La meilleure application jamais créée.
+page.homepage.description: Bienvenue sur StackUp ! La meilleure application jamais créée.
 
 # About Us
 page.about_us.title: À Propos
-page.about_us.description: Tout ce que vous devez savoir sur MyApp, de pourquoi il a été créé à pourquoi vous devriez l'utiliser.
+page.about_us.description: Tout ce que vous devez savoir sur StackUp, de pourquoi il a été créé à pourquoi vous devriez l'utiliser.
 
 # Contact
 page.contact.title: Contact
-page.contact.description: Apprenez comment entrer en contact avec l'équipe MyApp ici.
+page.contact.description: Apprenez comment entrer en contact avec l'équipe StackUp ici.
 
 # Cookie Policy
 page.cookie_policy.title: Politique de cookies
@@ -70,20 +70,20 @@ page.cookie_policy.description: Préoccupé par votre vie privée et pourquoi no
 
 # Privacy Policy
 page.privacy_policy.title: Politique de confidentialité
-page.privacy_policy.description: Politique de confidentialité officielle de MyApp.
+page.privacy_policy.description: Politique de confidentialité officielle de StackUp.
 
 # Terms of Use
 page.terms_of_use.title: Conditions d'utilisation
-page.terms_of_use.description: Conditions générales d'utilisation de MyApp.
+page.terms_of_use.description: Conditions générales d'utilisation de StackUp.
 
 # Register
 page.register.title: Créer un compte
-page.register.description: Enregistrez un compte pour accéder à toutes les fonctionnalités de MyApp.
+page.register.description: Enregistrez un compte pour accéder à toutes les fonctionnalités de StackUp.
 page.register.agree_terms: J'accepte les conditions d'utilisation
 
 # Login
 page.login.title: Connexion
-page.login.description: Connectez-vous avec votre compte à MyApp.
+page.login.description: Connectez-vous avec votre compte à StackUp.
 page.login.forgot_password: Mot de passe oublié ?
 page.login.remember_me: Se souvenir de moi
 page.login.no_account: Pas encore de compte ? Cliquez ici pour vous enregistrer.
@@ -105,7 +105,8 @@ page.edit_profile.deletion_prompt: Je comprends les conséquences et je souhaite
 
 # Show Profile
 page.show_profile.title: Profil de {username}
-page.show_profile.description: Le profil de {username} sur MyApp.
+page.show_profile.description: Le profil de {username} sur StackUp.
+page.show_profile.github_link: Profil GitHub de { username }
 
 # Check email
 page.check_email.title: Réinitialiser mon mot de passe
@@ -128,7 +129,7 @@ page.reset_password.reset: Réinitialiser mon mot de passe
 
 # Search
 page.search.title: Recherche
-page.search.description: Recherchez n'importe quoi sur MyApp.
+page.search.description: Recherchez n'importe quoi sur StackUp.
 page.search.no_result: Aucun résultat trouvé.
 page.search.result_time: >-
     { hits, plural, =0 {# résultat en { time } ms} one {# résultat en { time } ms} other {# résultats en { time } ms} }
@@ -154,6 +155,8 @@ user.profile.picture: Image de profil de { username }
 profile.username: Nom d'utilisateur
 profile.username.help: Votre nom d'utilisateur est utilisé dans l'URL de votre profil. Il doit contenir entre 2 et 50 caractères et ne peut pas contenir de caractères spéciaux.
 profile.description: Description
+profile.github_link: Lien GitHub
+profile.github_link.help: 'Un lien GitHub devrait ressembler à "https://github.com/votre-profil".'
 
 # Profile picture
 profile_picture.file: Image

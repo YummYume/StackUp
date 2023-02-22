@@ -1,6 +1,6 @@
 ## Common
 common.app_name: AppName
-common.description: Welcome to MyApp!
+common.description: Welcome to StackUp!
 common.login: Login
 common.logout: Logout
 common.register: Register
@@ -54,15 +54,15 @@ flash.delete_profile.success: Account deleted. You should receive an email short
 ## Pages
 # Homepage
 page.homepage.title: Homepage
-page.homepage.description: Welcome to MyApp! The best app ever created.
+page.homepage.description: Welcome to StackUp! The best app ever created.
 
 # About Us
 page.about_us.title: About Us
-page.about_us.description: Everything you need to know about MyApp, from why it was created to why you should use it.
+page.about_us.description: Everything you need to know about StackUp, from why it was created to why you should use it.
 
 # Contact
 page.contact.title: Contact
-page.contact.description: Learn how to get in touch with the MyApp staff here.
+page.contact.description: Learn how to get in touch with the StackUp staff here.
 
 # Cookie Policy
 page.cookie_policy.title: Cookie Policy
@@ -70,20 +70,20 @@ page.cookie_policy.description: Concerned about your privacy and why we use cook
 
 # Privacy Policy
 page.privacy_policy.title: Privacy Policy
-page.privacy_policy.description: MyApp's official privacy policy.
+page.privacy_policy.description: StackUp's official privacy policy.
 
 # Terms of Use
 page.terms_of_use.title: Terms of Use
-page.terms_of_use.description: General terms of use of MyApp.
+page.terms_of_use.description: General terms of use of StackUp.
 
 # Register
 page.register.title: Create an account
-page.register.description: Register an account to access all the functionalities of MyApp.
+page.register.description: Register an account to access all the functionalities of StackUp.
 page.register.agree_terms: I agree to the terms of use
 
 # Login
 page.login.title: Login
-page.login.description: Log in with your account to MyApp.
+page.login.description: Log in with your account to StackUp.
 page.login.forgot_password: Forgot your password?
 page.login.remember_me: Remember me
 page.login.no_account: No account yet? Click here to register.
@@ -105,7 +105,8 @@ page.edit_profile.deletion_prompt: I understand the consequences and wish to del
 
 # Show Profile
 page.show_profile.title: Profile of { username }
-page.show_profile.description: The profile of { username } on MyApp.
+page.show_profile.description: The profile of { username } on StackUp.
+page.show_profile.github_link: GitHub profile of { username }
 
 # Check email
 page.check_email.title: Reset my password
@@ -128,7 +129,7 @@ page.reset_password.reset: Reset my password
 
 # Search
 page.search.title: Search
-page.search.description: Search anything on MyApp.
+page.search.description: Search anything on StackUp.
 page.search.no_result: No result found.
 page.search.result_time: >-
     { hits, plural, =0 {# result in { time } ms} one {# result in { time } ms} other {# results in { time } ms} }
@@ -154,6 +155,8 @@ user.profile.picture: Profile picture of { username }
 profile.username: Username
 profile.username.help: Your username is used in your profile's URL. It must contain between 2 and 50 characters and cannot contain special characters.
 profile.description: Description
+profile.github_link: GitHub link
+profile.github_link.help: 'A GitHub link should look like "https://github.com/your-profile".'
 
 # Profile picture
 profile_picture.file: Picture

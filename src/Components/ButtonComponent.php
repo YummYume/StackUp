@@ -13,6 +13,9 @@ final class ButtonComponent
     public const LEFT = 'left';
     public const RIGHT = 'right';
 
+    public const TARGET_SELF = '_self';
+    public const TARGET_BLAN = '_blank';
+
     public ?string $id = null;
 
     public bool $centered = true;
@@ -30,6 +33,10 @@ final class ButtonComponent
     public ?string $form = null;
 
     public bool $disabled = false;
+
+    public string $target = self::TARGET_SELF;
+
+    public bool $externalLink = false;
 
     public string $class = '';
 

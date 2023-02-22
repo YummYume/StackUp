@@ -29,7 +29,7 @@ flash.user.already_verified: This user is already verified.
 # Pages
 ## Homepage
 page.homepage.title: Administration homepage
-page.homepage.description: The homepage of the administration for MyApp.
+page.homepage.description: The homepage of the administration for StackUp.
 
 ## User
 ### List

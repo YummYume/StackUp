@@ -139,6 +139,11 @@
     {{ block('form_widget') }}
 {%- endblock text_widget -%}
 
+{%- block url_widget -%}
+    {%- set widget_class = widget_class|default('input input-bordered w-full max-w-xs') -%}
+    {{ block('form_widget') }}
+{%- endblock url_widget -%}
+
 {%- block textarea_widget -%}
     {%- set widget_class = widget_class|default('textarea textarea-bordered w-full') -%}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
