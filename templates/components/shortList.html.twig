@@ -1,0 +1,31 @@
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-title justify-between p-8 pb-0">
+        <div class="capitalize">
+            {% block header %}
+
+            {% endblock %}
+        </div>
+        <a class="flex gap-3 text-secondary" href="{{ link }}">More<span>{{ ">" }}</span></a>
+    </div>
+    <div class="card-body">
+        {% for key, item in items %}
+            <a href="">
+                <div class="flex h-12 items-center gap-8 rounded-full py-3 px-6 hover:bg-base-200">
+                    <div class="flex gap-4 font-medium">
+                        {% include "icon/star.html.twig" %}
+                        <span>{{ key + 1 }}</span>
+                    </div>
+                    <span class="flex h-full items-center gap-2 font-semibold">
+                        <div class="avatar h-full">
+                            <div class="h-full rounded-full">
+                                {{ component("image", { src: " ", filter: "avatar_small", alt: "default", width: 48, height: 48 }) }}
+                            </div>
+                        </div>
+
+                        {{ item.name }}
+                    </span>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

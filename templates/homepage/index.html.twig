@@ -8,10 +8,52 @@
     {{ "page.homepage.description"|trans }}
 {% endblock %}
 
-{% block main_title %}
-    {{ "page.homepage.title"|trans }}
-{% endblock %}
-
 {% block main_body %}
-    <section class="flex grow items-center justify-center gap-8"></section>
+    {% set items = [{ name: "symfony" }, { name: "twig" }, { name: "turbo" }] %}
+
+    <div class="grid gap-6 lg:grid-cols-2">
+        {% component shortList with { items, link: path("app_stack_index") } %}
+        {% block header %}
+            <div class="flex items-center gap-2">
+                <div class="text-error">
+                    {% include "icon/fire.html.twig" %}
+                </div>
+                <span>trending techs</span>
+            </div>
+        {% endblock %}
+        {% endcomponent %}
+        
+        {% component shortList with { items, link: path("app_stack_index") } %}
+        {% block header %}
+            <div class="flex items-center gap-2">
+                <div class="text-info">
+                    {% include "icon/clock.html.twig" %}
+                </div>
+                <span>recently added techs</span>
+            </div>
+        {% endblock %}
+        {% endcomponent %}
+
+        {% component shortList with { items, link: path("app_stack_index") } %}
+        {% block header %}
+            <div class="flex items-center gap-2">
+                <div class="text-error">
+                    {% include "icon/fire.html.twig" %}
+                </div>
+                <span>trending categories</span>
+            </div>
+        {% endblock %}
+        {% endcomponent %}
+
+        {% component shortList with { items, link: path("app_stack_index") } %}
+        {% block header %}
+            <div class="flex items-center gap-2">
+                <div class="text-info">
+                    {% include "icon/clock.html.twig" %}
+                </div>
+                <span>recently added categories</span>
+            </div>
+        {% endblock %}
+        {% endcomponent %}
+    </div>
 {% endblock %}

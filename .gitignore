@@ -54,6 +54,7 @@ data/*
 
 ###> liip/imagine-bundle ###
 /public/media
+!/public/media/default_blur_fallback.jpg
 ###< liip/imagine-bundle ###
 
 ###> Fixtures ###
