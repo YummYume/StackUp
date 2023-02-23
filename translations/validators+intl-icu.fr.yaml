@@ -26,6 +26,8 @@ profile.username.unique: Ce nom d'utilisateur est déjà pris ou ne peut pas êt
 profile.username.not_blank: Veuillez saisir un nom d'utilisateur.
 profile.username.invalid: Votre nom d'utilisateur doit contenir entre 2 et 50 caractères et ne peut contenir que des lettres, des nombres et des espaces.
 profile.description.max_length: Votre description doit contenir jusqu'à { limit } caractères.
+profile.github_link.not_url: Veuillez saisir une URL valide.
+profile.github_link.invalid: Veuillez entrer un lien GitHub valide.
 
 # Profile Picture
 profile_picture.file.max_size: Cette image est trop grande ({ size } { suffix }). La taille maximum autorisée est de { limit } { suffix }.

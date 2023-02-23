@@ -4,11 +4,15 @@
     class="{{ class }}"
     {% if button %}
         type="{{ submit ? "submit" : "button" }}"
+        {% if form %}form="{{ form }}"{% endif %}
     {% else %}
         href="{{ href }}"
+        target="{{ target }}"
+        {% if externalLink %}
+            rel="external noopener noreferrer"
+        {% endif %}
     {% endif %}
     {% if id %}id="{{ id }}"{% endif %}
-    {% if form %}form="{{ form }}"{% endif %}
     {% if disabled %}disabled{% endif %}
     {% if ariaLabel %}aria-label="{{ ariaLabel }}"{% endif %}
 >

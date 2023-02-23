@@ -28,3 +28,11 @@ liip_imagine:
             filters:
                 thumbnail:
                     size: [200, 200]
+
+        # List
+        short_list:
+            quality: 100
+            filters:
+                thumbnail:
+                    size: [24, 24]
+                    mode: outbound

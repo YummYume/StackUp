@@ -1,6 +1,7 @@
 PWD=$(shell pwd)
 COMPOSE=docker compose
 COMPOSECI=$(COMPOSE) -f docker-compose.ci.yml
+COMPOSEPROD=$(COMPOSE) -f docker-compose.prod.yml --env-file .env.prod
 EXECPHP=$(COMPOSE) exec php
 EXECENCORE=$(COMPOSE) exec encore
 EXECREDIS=$(COMPOSE) exec redis
@@ -86,7 +87,7 @@ migration:
 	$(EXECPHP) php bin/console d:m:m -n --allow-no-migration --all-or-nothing
 
 migration-diff:
-	$(EXECPHP) php bin/console d:m:diff
+	$(EXECPHP) php bin/console make:migration
 
 fixtures:
 	$(EXECPHP) php bin/console d:f:l -n
@@ -215,3 +216,10 @@ dahl-component:
 		--to="./templates/components/$(if $(l),$(l),"")" \
 		-n="$(call lowercase, $(n))" \
 		--props '{"twigLocation":"$(l)","twigName":"$(n)"}'
+
+# Deploy
+deploy:
+	git fetch origin master
+	git reset --hard origin/master
+	$(COMPOSEPROD) build --no-cache --force-rm
+	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
