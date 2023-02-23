@@ -13,7 +13,7 @@ final class ButtonComponent
     public const RIGHT = 'right';
 
     public const TARGET_SELF = '_self';
-    public const TARGET_BLAN = '_blank';
+    public const TARGET_BLANK = '_blank';
 
     public ?string $id = null;
 
