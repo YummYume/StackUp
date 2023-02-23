@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Category;
+use App\Enum\RequestStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -45,11 +46,15 @@ final class CategoryRepository extends ServiceEntityRepository
 
         return $qb
             ->leftJoin('c.techs', 't')
+            ->leftJoin('t.request', 'r')
             ->select('COUNT(t) AS HIDDEN techCount', 'c')
             ->where($qb->expr()->between('c.createdAt', ':since', ':before'))
+            ->andWhere($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->not($qb->expr()->eq('r.status', ':rejected')))
             ->setParameters([
                 'since' => $since,
                 'before' => $before,
+                'rejected' => RequestStatusEnum::Rejected,
             ])
             ->setMaxResults($maxResults)
             ->orderBy('techCount', 'DESC')

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Tech;
+use App\Enum\RequestStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -67,6 +68,8 @@ final class TechRepository extends ServiceEntityRepository
         return $qb
             ->leftJoin('t.request', 'r')
             ->where($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->not($qb->expr()->eq('r.status', ':rejected')))
+            ->setParameter('rejected', RequestStatusEnum::Rejected)
             ->orderBy('r.submittedAt', 'DESC')
             ->setMaxResults($maxResults)
             ->getQuery()
@@ -84,9 +87,11 @@ final class TechRepository extends ServiceEntityRepository
             ->select('COUNT(v) AS HIDDEN voteCount', 't')
             ->where($qb->expr()->between('r.submittedAt', ':since', ':before'))
             ->andWhere($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->not($qb->expr()->eq('r.status', ':rejected')))
             ->setParameters([
                 'since' => $since,
                 'before' => $before,
+                'rejected' => RequestStatusEnum::Rejected,
             ])
             ->setMaxResults($maxResults)
             ->orderBy('voteCount', 'DESC')
