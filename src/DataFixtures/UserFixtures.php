@@ -73,8 +73,9 @@ final class UserFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($user);
             $this->addReference(self::REFERENCE_IDENTIFIER.$i, $user);
 
-            if (($i % 50) === 0) {
+            if (($i % 25) === 0) {
                 $manager->flush();
+                $manager->clear();
             }
         }
 

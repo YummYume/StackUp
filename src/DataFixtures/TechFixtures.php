@@ -2,13 +2,19 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Request;
 use App\Entity\Tech;
+use App\Entity\TechPicture;
+use App\Entity\Vote;
 use App\Enum\RequestStatusEnum;
 use App\Enum\TechTypeEnum;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-final class TechFixtures extends Fixture
+final class TechFixtures extends Fixture implements DependentFixtureInterface
 {
     public const JAVASCRIPT = 'javascript';
     public const PHP = 'php';
@@ -45,11 +51,13 @@ final class TechFixtures extends Fixture
     public const SYMFONY = 'symfony';
     public const DOCTRINE = 'doctrine';
     public const ANGULAR = 'angular';
+    public const DAISYUI = 'daisyui';
+    public const SKELETON = 'skeleton';
 
     public const FIXTURE_ITEMS = [
         self::JAVASCRIPT => [
             'name' => 'JavaScript',
-            'image' => __DIR__.'/tmp/tech/javascript.png',
+            'picture' => __DIR__.'/tmp/tech/javascript.png',
             'type' => TechTypeEnum::Language,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -58,7 +66,7 @@ final class TechFixtures extends Fixture
         ],
         self::PHP => [
             'name' => 'PHP',
-            'image' => __DIR__.'/tmp/tech/php.png',
+            'picture' => __DIR__.'/tmp/tech/php.png',
             'type' => TechTypeEnum::Language,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -67,7 +75,7 @@ final class TechFixtures extends Fixture
         ],
         self::PYTHON => [
             'name' => 'Python',
-            'image' => __DIR__.'/tmp/tech/python.png',
+            'picture' => __DIR__.'/tmp/tech/python.png',
             'type' => TechTypeEnum::Language,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -76,7 +84,7 @@ final class TechFixtures extends Fixture
         ],
         self::CSS => [
             'name' => 'CSS',
-            'image' => __DIR__.'/tmp/tech/css.png',
+            'picture' => __DIR__.'/tmp/tech/css.png',
             'type' => TechTypeEnum::Language,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -85,7 +93,7 @@ final class TechFixtures extends Fixture
         ],
         self::SVELTE => [
             'name' => 'Svelte',
-            'image' => __DIR__.'/tmp/tech/svelte.png',
+            'picture' => __DIR__.'/tmp/tech/svelte.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -101,7 +109,7 @@ final class TechFixtures extends Fixture
         ],
         self::SVELTEKIT => [
             'name' => 'SvelteKit',
-            'image' => __DIR__.'/tmp/tech/sveltekit.png',
+            'picture' => __DIR__.'/tmp/tech/sveltekit.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::SVELTE,
             'status' => RequestStatusEnum::Accepted,
@@ -117,7 +125,7 @@ final class TechFixtures extends Fixture
         ],
         self::STIMULUS => [
             'name' => 'Stimulus',
-            'image' => __DIR__.'/tmp/tech/stimulus.png',
+            'picture' => __DIR__.'/tmp/tech/stimulus.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -128,7 +136,7 @@ final class TechFixtures extends Fixture
         ],
         self::TURBO => [
             'name' => 'Turbo',
-            'image' => __DIR__.'/tmp/tech/turbo.png',
+            'picture' => __DIR__.'/tmp/tech/turbo.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -139,7 +147,7 @@ final class TechFixtures extends Fixture
         ],
         self::FIGMA => [
             'name' => 'Figma',
-            'image' => __DIR__.'/tmp/tech/figma.png',
+            'picture' => __DIR__.'/tmp/tech/figma.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -148,17 +156,17 @@ final class TechFixtures extends Fixture
         ],
         self::REACT => [
             'name' => 'React',
-            'image' => __DIR__.'/tmp/tech/react.png',
+            'picture' => __DIR__.'/tmp/tech/react.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
-            'status' => RequestStatusEnum::Pending,
+            'status' => RequestStatusEnum::Accepted,
             'categories' => [
                 CategoryFixtures::FRONT,
             ],
         ],
         self::LARAVEL => [
             'name' => 'Laravel',
-            'image' => __DIR__.'/tmp/tech/laravel.png',
+            'picture' => __DIR__.'/tmp/tech/laravel.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::PHP,
             'status' => RequestStatusEnum::Pending,
@@ -168,7 +176,7 @@ final class TechFixtures extends Fixture
         ],
         self::POSTGRESQL => [
             'name' => 'PostgreSQL',
-            'image' => __DIR__.'/tmp/tech/postgresql.png',
+            'picture' => __DIR__.'/tmp/tech/postgresql.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Pending,
             'categories' => [
@@ -178,7 +186,7 @@ final class TechFixtures extends Fixture
         ],
         self::TAILWIND_CSS => [
             'name' => 'Tailwind CSS',
-            'image' => __DIR__.'/tmp/tech/tailwind.png',
+            'picture' => __DIR__.'/tmp/tech/tailwind_css.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::CSS,
             'status' => RequestStatusEnum::Accepted,
@@ -189,7 +197,7 @@ final class TechFixtures extends Fixture
         ],
         self::GIT => [
             'name' => 'Git',
-            'image' => __DIR__.'/tmp/tech/git.png',
+            'picture' => __DIR__.'/tmp/tech/git.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -199,7 +207,7 @@ final class TechFixtures extends Fixture
         ],
         self::VUE_JS => [
             'name' => 'Vue.js',
-            'image' => __DIR__.'/tmp/tech/vue.png',
+            'picture' => __DIR__.'/tmp/tech/vuejs.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -210,7 +218,7 @@ final class TechFixtures extends Fixture
         ],
         self::BOOTSTRAP => [
             'name' => 'Bootstrap',
-            'image' => __DIR__.'/tmp/tech/bootstrap.png',
+            'picture' => __DIR__.'/tmp/tech/bootstrap.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::CSS,
             'status' => RequestStatusEnum::Rejected,
@@ -221,7 +229,7 @@ final class TechFixtures extends Fixture
         ],
         self::NEXT_JS => [
             'name' => 'Next.js',
-            'image' => __DIR__.'/tmp/tech/nextjs.png',
+            'picture' => __DIR__.'/tmp/tech/next_js.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::REACT,
             'status' => RequestStatusEnum::Pending,
@@ -231,7 +239,7 @@ final class TechFixtures extends Fixture
         ],
         self::WEBPACK => [
             'name' => 'Webpack',
-            'image' => __DIR__.'/tmp/tech/webpack.png',
+            'picture' => __DIR__.'/tmp/tech/webpack.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -240,7 +248,7 @@ final class TechFixtures extends Fixture
         ],
         self::EXPRESS_JS => [
             'name' => 'Express.js',
-            'image' => __DIR__.'/tmp/tech/express.png',
+            'picture' => __DIR__.'/tmp/tech/express_js.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -251,7 +259,7 @@ final class TechFixtures extends Fixture
         ],
         self::DOCKER => [
             'name' => 'Docker',
-            'image' => __DIR__.'/tmp/tech/docker.png',
+            'picture' => __DIR__.'/tmp/tech/docker.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -260,7 +268,7 @@ final class TechFixtures extends Fixture
         ],
         self::AWS_LAMBDA => [
             'name' => 'AWS Lambda',
-            'image' => __DIR__.'/tmp/tech/aws-lambda.png',
+            'picture' => __DIR__.'/tmp/tech/aws_lambda.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -270,7 +278,7 @@ final class TechFixtures extends Fixture
         ],
         self::JQUERY => [
             'name' => 'jQuery',
-            'image' => __DIR__.'/tmp/tech/jquery.png',
+            'picture' => __DIR__.'/tmp/tech/jquery.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Rejected,
@@ -281,7 +289,7 @@ final class TechFixtures extends Fixture
         ],
         self::REDUX => [
             'name' => 'Redux',
-            'image' => __DIR__.'/tmp/tech/redux.png',
+            'picture' => __DIR__.'/tmp/tech/redux.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Rejected,
@@ -292,7 +300,7 @@ final class TechFixtures extends Fixture
         ],
         self::GRAPHQL => [
             'name' => 'GraphQL',
-            'image' => __DIR__.'/tmp/tech/graphql.png',
+            'picture' => __DIR__.'/tmp/tech/graphql.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Pending,
@@ -303,7 +311,7 @@ final class TechFixtures extends Fixture
         ],
         self::JEST => [
             'name' => 'Jest',
-            'image' => __DIR__.'/tmp/tech/jest.png',
+            'picture' => __DIR__.'/tmp/tech/jest.png',
             'type' => TechTypeEnum::Tool,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -315,7 +323,7 @@ final class TechFixtures extends Fixture
         ],
         self::CYPRESS => [
             'name' => 'Cypress',
-            'image' => __DIR__.'/tmp/tech/cypress.png',
+            'picture' => __DIR__.'/tmp/tech/cypress.png',
             'type' => TechTypeEnum::Tool,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Accepted,
@@ -327,7 +335,7 @@ final class TechFixtures extends Fixture
         ],
         self::MONGODB => [
             'name' => 'MongoDB',
-            'image' => __DIR__.'/tmp/tech/mongodb.png',
+            'picture' => __DIR__.'/tmp/tech/mongodb.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -336,7 +344,7 @@ final class TechFixtures extends Fixture
         ],
         self::MYSQL => [
             'name' => 'MySQL',
-            'image' => __DIR__.'/tmp/tech/mysql.png',
+            'picture' => __DIR__.'/tmp/tech/mysql.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -345,7 +353,7 @@ final class TechFixtures extends Fixture
         ],
         self::REDIS => [
             'name' => 'Redis',
-            'image' => __DIR__.'/tmp/tech/redis.png',
+            'picture' => __DIR__.'/tmp/tech/redis.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -354,7 +362,7 @@ final class TechFixtures extends Fixture
         ],
         self::NGINX => [
             'name' => 'Nginx',
-            'image' => __DIR__.'/tmp/tech/nginx.png',
+            'picture' => __DIR__.'/tmp/tech/nginx.png',
             'type' => TechTypeEnum::Tool,
             'status' => RequestStatusEnum::Accepted,
             'categories' => [
@@ -363,7 +371,7 @@ final class TechFixtures extends Fixture
         ],
         self::DJANGO => [
             'name' => 'Django',
-            'image' => __DIR__.'/tmp/tech/django.png',
+            'picture' => __DIR__.'/tmp/tech/django.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::PYTHON,
             'status' => RequestStatusEnum::Accepted,
@@ -373,7 +381,7 @@ final class TechFixtures extends Fixture
         ],
         self::FLASK => [
             'name' => 'Flask',
-            'image' => __DIR__.'/tmp/tech/flask.png',
+            'picture' => __DIR__.'/tmp/tech/flask.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::PYTHON,
             'status' => RequestStatusEnum::Accepted,
@@ -383,7 +391,7 @@ final class TechFixtures extends Fixture
         ],
         self::SYMFONY => [
             'name' => 'Symfony',
-            'image' => __DIR__.'/tmp/tech/symfony.png',
+            'picture' => __DIR__.'/tmp/tech/symfony.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::PHP,
             'status' => RequestStatusEnum::Accepted,
@@ -393,7 +401,7 @@ final class TechFixtures extends Fixture
         ],
         self::DOCTRINE => [
             'name' => 'Doctrine',
-            'image' => __DIR__.'/tmp/tech/doctrine.png',
+            'picture' => __DIR__.'/tmp/tech/doctrine.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::PHP,
             'status' => RequestStatusEnum::Accepted,
@@ -403,10 +411,30 @@ final class TechFixtures extends Fixture
         ],
         self::ANGULAR => [
             'name' => 'Angular',
-            'image' => __DIR__.'/tmp/tech/angular.png',
+            'picture' => __DIR__.'/tmp/tech/angular.png',
             'type' => TechTypeEnum::Library,
             'depends_on' => self::JAVASCRIPT,
             'status' => RequestStatusEnum::Pending,
+            'categories' => [
+                CategoryFixtures::FRONT,
+                CategoryFixtures::JS_LIBRARY,
+            ],
+        ],
+        self::DAISYUI => [
+            'name' => 'DaisyUI',
+            'picture' => __DIR__.'/tmp/tech/daisyui.png',
+            'type' => TechTypeEnum::Library,
+            'depends_on' => self::TAILWIND_CSS,
+            'status' => RequestStatusEnum::Accepted,
+            'categories' => [
+                CategoryFixtures::FRONT,
+            ],
+        ],
+        self::SKELETON => [
+            'name' => 'Skeleton',
+            'type' => TechTypeEnum::Library,
+            'depends_on' => self::TAILWIND_CSS,
+            'status' => RequestStatusEnum::Accepted,
             'categories' => [
                 CategoryFixtures::FRONT,
                 CategoryFixtures::JS_LIBRARY,
@@ -418,12 +446,74 @@ final class TechFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::FIXTURE_ITEMS as $item) {
-            $tech = (new Tech())
+        $faker = Factory::create();
 
+        foreach (self::FIXTURE_ITEMS as $key => $item) {
+            $dependsOn = $item['depends_on'] ?? null;
+            $links = $item['links'] ?? [];
+            $categories = $item['categories'] ?? [];
+            $status = $item['status'];
+            $picture = $item['picture'] ?? 'null';
+            $picturePath = explode('/', $picture);
+            $voteCount = match ($status) {
+                RequestStatusEnum::Accepted => $faker->numberBetween(200, 299),
+                RequestStatusEnum::Pending => $faker->numberBetween(1, 199),
+                RequestStatusEnum::Rejected => 1,
+                default => 1,
+            };
+
+            $request = (new Request())
+                ->setStatus($item['status'])
+                ->setCreated(true)
             ;
+            $techPicture = (new TechPicture())
+                ->setFile(file_exists($picture) ? new UploadedFile(
+                    $picture,
+                    $picturePath[array_key_last($picturePath)],
+                    test: true
+                ) : null)
+            ;
+            $tech = (new Tech())
+                ->setRequest($request)
+                ->setName($item['name'])
+                ->setDescription($faker->sentences(2, true))
+                ->setLinks($links)
+                ->setDependsOn($dependsOn ? $this->getReference(self::REFERENCE_IDENTIFIER.$dependsOn) : null)
+                ->setType($item['type'])
+                ->setPicture($techPicture ?: null)
+            ;
+
+            foreach ($categories as $category) {
+                $tech->addCategory($this->getReference(CategoryFixtures::REFERENCE_IDENTIFIER.$category));
+            }
+
+            $manager->persist($tech);
+            $manager->flush();
+            $this->addReference(self::REFERENCE_IDENTIFIER.$key, $tech);
+
+            foreach (range(1, $voteCount) as $i => $userId) {
+                $vote = (new Vote())
+                    ->setUpvote(RequestStatusEnum::Accepted === $status ? $faker->boolean(90) : $faker->boolean(50))
+                    ->setProfile($this->getReference(UserFixtures::REFERENCE_IDENTIFIER.$userId)->getProfile())
+                    ->setRequest($request)
+                ;
+
+                $manager->persist($vote);
+            }
+
+            $manager->flush();
+            $manager->clear();
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            PreparePicturesFixtures::class,
+            UserFixtures::class,
+            CategoryFixtures::class,
+        ];
     }
 }
