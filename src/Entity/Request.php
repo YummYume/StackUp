@@ -35,7 +35,7 @@ class Request
     #[Gedmo\Timestampable(on: 'update', field: 'status')]
     private ?\DateTimeInterface $lastChangedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'request', targetEntity: Vote::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'request', targetEntity: Vote::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $votes;
 
     #[ORM\OneToOne(mappedBy: 'request', cascade: ['persist', 'remove'])]

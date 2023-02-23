@@ -55,3 +55,7 @@ data/*
 ###> liip/imagine-bundle ###
 /public/media
 ###< liip/imagine-bundle ###
+
+###> Fixtures ###
+/src/DataFixtures/tmp
+###< Fixtures ###
