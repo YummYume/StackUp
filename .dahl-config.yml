@@ -24,4 +24,15 @@ templates:
   suffix: ".html"
   extension: ".twig"
 
+ a-controller:
+  from: "./.dahl/create-admin/admin-controller.dahl"
+  to: "./src/Controller/Admin"
+  suffix: "Controller"
+  extension: ".php"
+
+ a-template:
+  from: "./.dahl/create-admin/admin-template.dahl"
+  filename: "index"
+  suffix: ".html"
+  extension: ".twig"
   

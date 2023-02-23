@@ -51,6 +51,91 @@ page.user_edit.send_validation_email: Send validation email (in English)
 page.user_delete.title: Delete user
 page.user_delete.content: Are you sure you want to delete this user?
 
+## Stack
+### List
+page.stack.title: Stacks
+page.stack.description: List of stacks saved on the website.
+
+### Show
+page.stack_show.title: Information of { name }
+page.stack_show.description: All information of { name }.
+
+### Edit
+page.stack_edit.title: Edit stack
+page.stack_edit.description: Edit a stack's information.
+
+### Delete
+page.stack_delete.title: Delete stack
+page.stack_delete.content: Are you sure you want to delete this stack ?
+
+## Tech
+### List
+page.tech.title: Techs
+page.tech.description: List of tech saved on the website.
+
+### Show
+page.tech_show.title: Information of { name }
+page.tech_show.description: All information of { name }.
+
+### Edit
+page.tech_edit.title: Edit tech
+page.tech_edit.description: Edit a tech's information.
+
+### Delete
+page.tech_delete.title: Delete tech
+page.tech_delete.content: Are you sure you want to delete this tech ?
+
+## Category
+### List
+page.category.title: Categories
+page.category.description: List of category saved on the website.
+
+### Show
+page.category_show.title: Information of { name }
+page.category_show.description: All information of { name }.
+
+### Edit
+page.category_edit.title: Edit category
+page.category_edit.description: Edit a category's information.
+
+### Delete
+page.category_delete.title: Delete category
+page.category_delete.content: Are you sure you want to delete this category ?
+
+## Request
+### List
+page.request.title: Requests
+page.request.description: List of request saved on the website.
+
+### Show
+page.request_show.title: Information of { name }
+page.request_show.description: All information of { name }.
+
+### Edit
+page.request_edit.title: Edit request
+page.request_edit.description: Edit a request's information.
+
+### Delete
+page.request_delete.title: Delete request
+page.request_delete.content: Are you sure you want to delete this request ?
+
+## Vote
+### List
+page.vote.title: Votes
+page.vote.description: List of vote saved on the website.
+
+### Show
+page.vote_show.title: Information of { name }
+page.vote_show.description: All information of { name }.
+
+### Edit
+page.vote_edit.title: Edit vote
+page.vote_edit.description: Edit a vote's information.
+
+### Delete
+page.vote_delete.title: Delete vote
+page.vote_delete.content: Are you sure you want to delete this vote ?
+
 # Flashes
 ## User
 flash.user.verified: User { email } is now verified.

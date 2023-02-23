@@ -14,3 +14,6 @@ user.role.role_admin: Administrateur
 user.role.role_moderator: Modérateur
 user.role.role_allowed_to_switch: Autorisé à changer
 user.role.role_user: Utilisateur
+
+# Stacks
+stack.name: Nom

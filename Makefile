@@ -217,6 +217,18 @@ dahl-component:
 		-n="$(call lowercase, $(n))" \
 		--props '{"twigLocation":"$(l)","twigName":"$(n)"}'
 
+# n for name
+dahl-admin:
+	$(DAHL) run a-controller \
+		-n="$(call capitalize, $(n))" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-template \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	make perm
+
 # Deploy
 deploy:
 	git fetch origin master
