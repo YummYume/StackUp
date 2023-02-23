@@ -2,10 +2,10 @@
 
 namespace App\Components;
 
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use App\Entity\Category;
 use App\Entity\Stack;
 use App\Entity\Tech;
+use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent('listItem')]
 final class ListItemComponent
