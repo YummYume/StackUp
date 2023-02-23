@@ -11,3 +11,68 @@
 {% block main_title %}
     {{ "page.cookie_policy.title"|trans }}
 {% endblock %}
+
+{% block main_body %}
+    <p>{{ "page.cookie_policy.presentation"|trans }}</p>
+
+    <p><strong>{{ "page.cookie_policy.what_are_cookies.title"|trans }}</strong></p>
+
+    <p>{{ "page.cookie_policy.what_are_cookies.description"|trans }}</p>
+
+    <p><strong>{{ "page.cookie_policy.how_we_use_cookies.title"|trans }}</strong></p>
+
+    <p>{{ "page.cookie_policy.how_we_use_cookies.description"|trans }}</p>
+
+    <p><strong>{{ "page.cookie_policy.disabling_cookies.title"|trans }}</strong></p>
+
+    <p>{{ "page.cookie_policy.disabling_cookies.description"|trans }}</p>
+
+    <p><strong>{{ "page.cookie_policy.the_cookies_we_set.title"|trans }}</strong></p>
+
+    <ul>
+
+        <li>
+            <p>{{ "page.cookie_policy.the_cookies_we_set.account_related_cookies.title"|trans }}</p>
+            <p>{{ "page.cookie_policy.the_cookies_we_set.account_related_cookies.description"|trans }}</p>
+        </li>
+
+        <li>
+            <p>{{ "page.cookie_policy.the_cookies_we_set.login_related_cookies.title"|trans }}</p>
+            <p>{{ "page.cookie_policy.the_cookies_we_set.login_related_cookies.description"|trans }}</p>
+        </li>
+
+
+
+
+        <li>
+            <p>{{ "page.cookie_policy.the_cookies_we_set.forms_related_cookies.title"|trans }}</p>
+            <p>{{ "page.cookie_policy.the_cookies_we_set.forms_related_cookies.description"|trans }}</p>
+        </li>
+
+
+    </ul>
+
+    <p><strong>{{ "page.cookie_policy.third_party_cookies.title"|trans }}</strong></p>
+
+    <p>{{ "page.cookie_policy.third_party_cookies.description"|trans }}</p>
+
+    <ul>
+
+
+
+
+
+
+
+
+
+        <li>
+            <p>{{ "page.cookie_policy.third_party_cookies.social_media.description"|trans }}</p>
+        </li>
+
+    </ul>
+
+    <p><strong>{{ "page.cookie_policy.more_information.title"|trans }}</strong></p>
+
+    <p>{{ "page.cookie_policy.more_information.description"|trans }}</p>
+{% endblock %}
