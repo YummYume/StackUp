@@ -1,6 +1,7 @@
 PWD=$(shell pwd)
 COMPOSE=docker compose
 COMPOSECI=$(COMPOSE) -f docker-compose.ci.yml
+COMPOSEPROD=$(COMPOSE) -f docker-compose.prod.yml --env-file .env.prod
 EXECPHP=$(COMPOSE) exec php
 EXECENCORE=$(COMPOSE) exec encore
 EXECREDIS=$(COMPOSE) exec redis
@@ -216,9 +217,9 @@ dahl-component:
 		-n="$(call lowercase, $(n))" \
 		--props '{"twigLocation":"$(l)","twigName":"$(n)"}'
 
-# Deploy 
-deploy: 
+# Deploy
+deploy:
 	git fetch origin master
-	git reset --HARD origin/master
-	make build-no-cache
-	make up-recreate
+	git reset --hard origin/master
+	$(COMPOSEPROD) build --no-cache --force-rm
+	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
