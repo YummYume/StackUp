@@ -6,6 +6,7 @@ use App\Entity\Profile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,6 +22,12 @@ final class ProfileType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'profile.description',
+                'required' => false,
+            ])
+            ->add('githubLink', UrlType::class, [
+                'label' => 'profile.github_link',
+                'help' => 'profile.github_link.help',
+                'default_protocol' => 'https',
                 'required' => false,
             ])
             ->add('picture', ProfilePictureType::class, [

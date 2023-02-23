@@ -7,6 +7,7 @@ use App\Enum\UserRoleEnum;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class UserVoter extends Voter
@@ -15,7 +16,7 @@ final class UserVoter extends Voter
     public const EDIT_ROLES = 'EDIT_ROLES';
     public const DELETE = 'DELETE_USER';
 
-    public function __construct(private readonly Security $security)
+    public function __construct(private readonly Security $security, private readonly RoleHierarchyInterface $roleHierarchy)
     {
     }
 
@@ -24,9 +25,6 @@ final class UserVoter extends Voter
         return \in_array($attribute, [self::EDIT, self::EDIT_ROLES, self::DELETE], true) && $subject instanceof UserInterface;
     }
 
-    /**
-     * @var User
-     */
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
@@ -48,9 +46,11 @@ final class UserVoter extends Voter
      */
     private function canEditUser(UserInterface $subject): bool
     {
+        $roles = $this->roleHierarchy->getReachableRoleNames($subject->getRoles());
+
         return
             $this->security->isGranted(UserRoleEnum::SuperAdmin->value)
-            || ($this->security->isGranted(UserRoleEnum::Admin->value) && !\in_array(UserRoleEnum::SuperAdmin->value, $subject->getRoles(), true));
+            || ($this->security->isGranted(UserRoleEnum::Admin->value) && !\in_array(UserRoleEnum::SuperAdmin->value, $roles, true));
     }
 
     /**
@@ -66,6 +66,8 @@ final class UserVoter extends Voter
      */
     private function canDeleteUser(UserInterface $subject): bool
     {
-        return $this->security->isGranted(UserRoleEnum::SuperAdmin->value) && !\in_array(UserRoleEnum::SuperAdmin->value, $subject->getRoles(), true);
+        $roles = $this->roleHierarchy->getReachableRoleNames($subject->getRoles());
+
+        return $this->security->isGranted(UserRoleEnum::SuperAdmin->value) && !\in_array(UserRoleEnum::SuperAdmin->value, $roles, true);
     }
 }

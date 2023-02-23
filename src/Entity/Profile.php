@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Entity\Traits\BlameableTrait;
 use App\Entity\Traits\TimestampableTrait;
 use App\Repository\ProfileRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -52,12 +54,33 @@ class Profile
 
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\Valid]
     private ?User $user = null;
 
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     #[Assert\Valid]
     #[Groups('searchable')]
     private ?ProfilePicture $picture = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Regex(
+        pattern: '/^(https:\/\/)?github\.com\/[a-zA-Z0-9_]{1,50}$/',
+        message: 'profile.github_link.invalid'
+    )]
+    #[Assert\Url(message: 'profile.github_link.not_url')]
+    private ?string $githubLink = null;
+
+    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: Vote::class, orphanRemoval: true)]
+    private Collection $votes;
+
+    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: Stack::class, orphanRemoval: true)]
+    private Collection $stacks;
+
+    public function __construct()
+    {
+        $this->votes = new ArrayCollection();
+        $this->stacks = new ArrayCollection();
+    }
 
     public function getId(): ?Uuid
     {
@@ -128,5 +151,77 @@ class Profile
     public function isIndexable(): bool
     {
         return $this->user?->isVerified();
+    }
+
+    public function getGithubLink(): ?string
+    {
+        return $this->githubLink;
+    }
+
+    public function setGithubLink(?string $githubLink): self
+    {
+        $this->githubLink = $githubLink;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vote>
+     */
+    public function getVotes(): Collection
+    {
+        return $this->votes;
+    }
+
+    public function addVote(Vote $vote): self
+    {
+        if (!$this->votes->contains($vote)) {
+            $this->votes->add($vote);
+            $vote->setProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVote(Vote $vote): self
+    {
+        if ($this->votes->removeElement($vote)) {
+            // set the owning side to null (unless already changed)
+            if ($vote->getProfile() === $this) {
+                $vote->setProfile(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stack>
+     */
+    public function getStacks(): Collection
+    {
+        return $this->stacks;
+    }
+
+    public function addStack(Stack $stack): self
+    {
+        if (!$this->stacks->contains($stack)) {
+            $this->stacks->add($stack);
+            $stack->setProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStack(Stack $stack): self
+    {
+        if ($this->stacks->removeElement($stack)) {
+            // set the owning side to null (unless already changed)
+            if ($stack->getProfile() === $this) {
+                $stack->setProfile(null);
+            }
+        }
+
+        return $this;
     }
 }

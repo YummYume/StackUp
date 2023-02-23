@@ -24,6 +24,24 @@
             <p>
                 {{ profile.description|default("") }}
             </p>
+            {% if profile.githubLink %}
+                <div class="card-actions justify-end">
+                    {{
+                        component(
+                            "button",
+                            {
+                                icon: "github",
+                                href: profile.githubLink,
+                                target: "_blank",
+                                externalLink: true,
+                                circle: true,
+                                centered: false,
+                                ariaLabel: "page.show_profile.github_link"|trans({ username: profile.username })
+                            }
+                        )
+                    }}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

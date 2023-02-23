@@ -28,7 +28,7 @@ flash.user.already_verified: Cet utilisateur est déjà vérifié.
 # Pages
 ## Page d'accueil
 page.homepage.title: Page d'accueil de l'administration
-page.homepage.description: La page d'accueil de l'administration pour MyApp.
+page.homepage.description: La page d'accueil de l'administration pour StackUp.
 
 ## User
 ### List

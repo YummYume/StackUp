@@ -50,9 +50,7 @@ final class ProfileRepository extends ServiceEntityRepository
 
         $transliterator = new Urlizer();
 
-        $slug = $transliterator->transliterate($username);
-
-        $slug = $transliterator->urlize($slug);
+        $slug = $transliterator->urlize($transliterator->transliterate($username));
 
         return $this->findBy([
             'slug' => $slug,
