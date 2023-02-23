@@ -26,13 +26,45 @@ final class RequestController extends AbstractController
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(
-            $this->requestUserRepository->createQueryBuilder('s'),
+            $this->requestUserRepository
+                ->createQueryBuilder('r')
+                ->leftJoin('r.tech', 't'),
             $request->query->getInt('page', 1),
             5
         );
 
         $config = [
             'cols' => [
+                'status.value' => [
+                    'type' => 'text',
+                    'label' => 'common.status',
+                    'queryKey' => 'r.status',
+                ],
+                'tech.name' => [
+                    'type' => 'text',
+                    'label' => 'common.name',
+                    'queryKey' => 't.name',
+                ],
+                'votes' => [
+                    'type' => 'count',
+                    'label' => 'request.votes_number',
+                    'queryKey' => 't.votes',
+                ],
+                'lastChangedAt' => [
+                    'type' => 'date',
+                    'label' => 'request.last_changed_at',
+                    'queryKey' => 'r.lastChangedAt',
+                ],
+                'updatedAt' => [
+                    'type' => 'date',
+                    'label' => 'common.updated_at',
+                    'queryKey' => 'r.updatedAt',
+                ],
+                'createdAt' => [
+                    'type' => 'date',
+                    'label' => 'common.created_at',
+                    'queryKey' => 'r.createdAt',
+                ],
                 'actions' => [
                   'info' => [
                       'route' => 'admin_request_show',
@@ -48,7 +80,7 @@ final class RequestController extends AbstractController
                       ],
                       'icon' => 'pencil',
                   ],
-              ],
+                ],
             ],
             'pagination' => $pagination,
         ];
@@ -57,10 +89,18 @@ final class RequestController extends AbstractController
     }
 
     #[Route('/{id}', name: 'admin_request_show', methods: ['GET'])]
-    public function show(Request $request): Response
+    public function show(RequestUser $requestUser): Response
     {
         return $this->render('admin/request/show.html.twig', [
-            'request' => $request,
+            'request' => $requestUser,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_request_edit', methods: ['GET', 'POST'])]
+    public function edit(RequestUser $requestUser): Response
+    {
+        return $this->render('admin/request/edit.html.twig', [
+            'request' => $requestUser,
         ]);
     }
 }

@@ -26,13 +26,41 @@ final class VoteController extends AbstractController
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(
-            $this->voteRepository->createQueryBuilder('s'),
+            $this->voteRepository
+                ->createQueryBuilder('v')
+                ->leftJoin('v.profile', 'p')
+                ->leftJoin('v.request', 'r'),
             $request->query->getInt('page', 1),
             5
         );
 
         $config = [
             'cols' => [
+                'upvote' => [
+                    'type' => 'text',
+                    'label' => 'vote.up_vote',
+                    'queryKey' => 'v.upvote',
+                ],
+                'request.id' => [
+                    'type' => 'text',
+                    'label' => 'request.id',
+                    'queryKey' => 'r.id',
+                ],
+                'profile.username' => [
+                    'type' => 'text',
+                    'label' => 'common.created_by',
+                    'queryKey' => 'p.username',
+                ],
+                'updatedAt' => [
+                    'type' => 'date',
+                    'label' => 'common.updated_at',
+                    'queryKey' => 'p.updatedAt',
+                ],
+                'createdAt' => [
+                    'type' => 'date',
+                    'label' => 'common.created_at',
+                    'queryKey' => 'p.createdAt',
+                ],
                 'actions' => [
                   'info' => [
                       'route' => 'admin_vote_show',
@@ -48,7 +76,7 @@ final class VoteController extends AbstractController
                       ],
                       'icon' => 'pencil',
                   ],
-              ],
+                ],
             ],
             'pagination' => $pagination,
         ];
@@ -60,6 +88,14 @@ final class VoteController extends AbstractController
     public function show(Vote $vote): Response
     {
         return $this->render('admin/vote/show.html.twig', [
+            'vote' => $vote,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_vote_edit', methods: ['GET', 'POST'])]
+    public function edit(Vote $vote): Response
+    {
+        return $this->render('admin/vote/edit.html.twig', [
             'vote' => $vote,
         ]);
     }

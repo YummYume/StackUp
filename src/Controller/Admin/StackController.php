@@ -35,8 +35,23 @@ final class StackController extends AbstractController
             'cols' => [
                 'name' => [
                     'type' => 'text',
-                    'label' => 'stack.name',
+                    'label' => 'common.name',
                     'queryKey' => 's.name',
+                ],
+                'description' => [
+                    'type' => 'text',
+                    'label' => 'common.description',
+                    'queryKey' => 's.description',
+                ],
+                'updatedAt' => [
+                    'type' => 'date',
+                    'label' => 'common.updated_at',
+                    'queryKey' => 's.updatedAt',
+                ],
+                'createdAt' => [
+                    'type' => 'date',
+                    'label' => 'common.created_at',
+                    'queryKey' => 's.createdAt',
                 ],
                 'actions' => [
                   'info' => [
@@ -53,7 +68,7 @@ final class StackController extends AbstractController
                       ],
                       'icon' => 'pencil',
                   ],
-              ],
+                ],
             ],
             'pagination' => $pagination,
         ];
@@ -65,6 +80,14 @@ final class StackController extends AbstractController
     public function show(Stack $stack): Response
     {
         return $this->render('admin/stack/show.html.twig', [
+            'stack' => $stack,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_stack_edit', methods: ['GET', 'POST'])]
+    public function edit(Stack $stack): Response
+    {
+        return $this->render('admin/stack/edit.html.twig', [
             'stack' => $stack,
         ]);
     }

@@ -108,8 +108,8 @@ page.request.title: Requests
 page.request.description: List of request saved on the website.
 
 ### Show
-page.request_show.title: Information of { name }
-page.request_show.description: All information of { name }.
+page.request_show.title: Information of the request
+page.request_show.description: All information of the request.
 
 ### Edit
 page.request_edit.title: Edit request
@@ -125,8 +125,8 @@ page.vote.title: Votes
 page.vote.description: List of vote saved on the website.
 
 ### Show
-page.vote_show.title: Information of { name }
-page.vote_show.description: All information of { name }.
+page.vote_show.title: Information of the vote
+page.vote_show.description: All information of the vote.
 
 ### Edit
 page.vote_edit.title: Edit vote

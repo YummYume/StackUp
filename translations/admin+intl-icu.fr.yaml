@@ -107,8 +107,8 @@ page.request.title: Requêtes
 page.request.description: Liste des requêtes enregistrés sur le site.
 
 ### Show
-page.request_show.title: Informations de { name }
-page.request_show.description: Toutes les informations de { name }.
+page.request_show.title: Informations de la requête
+page.request_show.description: Toutes les informations de la requête.
 
 ### Edit
 page.request_edit.title: Modifier la requête
@@ -124,8 +124,8 @@ page.vote.title: Votes
 page.vote.description: Liste des votes enregistrés sur le site.
 
 ### Show
-page.vote_show.title: Informations de { name }
-page.vote_show.description: Toutes les informations de { name }.
+page.vote_show.title: Informations du vote
+page.vote_show.description: Toutes les informations du vote.
 
 ### Edit
 page.vote_edit.title: Modifier la vote

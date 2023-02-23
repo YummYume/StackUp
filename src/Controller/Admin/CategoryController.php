@@ -33,6 +33,21 @@ final class CategoryController extends AbstractController
 
         $config = [
             'cols' => [
+                'name' => [
+                    'type' => 'text',
+                    'label' => 'common.name',
+                    'queryKey' => 'c.name',
+                ],
+                'updatedAt' => [
+                    'type' => 'date',
+                    'label' => 'common.updated_at',
+                    'queryKey' => 'c.updatedAt',
+                ],
+                'createdAt' => [
+                    'type' => 'date',
+                    'label' => 'common.created_at',
+                    'queryKey' => 'c.createdAt',
+                ],
                 'actions' => [
                   'info' => [
                       'route' => 'admin_category_show',
@@ -48,7 +63,7 @@ final class CategoryController extends AbstractController
                       ],
                       'icon' => 'pencil',
                   ],
-              ],
+                ],
             ],
             'pagination' => $pagination,
         ];
@@ -60,6 +75,14 @@ final class CategoryController extends AbstractController
     public function show(Category $category): Response
     {
         return $this->render('admin/category/show.html.twig', [
+            'category' => $category,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_category_edit', methods: ['GET', 'POST'])]
+    public function edit(Category $category): Response
+    {
+        return $this->render('admin/category/edit.html.twig', [
             'category' => $category,
         ]);
     }

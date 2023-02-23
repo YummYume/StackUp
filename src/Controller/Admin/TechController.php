@@ -33,6 +33,26 @@ final class TechController extends AbstractController
 
         $config = [
             'cols' => [
+                'name' => [
+                    'type' => 'text',
+                    'label' => 'common.name',
+                    'queryKey' => 't.name',
+                ],
+                'type.value' => [
+                    'type' => 'text',
+                    'label' => 'common.type',
+                    'queryKey' => 't.type',
+                ],
+                'updatedAt' => [
+                    'type' => 'date',
+                    'label' => 'common.updated_at',
+                    'queryKey' => 't.updatedAt',
+                ],
+                'createdAt' => [
+                    'type' => 'date',
+                    'label' => 'common.created_at',
+                    'queryKey' => 't.createdAt',
+                ],
                 'actions' => [
                   'info' => [
                       'route' => 'admin_tech_show',
@@ -48,7 +68,7 @@ final class TechController extends AbstractController
                       ],
                       'icon' => 'pencil',
                   ],
-              ],
+                ],
             ],
             'pagination' => $pagination,
         ];
@@ -60,6 +80,14 @@ final class TechController extends AbstractController
     public function show(Tech $tech): Response
     {
         return $this->render('admin/tech/show.html.twig', [
+            'tech' => $tech,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_tech_edit', methods: ['GET', 'POST'])]
+    public function edit(Tech $tech): Response
+    {
+        return $this->render('admin/tech/edit.html.twig', [
             'tech' => $tech,
         ]);
     }

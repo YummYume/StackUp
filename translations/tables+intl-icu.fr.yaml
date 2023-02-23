@@ -1,6 +1,17 @@
 # Common
 common.empty: Pas de données disponibles
 common.actions: Actions
+common.name: Nom
+common.type: Type
+common.status: Status
+common.description: Description
+common.official.male: Officiel
+common.official.female: Officielle
+common.created_at: Crée le
+common.updated_at: Mise à jour le
+common.created_by: Crée par
+common.updated_by: Mise à jour par
+common.picture: Image
 
 # Users
 user.email: E-mail
@@ -15,5 +26,17 @@ user.role.role_moderator: Modérateur
 user.role.role_allowed_to_switch: Autorisé à changer
 user.role.role_user: Utilisateur
 
-# Stacks
-stack.name: Nom
+# Requests
+request.id: Requête
+request.last_changed_at: Dernier changement le
+request.votes_number: Nombre de votes
+
+# Profile
+profile.id: Profil
+
+# Vote
+vote.up_vote: Up vote
+
+# Tech
+tech.id: Tech
+tech.collection: Techs

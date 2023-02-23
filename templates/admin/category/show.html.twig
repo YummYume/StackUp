@@ -1,0 +1,101 @@
+{% extends "admin/layout.html.twig" %}
+
+{% trans_default_domain "admin" %}
+
+{% block title %}
+    {{ "page.category_show.title"|trans({ name: category.name }) }}
+{% endblock %}
+
+{% block description %}
+    {{ "page.category_show.description"|trans({ name: category.name }) }}
+{% endblock %}
+
+{% block main_title %}
+    {{ "page.category_show.title"|trans({ name: category.name }) }}
+{% endblock %}
+
+{% block main_body %}
+    <div class="w-full overflow-x-auto">
+        <table class="table-zebra table w-full">
+            <tbody>
+                <tr>
+                    <th>
+                        {{ "common.id"|trans }}
+                    </th>
+                    <td>
+                        {{ category.id }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.name"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ category.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "tech.collection"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ category.techs ? category.techs|map(tech => tech.name)|join(", ") }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.official.female"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ ("common." ~ (category.isOfficial() ? "yes" : "no"))|trans }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.created_at"|trans }}
+                    </th>
+                    <td>
+                        {{ category.createdAt ? category.createdAt|format_datetime : "" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.updated_at"|trans }}
+                    </th>
+                    <td>
+                        {{ category.updatedAt ? category.updatedAt|format_datetime : "" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.created_by"|trans }}
+                    </th>
+                    <td>
+                        {% if category.createdBy %}
+                            <a class="link link-primary link-hover" href="{{ path("admin_user_show", { id: category.createdBy.id.toBase32 }) }}">
+                                {{ category.createdBy.profile.username }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.updated_by"|trans }}
+                    </th>
+                    <td>
+                        {% if category.updatedBy %}
+                            <a class="link link-primary link-hover" href="{{ path("admin_user_show", { id: category.updatedBy.id.toBase32 }) }}">
+                                {{ category.updatedBy.profile.username }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="btn-group items-center justify-center">
+        {{ component("button", { button: false, content: "common.back_to_list"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("admin_category") }) }}
+        {{ component("button", { button: false, content: "common.edit"|trans, class: "btn-outline", variant: "success", centered: false, ghost: true, href: path("admin_category_edit", { id: category.id.toBase32 }) }) }}
+    </div>
+{% endblock %}
