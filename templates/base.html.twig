@@ -62,7 +62,7 @@
                                             data-action="mousedown->class-modal#open:prevent" />
 
                                         <div class="tooltip tooltip-bottom" data-tip="{{ 'common.global_search'|trans }}">
-                                            {{ component("button", { icon: "search", square: true, submit: true, class: "border-base-100 border-2 rounded-l-none", ariaLabel: "common.global_search"|trans }) }}
+                                            {{ component("button", { icon: "search", square: true, submit: true, class: "bg-base-100 hover:bg-base-300 border-base-100 hover:border-base-300 border-l-0 text-primary dark:text-base-content -ml-1 rounded-l-none", ariaLabel: "common.global_search"|trans }) }}
                                         </div>
                                     </div>
                                 </form>
@@ -180,9 +180,9 @@
                                 name="q"
                                 placeholder="{{ "common.search"|trans }}..."
                                 class="input-bordered input w-0 grow"
-                                aria-label="{{ "common.search"|trans }}" />
-
-                            {{ component("button", { icon: "search", square: true, submit: true, ariaLabel: "common.global_search"|trans }) }}
+                                aria-label="{{ "common.search"|trans }}"
+                            />
+                            {{ component("button", { icon: "search", square: true, submit: true, class: "rounded-l-none", ariaLabel: "common.global_search"|trans }) }}
                         </div>
                     </form>
 

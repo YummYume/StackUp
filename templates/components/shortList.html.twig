@@ -12,27 +12,7 @@
     <div class="card-body">
         {% for item in items %}
             {% block item %}
-                <div class="flex h-12 items-center gap-8 rounded-full py-3 px-6 hover:bg-base-200">
-                    <div class="flex gap-4 font-medium" aria-label="{{ "common.position"|trans({ position: loop.index }) }}">
-                        {% include "icon/star.html.twig" %}
-                        <span>{{ loop.index }}</span>
-                    </div>
-                    <span class="flex h-full items-center gap-2 font-semibold">
-                        {% set name = get_property(item, itemNameProperty) %}
-
-                        {% if itemPictureProperty and itemFileProperty %}
-                            {% set src = vich_uploader_asset(get_property(item, itemPictureProperty)) %}
-
-                            <div class="avatar h-full">
-                                <div class="h-full">
-                                    {{ component("image", { src: src ?? asset(no_picture_fallback), class: "mask mask-squircle", filter: "short_list", alt: name, width: 24, height: 24 }) }}
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {{ name }}
-                    </span>
-                </div>
+                {{ component('listItem', { index: loop.index, item, itemFileProperty, itemNameProperty, itemPictureProperty }) }}
             {% endblock %}
         {% endfor %}
     </div>
