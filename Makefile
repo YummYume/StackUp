@@ -215,3 +215,10 @@ dahl-component:
 		--to="./templates/components/$(if $(l),$(l),"")" \
 		-n="$(call lowercase, $(n))" \
 		--props '{"twigLocation":"$(l)","twigName":"$(n)"}'
+
+# Deploy 
+deploy: 
+	git fetch origin master
+	git reset --HARD origin/master
+	make build-no-cache
+	make up-recreate
