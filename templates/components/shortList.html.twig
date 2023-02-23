@@ -1,0 +1,21 @@
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-title justify-between p-8 pb-0">
+        <div class="capitalize">
+            {% block header %}
+
+            {% endblock %}
+        </div>
+        {% if link %}
+            <a class="flex items-center gap-3 text-secondary" href="{{ link }}"><span>{{ "common.more"|trans }}</span>{% include "icon/chevron_right.html.twig" %}</a>
+        {% endif %}
+    </div>
+    <div class="card-body">
+        {% for item in items %}
+            {% block item %}
+                {{ component('listItem', { index: loop.index, item }) }}
+            {% endblock %}
+        {% else %}
+            {{ 'common.no_result'|trans }}
+        {% endfor %}
+    </div>
+</div>

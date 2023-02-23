@@ -45,6 +45,10 @@ class Request
     #[ORM\Column]
     private bool $created = false;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Gedmo\Timestampable(on: 'update', field: 'created')]
+    private ?\DateTimeInterface $submittedAt = null;
+
     public function __construct()
     {
         $this->votes = new ArrayCollection();
@@ -138,8 +142,35 @@ class Request
         return $this;
     }
 
+    public function getSubmittedAt(): ?\DateTimeInterface
+    {
+        return $this->submittedAt;
+    }
+
+    public function setSubmittedAt(\DateTimeInterface $submittedAt): self
+    {
+        $this->submittedAt = $submittedAt;
+
+        return $this;
+    }
+
     public function isOfficial(): bool
     {
         return $this->created && RequestStatusEnum::Accepted === $this->status;
+    }
+
+    public function getUpvotes(): Collection
+    {
+        return $this->votes->filter(static fn (Vote $vote): bool => $vote->isUpvote());
+    }
+
+    public function getDownvotes(): Collection
+    {
+        return $this->votes->filter(static fn (Vote $vote): bool => !$vote->isUpvote());
+    }
+
+    public function getVoteCount(): int
+    {
+        return array_reduce($this->votes->toArray(), static fn (int $total, Vote $vote): int => $vote->isUpvote() ? ($total + 1) : ($total - 1), 0);
     }
 }
