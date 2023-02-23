@@ -1,5 +1,5 @@
 ## Common
-common.app_name: AppName
+common.app_name: StackUp
 common.description: Welcome to StackUp!
 common.login: Login
 common.logout: Logout
@@ -27,6 +27,8 @@ common.last_page: Last page ({ number })
 common.show_password: Show/hide password
 common.menu: Menu
 common.no_script_message: It looks like JavaScript is not enabled in your browser. You might experience some issues while browsing.
+common.more: More
+common.position: Position { position }
 
 # Icons
 icon.eye: Show
@@ -53,8 +55,14 @@ flash.delete_profile.success: Account deleted. You should receive an email short
 
 ## Pages
 # Homepage
-page.homepage.title: Homepage
-page.homepage.description: Welcome to StackUp! The best app ever created.
+page.homepage.title: StackUp
+page.homepage.description: Welcome to StackUp. Here, you can create your ideal stack in no time. Can't find the tech you're looking for? You can add your own!
+page.homepage.main_title: Create your ideal stack
+page.homepage.main_description: Creating a stack is often not easy. You don't know what to choose or if you will stick with a certain tech. With StackUp, you can create your stacks easily and start your new project without worries.
+page.homepage.trending_techs: Trending Techs
+page.homepage.recently_added_techs: Recently Added Techs
+page.homepage.trending_categories: Trending Categories
+page.homepage.recently_added_stacks: Recently Added Stacks
 
 # About Us
 page.about_us.title: About Us

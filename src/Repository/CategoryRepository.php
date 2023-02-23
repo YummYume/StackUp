@@ -38,4 +38,25 @@ final class CategoryRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findTrendingCategories(\DateTime $since, \DateTime $before = new \DateTime(), int $maxResults = 3): array
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        return $qb
+            ->leftJoin('c.techs', 't')
+            ->select('COUNT(t) AS HIDDEN techCount', 'c')
+            ->where($qb->expr()->between('c.createdAt', ':since', ':before'))
+            ->setParameters([
+                'since' => $since,
+                'before' => $before,
+            ])
+            ->setMaxResults($maxResults)
+            ->orderBy('techCount', 'DESC')
+            ->addOrderBy('t.createdAt', 'DESC')
+            ->groupBy('c')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

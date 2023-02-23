@@ -86,7 +86,7 @@ migration:
 	$(EXECPHP) php bin/console d:m:m -n --allow-no-migration --all-or-nothing
 
 migration-diff:
-	$(EXECPHP) php bin/console d:m:diff
+	$(EXECPHP) php bin/console make:migration
 
 fixtures:
 	$(EXECPHP) php bin/console d:f:l -n

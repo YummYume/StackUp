@@ -1,5 +1,5 @@
 ## Common
-common.app_name: AppName
+common.app_name: StackUp
 common.description: Bienvenue sur StackUp !
 common.login: Connexion
 common.logout: Déconnexion
@@ -27,6 +27,8 @@ common.last_page: Dernière page ({ number })
 common.show_password: Afficher/masquer le mot de passe
 common.menu: Menu
 common.no_script_message: Il semble que Javascript ne soit pas activé dans votre navigateur. Vous pourriez rencontrer des problèmes lors de la navigation.
+common.more: Plus
+common.position: Position { position }
 
 # Icons
 icon.eye: Afficher
@@ -53,8 +55,14 @@ flash.delete_profile.success: Compte supprimé. Vous devriez recevoir un email s
 
 ## Pages
 # Homepage
-page.homepage.title: Page d'accueil
-page.homepage.description: Bienvenue sur StackUp ! La meilleure application jamais créée.
+page.homepage.title: StackUp
+page.homepage.description: Bienvenue sur Stack Up. Ici, vous pouvez créer votre pile idéale en un rien de temps. Vous ne trouvez pas la technologie que vous recherchez ? Vous pouvez ajouter le vôtre !
+page.homepage.main_title: Créez votre stack idéale
+page.homepage.main_description: Créer une stack n'est souvent pas facile. Vous ne savez pas quoi choisir ou si vous vous en tiendrez à une certaine technologie. Avec StackUp, vous pouvez créer vos piles facilement et démarrer votre nouveau projet sans soucis.
+page.homepage.trending_techs: Technologies tendance
+page.homepage.recently_added_techs: Technologies récemment ajoutées
+page.homepage.trending_categories: Catégories tendance
+page.homepage.recently_added_stacks: Stacks récemment ajoutées
 
 # About Us
 page.about_us.title: À Propos

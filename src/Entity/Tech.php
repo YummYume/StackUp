@@ -122,7 +122,7 @@ class Tech
     )]
     private array $links = [];
 
-    #[ORM\OneToOne(mappedBy: 'tech', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
     #[Assert\Valid]
     private ?TechPicture $picture = null;
 

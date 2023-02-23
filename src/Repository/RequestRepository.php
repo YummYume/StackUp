@@ -38,4 +38,17 @@ final class RequestRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findRecentlyCreatedRequests(int $maxResults = 3): array
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        return $qb
+            ->where($qb->expr()->eq('r.created', true))
+            ->orderBy('r.submittedAt', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
