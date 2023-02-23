@@ -4,10 +4,8 @@
         <span>{{ index }}</span>
     </div>
     <span class="flex h-full items-center gap-2 font-semibold">
-        {% set name = get_property(item, itemNameProperty) %}
-
-        {% if itemPictureProperty and itemFileProperty %}
-            {% set src = vich_uploader_asset(get_property(item, itemPictureProperty)) %}
+        {% if picture and itemFileProperty %}
+            {% set src = vich_uploader_asset(picture, itemFileProperty) %}
 
             <div class="avatar h-full">
                 <div class="h-full">

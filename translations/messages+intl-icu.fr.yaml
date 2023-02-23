@@ -29,6 +29,7 @@ common.menu: Menu
 common.no_script_message: Il semble que Javascript ne soit pas activé dans votre navigateur. Vous pourriez rencontrer des problèmes lors de la navigation.
 common.more: Plus
 common.position: Position { position }
+common.no_result: Aucun résultat trouvé.
 
 # Icons
 icon.eye: Afficher

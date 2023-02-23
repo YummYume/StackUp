@@ -17,10 +17,10 @@ final class HomepageController extends AbstractController
         $since = (new \DateTime())->modify('-1 week');
 
         return $this->render('homepage/index.html.twig', [
-            'trendingTechs' => $techRepository->findTrendingTechs($since),
-            'trendingCategories' => $categoryRepository->findTrendingCategories($since),
-            'recentTechs' => $techRepository->findRecentlyAddedTechs(),
-            'recentStacks' => $stackRepository->findRecentlyAddedStacks(),
+            'trendingTechs' => $techRepository->findTrendingTechs($since, maxResults: 5),
+            'trendingCategories' => $categoryRepository->findTrendingCategories($since, maxResults: 5),
+            'recentTechs' => $techRepository->findRecentlyAddedTechs(5),
+            'recentStacks' => $stackRepository->findRecentlyAddedStacks(5),
         ]);
     }
 }

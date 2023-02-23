@@ -12,8 +12,10 @@
     <div class="card-body">
         {% for item in items %}
             {% block item %}
-                {{ component('listItem', { index: loop.index, item, itemFileProperty, itemNameProperty, itemPictureProperty }) }}
+                {{ component('listItem', { index: loop.index, item }) }}
             {% endblock %}
+        {% else %}
+            {{ 'common.no_result'|trans }}
         {% endfor %}
     </div>
 </div>
