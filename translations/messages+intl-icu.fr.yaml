@@ -59,10 +59,13 @@ page.homepage.description: Bienvenue sur StackUp ! La meilleure application jama
 # About Us
 page.about_us.title: À Propos
 page.about_us.description: Tout ce que vous devez savoir sur StackUp, de pourquoi il a été créé à pourquoi vous devriez l'utiliser.
+page.about_us.presentation: Voici le projet de challenge du premier semeste, ici un projet de site de création de sa stack de travail.
 
 # Contact
 page.contact.title: Contact
 page.contact.description: Apprenez comment entrer en contact avec l'équipe StackUp ici.
+page.contact.presentation: Pour nous contacter, veuillez s'il vous plait nous envoyer un mail à challenge@stack-up.tech
+
 
 # Cookie Policy
 page.cookie_policy.title: Politique de cookies
