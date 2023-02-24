@@ -75,6 +75,8 @@
                     {{ knp_menu_render(menuItem, { currentAsLink: false, template: knp_custom_menu }) }}
                 </nav>
             </div>
+
+            <input type="hidden" name="t" value="{{ type }}" />
         </turbo-frame>
     </form>
 {% endblock %}
