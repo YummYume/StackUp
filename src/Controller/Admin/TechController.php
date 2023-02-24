@@ -3,8 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Tech;
-use App\Form\Admin\TechType;
 use App\Enum\ColorTypeEnum;
+use App\Form\Admin\TechType;
 use App\Manager\FlashManager;
 use App\Repository\TechRepository;
 use App\Security\Voter\UserVoter;
@@ -54,7 +54,7 @@ final class TechController extends AbstractController
                     'queryKey' => 't.status',
                     'extra' => [
                         'icon' => true,
-                    ]
+                    ],
                 ],
                 'updatedAt' => [
                     'type' => 'date',

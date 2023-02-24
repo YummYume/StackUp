@@ -3,8 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
-use App\Form\Admin\CategoryType;
 use App\Enum\ColorTypeEnum;
+use App\Form\Admin\CategoryType;
 use App\Manager\FlashManager;
 use App\Repository\CategoryRepository;
 use App\Security\Voter\UserVoter;
