@@ -116,7 +116,8 @@ final class StackController extends AbstractController
         return $this->form($request, $stack, true);
     }
 
-    public function form(Request $request, Stack $stack, bool $isEditing): Response {
+    public function form(Request $request, Stack $stack, bool $isEditing): Response
+    {
         $form = $this->createForm(StackType::class, $stack)->handleRequest($request);
 
         if ($form->isSubmitted()) {

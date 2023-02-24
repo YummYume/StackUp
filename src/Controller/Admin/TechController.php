@@ -124,7 +124,8 @@ final class TechController extends AbstractController
         return $this->form($request, $tech, true);
     }
 
-    public function form(Request $request, Tech $tech, bool $isEditing): Response {
+    public function form(Request $request, Tech $tech, bool $isEditing): Response
+    {
         $form = $this->createForm(TechType::class, $tech)->handleRequest($request);
 
         if ($form->isSubmitted()) {

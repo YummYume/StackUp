@@ -53,7 +53,7 @@ class TechType extends AbstractType
             ->add('request', RequestType::class, [
                 'label' => false,
             ])
-            ;
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

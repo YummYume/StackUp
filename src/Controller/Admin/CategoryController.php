@@ -111,7 +111,8 @@ final class CategoryController extends AbstractController
         return $this->form($request, $category, true);
     }
 
-    public function form(Request $request, Category $category, bool $isEditing): Response {
+    public function form(Request $request, Category $category, bool $isEditing): Response
+    {
         $form = $this->createForm(CategoryType::class, $category)->handleRequest($request);
 
         if ($form->isSubmitted()) {
