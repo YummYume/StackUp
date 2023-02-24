@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Requirement\EnumRequirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/tech')]
 final class TechController extends AbstractController
@@ -37,18 +38,10 @@ final class TechController extends AbstractController
         ]);
     }
 
-    #[Route('/type', name: 'app_tech_choose_type', methods: ['GET', 'POST'])]
+    #[Route('/type', name: 'app_tech_choose_type', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function selectType(): Response
     {
-        $tech = $this->techRepository->findUnreleasedTechForUser($this->getUser());
-
-        if (null !== $tech) {
-            return $this->redirectToRoute('app_tech_create', [
-                'typeParam' => $tech->getType()->value,
-            ]);
-        }
-
         return $this->render('tech/select_type.html.twig', [
             'types' => TechTypeEnum::cases(),
         ]);
@@ -63,19 +56,8 @@ final class TechController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function create(Request $request, string $typeParam): Response
     {
-        $tech = $this->techRepository->findUnreleasedTechForUser($this->getUser());
+        $tech = $this->techRepository->findUnreleasedTechForUser($this->getUser()) ?: new Tech();
         $type = TechTypeEnum::from($typeParam);
-
-        if (null !== $tech && $type !== $tech->getType()) {
-            return $this->redirectToRoute('app_tech_create', [
-                'typeParam' => $tech->getType()->value,
-            ]);
-        }
-
-        if (null === $tech) {
-            $tech = new Tech();
-        }
-
         $tech->setType($type);
         $form = $this->createForm(TechType::class, $tech)->handleRequest($request);
 
@@ -100,12 +82,20 @@ final class TechController extends AbstractController
 
     #[Route('/review-and-publish', name: 'app_tech_review_and_publish', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_USER')]
-    public function reviewAndPublish(Request $request): Response
+    public function reviewAndPublish(Request $request, ValidatorInterface $validator): Response
     {
         $tech = $this->techRepository->findUnreleasedTechForUser($this->getUser());
 
         if (null === $tech) {
             return $this->redirectToRoute('app_tech_choose_type');
+        }
+
+        $errors = $validator->validate($tech);
+
+        if (count($errors) > 0) {
+            return $this->redirectToRoute('app_tech_choose_type', [
+                'typeParam' => $tech->getType()->value
+            ]);
         }
 
         if (Request::METHOD_POST === $request->getMethod()) {

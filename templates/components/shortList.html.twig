@@ -5,7 +5,7 @@
 
             {% endblock %}
         </div>
-        {% if link %}
+        {% if link is not null %}
             <a class="flex items-center gap-3 text-secondary" href="{{ link }}"><span>{{ "common.more"|trans }}</span>{% include "icon/chevron_right.html.twig" %}</a>
         {% endif %}
     </div>

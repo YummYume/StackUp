@@ -2,6 +2,10 @@
     @apply rounded-lg;
 }
 
+.full .ts-control {
+    background-color: unset;
+}
+
 .ts {
     &-wrapper {
         &.single {
