@@ -1,0 +1,20 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block main_title %}
+
+{% endblock %}
+
+{% block main_body %}
+    <form method="post" action="{{ path("app_tech_review_and_publish") }}">
+        <input name="_token" type="hidden" value="{{ csrf_token("publish-#{tech.slug}") }}" />
+        {{ component("button", { content: "page.stack.review.publish"|trans, submit: true }) }}
+    </form>
+{% endblock %}

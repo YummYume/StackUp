@@ -173,4 +173,18 @@ class Request
     {
         return array_reduce($this->votes->toArray(), static fn (int $total, Vote $vote): int => $vote->isUpvote() ? ($total + 1) : ($total - 1), 0);
     }
+
+    public function getDownAndUpVotes(): array
+    {
+        $votes = [
+            'upvotes' => 0,
+            'downvotes' => 0,
+        ];
+
+        foreach ($this->votes as $vote) {
+            ++$votes[$vote->isUpvote() ? 'upvotes' : 'downvotes'];
+        }
+
+        return $votes;
+    }
 }

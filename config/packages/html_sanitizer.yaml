@@ -5,3 +5,7 @@ framework:
             app.highlight_sanitizer:
                 allow_elements:
                     em: ['class']
+
+            app.search_sanitizer:
+                allow_elements:
+                    span: ['class']

@@ -28,15 +28,6 @@ final class UserType extends AbstractType
             ->add('profile', ProfileType::class, [
                 'label' => false,
             ])
-            ->add('a', ChoiceType::class, [
-                'label' => 'user.roles',
-                'choices' => UserRoleEnum::toArray(false, [UserRoleEnum::AllowedToSwitch]),
-                'choice_label' => static fn (string $role): string => sprintf('user.role.%s', strtolower($role)),
-                'translation_domain' => 'tables',
-                'autocomplete' => true,
-                'required' => true,
-                'mapped' => false
-            ]);
         ;
 
         if ($options['can_edit_roles']) {

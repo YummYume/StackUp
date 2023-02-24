@@ -59,7 +59,7 @@ flash.delete_profile.success: Compte supprimé. Vous devriez recevoir un email s
 page.homepage.title: StackUp
 page.homepage.description: Bienvenue sur Stack Up. Ici, vous pouvez créer votre pile idéale en un rien de temps. Vous ne trouvez pas la technologie que vous recherchez ? Vous pouvez ajouter le vôtre !
 page.homepage.main_title: Créez votre stack idéale
-page.homepage.main_description: Créer une stack n'est souvent pas facile. Vous ne savez pas quoi choisir ou si vous vous en tiendrez à une certaine technologie. Avec StackUp, vous pouvez créer vos piles facilement et démarrer votre nouveau projet sans soucis.
+page.homepage.main_description: Créer une stack n'est souvent pas facile. Vous ne savez pas quoi choisir ou si vous vous en tiendrez à une certaine technologie. Avec StackUp, vous pouvez créer vos stacks facilement et démarrer votre nouveau projet sans soucis.
 page.homepage.trending_techs: Technologies tendance
 page.homepage.recently_added_techs: Technologies récemment ajoutées
 page.homepage.trending_categories: Catégories tendance
