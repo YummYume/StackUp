@@ -1,6 +1,8 @@
 # Common
 common.empty: No data available
 common.actions: Actions
+common.yes: Yes
+common.no: No
 common.name: Name
 common.type: Type
 common.status: Status
@@ -29,7 +31,9 @@ user.role.role_user: User
 # Requests
 request.id: Request
 request.last_changed_at: Last changed at
-request.votes_number: Votes number
+request.votes.number: Number of votes
+request.votes.down: Down votes
+request.votes.up: Up votes
 
 # Profile
 profile.id: Profile
@@ -40,3 +44,7 @@ vote.up_vote: Up vote
 # Tech
 tech.id: Tech
 tech.collection: Techs
+
+# Category
+category.id: Category
+category.collection: Categories

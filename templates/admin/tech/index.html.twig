@@ -2,20 +2,12 @@
 
 {% trans_default_domain "admin" %}
 
-{% block title %}
-    {{ "page.tech.title"|trans }}
-{% endblock %}
-
-{% block description %}
-    {{ "page.tech.description"|trans }}
-{% endblock %}
-
-{% block main_title %}
-    {{ "page.tech.title"|trans }}
-{% endblock %}
-
 {% block main_body %}
     <turbo-frame id="table_crud" data-turbo-action="advance">
+        <h1 class="text-center text-4xl">
+            {{ "page.tech.title"|trans }}
+        </h1>
+
         <div class="flex gap-2 flex-col md:flex-row">
             {{ knp_menu_render('back_office', { template: knp_custom_menu }) }}
             {{ component('table', { config }) }}

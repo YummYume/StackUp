@@ -47,13 +47,8 @@ final class RequestController extends AbstractController
                 ],
                 'votes' => [
                     'type' => 'count',
-                    'label' => 'request.votes_number',
+                    'label' => 'request.votes.number',
                     'queryKey' => 't.votes',
-                ],
-                'lastChangedAt' => [
-                    'type' => 'date',
-                    'label' => 'request.last_changed_at',
-                    'queryKey' => 'r.lastChangedAt',
                 ],
                 'updatedAt' => [
                     'type' => 'date',

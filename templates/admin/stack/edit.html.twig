@@ -1,0 +1,21 @@
+{% extends "admin/layout.html.twig" %}
+
+{% trans_default_domain "admin" %}
+
+{% block title %}
+    {{ "page.stack_edit.title"|trans }}
+{% endblock %}
+
+{% block description %}
+    {{ "page.stack_edit.description"|trans }}
+{% endblock %}
+
+{% block main_title %}
+    {{ "page.stack_edit.title"|trans }}
+{% endblock %}
+
+{% block main_body %}
+    <div id="stack-admin-form" class="mx-auto flex max-w-4xl flex-col gap-4">
+        {% include "admin/stack/_edit_content.html.twig" %}
+    </div>
+{% endblock %}

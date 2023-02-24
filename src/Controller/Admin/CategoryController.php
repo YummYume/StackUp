@@ -3,14 +3,19 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Form\Admin\CategoryType;
+use App\Enum\ColorTypeEnum;
 use App\Manager\FlashManager;
 use App\Repository\CategoryRepository;
+use App\Security\Voter\UserVoter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('/categories')]
 final class CategoryController extends AbstractController
@@ -79,11 +84,52 @@ final class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'admin_category_edit', methods: ['GET', 'POST'])]
-    public function edit(Category $category): Response
+    #[Route('/{id}', name: 'admin_category_delete', methods: ['POST'])]
+    #[IsGranted(UserVoter::DELETE, subject: 'category', statusCode: 403)]
+    public function delete(Request $request, Category $category): Response
     {
+        if ($this->isCsrfTokenValid('delete-'.$category->getId()->toBase32(), $request->request->get('_token'))) {
+            $this->categoryRepository->remove($category, true);
+
+            $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.deleted', translationDomain: 'admin');
+        } else {
+            $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_csrf');
+        }
+
+        return $this->redirectToRoute('admin_category', status: Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_category_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Category $category): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category)->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $this->categoryRepository->save($category, true);
+
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated', translationDomain: 'admin');
+            } else {
+                $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
+            }
+
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+                return $this->render('admin/category/stream/edit.stream.html.twig', [
+                    'category' => $category,
+                    'form' => $form->isValid() ? $this->createForm(CategoryType::class, $category) : $form,
+                ]);
+            } elseif ($form->isValid()) {
+                return $this->redirectToRoute('admin_category_edit', [
+                    'id' => $category->getId()->toBase32(),
+                ], Response::HTTP_SEE_OTHER);
+            }
+        }
+
         return $this->render('admin/category/edit.html.twig', [
             'category' => $category,
+            'form' => $form,
         ]);
     }
 }

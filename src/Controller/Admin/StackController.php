@@ -3,14 +3,19 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Stack;
+use App\Enum\ColorTypeEnum;
+use App\Form\Admin\StackType;
 use App\Manager\FlashManager;
 use App\Repository\StackRepository;
+use App\Security\Voter\UserVoter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('/stacks')]
 final class StackController extends AbstractController
@@ -84,11 +89,52 @@ final class StackController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'admin_stack_edit', methods: ['GET', 'POST'])]
-    public function edit(Stack $stack): Response
+    #[Route('/{id}', name: 'admin_stack_delete', methods: ['POST'])]
+    #[IsGranted(UserVoter::DELETE, subject: 'user', statusCode: 403)]
+    public function delete(Request $request, Stack $stack): Response
     {
+        if ($this->isCsrfTokenValid('delete-'.$stack->getId()->toBase32(), $request->request->get('_token'))) {
+            $this->stackRepository->remove($stack, true);
+
+            $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.deleted', translationDomain: 'admin');
+        } else {
+            $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_csrf');
+        }
+
+        return $this->redirectToRoute('admin_stack', status: Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_stack_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Stack $stack): Response
+    {
+        $form = $this->createForm(StackType::class, $stack)->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $this->stackRepository->save($stack, true);
+
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated', translationDomain: 'admin');
+            } else {
+                $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
+            }
+
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+                return $this->render('admin/stack/stream/edit.stream.html.twig', [
+                    'stack' => $stack,
+                    'form' => $form->isValid() ? $this->createForm(StackType::class, $stack) : $form,
+                ]);
+            } elseif ($form->isValid()) {
+                return $this->redirectToRoute('admin_stack_edit', [
+                    'id' => $stack->getId()->toBase32(),
+                ], Response::HTTP_SEE_OTHER);
+            }
+        }
+
         return $this->render('admin/stack/edit.html.twig', [
             'stack' => $stack,
+            'form' => $form,
         ]);
     }
 }

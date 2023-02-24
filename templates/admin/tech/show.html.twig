@@ -63,7 +63,11 @@
                         {{ "common.official.female"|trans({}, "tables") }}
                     </th>
                     <td>
-                        {{ ("common." ~ (tech.isOfficial() ? "yes" : "no"))|trans }}
+                        {% if tech.isOfficial() %}
+                            {% include "icon/success.html.twig" %}
+                        {% else %}
+                            {% include "icon/x-mark-circle.html.twig" %}
+                        {% endif %}
                     </td>
                 </tr>
                 <tr>

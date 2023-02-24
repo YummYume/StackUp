@@ -5,9 +5,9 @@ common.id: Identifiant
 common.yes: Oui
 common.no: Non
 common.created_at: Créé le
-common.updated_at: Mis à jour le
+common.updated_at: Mise à jour le
 common.created_by: Créé par
-common.updated_by: Mis à jour par
+common.updated_by: Mise à jour par
 common.create: Créer
 common.edit: Modifier
 common.delete: Supprimer
@@ -18,8 +18,12 @@ common.delete.cannot_be_undone: Cette action est irréversible.
 
 # Flahshes
 ## Common
-flash.common.updated: Mis à jour avec succés.
+flash.common.updated: Mise à jour avec succès.
 flash.common.deleted: Supprimé avec succès.
+
+## Admin
+page.admin.title: Administration
+page.admin.description: L'administration pour StackUp
 
 ## User
 flash.user.validation_email_sent: E-mail de validation envoyé.
@@ -86,20 +90,20 @@ page.tech_delete.content: Voulez-vous vraiment supprimer cette tech ?
 
 ## Category
 ### List
-page.category.title: Categories
-page.category.description: Liste des categories enregistrés sur le site.
+page.category.title: Catégories
+page.category.description: Liste des catégories enregistrés sur le site.
 
 ### Show
 page.category_show.title: Informations de { name }
 page.category_show.description: Toutes les informations de { name }.
 
 ### Edit
-page.category_edit.title: Modifier la category
-page.category_edit.description: Modifier les informations d'une category.
+page.category_edit.title: Modifier la catégorie
+page.category_edit.description: Modifier les informations d'une catégorie.
 
 ### Delete
-page.category_delete.title: Supprimer la category
-page.category_delete.content: Voulez-vous vraiment supprimer cette category ?
+page.category_delete.title: Supprimer la catégorie
+page.category_delete.content: Voulez-vous vraiment supprimer cette catégorie ?
 
 ## Request
 ### List

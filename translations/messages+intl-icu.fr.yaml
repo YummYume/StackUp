@@ -36,6 +36,11 @@ common.next_step: Étape suivante
 common.previous_step: Étape précédente
 common.add: Ajouter
 common.remove: Supprimer
+common.form.name: Nom
+common.form.description: Description
+common.form.status: Status
+common.form.type: Type 
+
 
 # Icons
 icon.eye: Afficher

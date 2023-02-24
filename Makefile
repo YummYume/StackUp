@@ -229,6 +229,25 @@ dahl-admin:
 
 	make perm
 
+dahl-admin-form:
+	$(DAHL) run a-form-edit \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-form-content \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-form-delete \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+	
+	$(DAHL) run a-form \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	make perm
+
 # Deploy
 deploy:
 	git fetch origin master

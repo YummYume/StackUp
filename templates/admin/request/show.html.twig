@@ -44,10 +44,26 @@
                 </tr>
                 <tr>
                     <th>
-                        {{ "request.votes_number"|trans({}, "tables") }}
+                        {{ "request.votes.up"|trans({}, "tables") }}
                     </th>
                     <td>
-                        {{ request.votes|length }}
+                        {{ request.getUpvotes|length }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "request.votes.down"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ request.getDownvotes|length }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "request.votes.number"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ request.getVoteCount }}
                     </td>
                 </tr>
                 <tr>
