@@ -1,13 +1,10 @@
-<div class="card min-h-[12rem] w-full bg-base-100 shadow-xl">
-    <div class="card-title justify-between p-8 pb-0">
+<div class="card aspect-square h-full w-full bg-base-100 shadow-xl">
+    <div class="card-title p-8 pb-0">
         {{ category.name }}
-        <a aria-label="delete category" class="text-error" href="">{% include "icon/trash.html.twig" %}</a>
     </div>
     <div class="card-body relative flex-row flex-wrap items-start gap-4">
         {% for tech in techs %}
             {{ component("image", { src: vich_uploader_asset(tech.picture, "file"), filter: "short_list", alt: tech.name, width: 24, height: 24 }) }}
-        {% else %}
-            <a aria-label="add category" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" href="">{% include "icon/plus.html.twig" %}</a>
         {% endfor %}
     </div>
 </div>

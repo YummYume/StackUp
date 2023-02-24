@@ -9,5 +9,5 @@ final class StepsComponent
 {
     public int $steps = 1;
 
-    public int $step = 2;
+    public int $step = 1;
 }
