@@ -15,19 +15,22 @@
 {% block main_body %}
     <p>{{ "page.cookie_policy.presentation"|trans }}</p>
 
-    <p><strong>{{ "page.cookie_policy.what_are_cookies.title"|trans }}</strong></p>
+    <p>
+        <span class="font-bold">{{ "page.cookie_policy.what_are_cookies.title"|trans }}</span><br>
+        {{ "page.cookie_policy.what_are_cookies.description"|trans }}<br>
+    </p>
 
-    <p>{{ "page.cookie_policy.what_are_cookies.description"|trans }}</p>
+    <p>
+        <span class="font-bold">{{ "page.cookie_policy.how_we_use_cookies.title"|trans }}</span><br>
+        {{ "page.cookie_policy.how_we_use_cookies.description"|trans }}<br>
+    </p>
 
-    <p><strong>{{ "page.cookie_policy.how_we_use_cookies.title"|trans }}</strong></p>
+    <p>
+        <span class="font-bold">{{ "page.cookie_policy.disabling_cookies.title"|trans }}</span><br>
+        {{ "page.cookie_policy.disabling_cookies.description"|trans }}<br>
+    </p>
 
-    <p>{{ "page.cookie_policy.how_we_use_cookies.description"|trans }}</p>
-
-    <p><strong>{{ "page.cookie_policy.disabling_cookies.title"|trans }}</strong></p>
-
-    <p>{{ "page.cookie_policy.disabling_cookies.description"|trans }}</p>
-
-    <p><strong>{{ "page.cookie_policy.the_cookies_we_set.title"|trans }}</strong></p>
+    <p class="font-bold">{{ "page.cookie_policy.the_cookies_we_set.title"|trans }}</p>
 
     <ul>
         <li>
@@ -46,17 +49,15 @@
         </li>
     </ul>
 
-    <p><strong>{{ "page.cookie_policy.third_party_cookies.title"|trans }}</strong></p>
+    <p>
+        <span class="font-bold">{{ "page.cookie_policy.third_party_cookies.title"|trans }}</span><br>
+        {{ "page.cookie_policy.third_party_cookies.description"|trans }}<br>
+        {{ "page.cookie_policy.third_party_cookies.social_media.description"|trans }}<br>
+    </p>
 
-    <p>{{ "page.cookie_policy.third_party_cookies.description"|trans }}</p>
 
-    <ul>
-        <li>
-            <p>{{ "page.cookie_policy.third_party_cookies.social_media.description"|trans }}</p>
-        </li>
-    </ul>
-
-    <p><strong>{{ "page.cookie_policy.more_information.title"|trans }}</strong></p>
-
-    <p>{{ "page.cookie_policy.more_information.description"|trans }}</p>
+    <p>
+        <span class="font-bold">{{ "page.cookie_policy.more_information.title"|trans }}</span><br>
+        {{ "page.cookie_policy.more_information.description"|trans }}<br>
+    </p>
 {% endblock %}

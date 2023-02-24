@@ -59,10 +59,8 @@ data/*
 !/public/media/no_picture_fallback.jpg
 ###< liip/imagine-bundle ###
 
-
 ###> Fixtures ###
 /src/DataFixtures/tmp
 ###< Fixtures ###
-
 
 .idea
