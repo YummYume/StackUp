@@ -3,15 +3,15 @@
 {% trans_default_domain "admin" %}
 
 {% block title %}
-    {{ "page.tech_edit.title"|trans }}
+    {{ ("page.tech_"~(isEditing ? 'edit' : 'new')~".title")|trans }}
 {% endblock %}
 
 {% block description %}
-    {{ "page.tech_edit.description"|trans }}
+    {{ ("page.tech_"~(isEditing ? 'edit' : 'new')~".description")|trans }}
 {% endblock %}
 
 {% block main_title %}
-    {{ "page.tech_edit.title"|trans }}
+    {{ ("page.tech_"~(isEditing ? 'edit' : 'new')~".title")|trans }}
 {% endblock %}
 
 {% block main_body %}

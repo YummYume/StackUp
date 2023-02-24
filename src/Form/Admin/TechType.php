@@ -2,13 +2,13 @@
 
 namespace App\Form\Admin;
 
-use App\Entity\Category;
 use App\Entity\Tech;
 use App\Enum\TechTypeEnum;
+use App\Form\CategoriesAutocompleteField;
+use App\Form\TechAutocompleteField;
+use App\Form\TechLinksType;
 use App\Form\TechPictureType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,39 +21,39 @@ class TechType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'common.form.name',
+                'label' => 'tech.name',
                 'required' => true,
+                'help' => 'tech.name.help',
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'common.form.description',
-                'required' => true,
+                'label' => 'tech.description',
+                'required' => false,
+                'help' => 'tech.description.help',
             ])
             ->add('type', EnumType::class, [
-                'label' => 'common.form.type',
+                'label' => 'tech.type',
                 'class' => TechTypeEnum::class,
                 'autocomplete' => true,
                 'required' => true,
+                'help' => 'tech.type.help',
             ])
-            ->add('categories', EntityType::class, [
-                'class' => Category::class,
-                'label' => 'category.collection',
-                'choice_label' => 'name',
-                'translation_domain' => 'tables',
-                'multiple' => true,
-                'autocomplete' => true,
-                'required' => true,
+            ->add('links', TechLinksType::class, [
+                'label' => false,
+            ])
+            ->add('categories', CategoriesAutocompleteField::class, [
+                'label' => 'tech.categories',
+            ])
+            ->add('dependsOn', TechAutocompleteField::class, [
+                'label' => 'tech.depends_on',
+                'help' => 'tech.depends_on.help',
             ])
             ->add('picture', TechPictureType::class, [
                 'label' => false,
-                'required' => false,
             ])
-            ->add('links', CollectionType::class, [
-                'entry_type' => TextType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'delete_empty' => true,
+            ->add('request', RequestType::class, [
+                'label' => false,
             ])
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

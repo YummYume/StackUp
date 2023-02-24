@@ -81,6 +81,12 @@ final class StackController extends AbstractController
         return $this->render('admin/stack/index.html.twig', ['config' => $config]);
     }
 
+    #[Route('/new', name: 'admin_stack_new', methods: ['GET', 'POST'])]
+    public function new(Request $request): Response
+    {
+        return $this->form($request, new Stack(), false);
+    }
+
     #[Route('/{id}', name: 'admin_stack_show', methods: ['GET'])]
     public function show(Stack $stack): Response
     {
@@ -107,23 +113,28 @@ final class StackController extends AbstractController
     #[Route('/{id}/edit', name: 'admin_stack_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Stack $stack): Response
     {
+        return $this->form($request, $stack, true);
+    }
+
+    public function form(Request $request, Stack $stack, bool $isEditing): Response {
         $form = $this->createForm(StackType::class, $stack)->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $this->stackRepository->save($stack, true);
 
-                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated', translationDomain: 'admin');
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.'.($isEditing ? 'updated' : 'created'), translationDomain: 'admin');
             } else {
                 $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
             }
 
-            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat() && $isEditing) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
                 return $this->render('admin/stack/stream/edit.stream.html.twig', [
                     'stack' => $stack,
                     'form' => $form->isValid() ? $this->createForm(StackType::class, $stack) : $form,
+                    'isEditing' => $isEditing,
                 ]);
             } elseif ($form->isValid()) {
                 return $this->redirectToRoute('admin_stack_edit', [
@@ -135,6 +146,7 @@ final class StackController extends AbstractController
         return $this->render('admin/stack/edit.html.twig', [
             'stack' => $stack,
             'form' => $form,
+            'isEditing' => $isEditing,
         ]);
     }
 }

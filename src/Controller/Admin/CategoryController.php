@@ -76,6 +76,12 @@ final class CategoryController extends AbstractController
         return $this->render('admin/category/index.html.twig', ['config' => $config]);
     }
 
+    #[Route('/new', name: 'admin_category_new', methods: ['GET', 'POST'])]
+    public function new(Request $request): Response
+    {
+        return $this->form($request, new Category(), false);
+    }
+
     #[Route('/{id}', name: 'admin_category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {
@@ -102,23 +108,28 @@ final class CategoryController extends AbstractController
     #[Route('/{id}/edit', name: 'admin_category_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category): Response
     {
+        return $this->form($request, $category, true);
+    }
+
+    public function form(Request $request, Category $category, bool $isEditing): Response {
         $form = $this->createForm(CategoryType::class, $category)->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $this->categoryRepository->save($category, true);
 
-                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated', translationDomain: 'admin');
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.'.($isEditing ? 'updated' : 'created'), translationDomain: 'admin');
             } else {
                 $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
             }
 
-            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat() && $isEditing) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
                 return $this->render('admin/category/stream/edit.stream.html.twig', [
                     'category' => $category,
                     'form' => $form->isValid() ? $this->createForm(CategoryType::class, $category) : $form,
+                    'isEditing' => $isEditing,
                 ]);
             } elseif ($form->isValid()) {
                 return $this->redirectToRoute('admin_category_edit', [
@@ -130,6 +141,7 @@ final class CategoryController extends AbstractController
         return $this->render('admin/category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
+            'isEditing' => $isEditing,
         ]);
     }
 }

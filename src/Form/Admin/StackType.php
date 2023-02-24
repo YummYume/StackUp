@@ -4,6 +4,7 @@ namespace App\Form\Admin;
 
 use App\Entity\Stack;
 use App\Entity\Tech;
+use App\Form\ProfilesAutocompleteField;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -33,6 +34,16 @@ class StackType extends AbstractType
                 'autocomplete' => true,
                 'required' => true,
             ])
+            ->add('techs', EntityType::class, [
+                'class' => Tech::class,
+                'label' => 'tech.collection',
+                'choice_label' => 'name',
+                'translation_domain' => 'tables',
+                'multiple' => true,
+                'autocomplete' => true,
+                'required' => true,
+            ])
+            ->add('profile', ProfilesAutocompleteField::class)
         ;
     }
 

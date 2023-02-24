@@ -58,7 +58,7 @@
                         {{ tech.categories ? tech.categories|map(category => category.name)|join(", ") }}
                     </td>
                 </tr>
-                 <tr>
+                <tr>
                     <th>
                         {{ "common.official.female"|trans({}, "tables") }}
                     </th>
@@ -70,6 +70,14 @@
                         {% endif %}
                     </td>
                 </tr>
+                {% for key, link in tech.links %}
+                    {% if link %}
+                        <tr>
+                            <th>{{ key|title }}</th>
+                            <td>{{ link }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
                 <tr>
                     <th>
                         {{ "common.created_at"|trans }}

@@ -68,13 +68,6 @@ final class RequestController extends AbstractController
                       ],
                       'icon' => 'eye',
                   ],
-                  'accent' => [
-                      'route' => 'admin_request_edit',
-                      'routeParams' => [
-                          'id' => static fn (RequestUser $requestUser): string => $requestUser->getId()->toBase32(),
-                      ],
-                      'icon' => 'pencil',
-                  ],
                 ],
             ],
             'pagination' => $pagination,

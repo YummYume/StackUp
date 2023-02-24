@@ -69,13 +69,6 @@ final class VoteController extends AbstractController
                       ],
                       'icon' => 'eye',
                   ],
-                  'accent' => [
-                      'route' => 'admin_vote_edit',
-                      'routeParams' => [
-                          'id' => static fn (Vote $vote): string => $vote->getId()->toBase32(),
-                      ],
-                      'icon' => 'pencil',
-                  ],
                 ],
             ],
             'pagination' => $pagination,

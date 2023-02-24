@@ -9,6 +9,7 @@
         {{ form_row(form.name) }}
         {{ form_row(form.description) }}
         {{ form_row(form.techs) }}
+        {{ form_row(form.profile) }}
     </div>
 </div>
 {{ component("button", { content: button_label|default("common.save"|trans), submit: true, class: "btn-outline", variant: "success", centered: true, ghost: true }) }}

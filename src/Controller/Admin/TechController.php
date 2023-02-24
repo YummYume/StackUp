@@ -89,6 +89,12 @@ final class TechController extends AbstractController
         return $this->render('admin/tech/index.html.twig', ['config' => $config]);
     }
 
+    #[Route('/new', name: 'admin_stack_new', methods: ['GET', 'POST'])]
+    public function new(Request $request): Response
+    {
+        return $this->form($request, new Tech(), false);
+    }
+
     #[Route('/{id}', name: 'admin_tech_show', methods: ['GET'])]
     public function show(Tech $tech): Response
     {
@@ -115,23 +121,28 @@ final class TechController extends AbstractController
     #[Route('/{id}/edit', name: 'admin_tech_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tech $tech): Response
     {
+        return $this->form($request, $tech, true);
+    }
+
+    public function form(Request $request, Tech $tech, bool $isEditing): Response {
         $form = $this->createForm(TechType::class, $tech)->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $this->techRepository->save($tech, true);
 
-                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated', translationDomain: 'admin');
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.'.($isEditing ? 'updated' : 'created'), translationDomain: 'admin');
             } else {
                 $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
             }
 
-            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat() && $isEditing) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
                 return $this->render('admin/tech/stream/edit.stream.html.twig', [
                     'tech' => $tech,
                     'form' => $form->isValid() ? $this->createForm(TechType::class, $tech) : $form,
+                    'isEditing' => $isEditing,
                 ]);
             } elseif ($form->isValid()) {
                 return $this->redirectToRoute('admin_tech_edit', [
@@ -143,6 +154,7 @@ final class TechController extends AbstractController
         return $this->render('admin/tech/edit.html.twig', [
             'tech' => $tech,
             'form' => $form,
+            'isEditing' => $isEditing,
         ]);
     }
 }
