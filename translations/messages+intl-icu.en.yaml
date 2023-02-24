@@ -106,10 +106,12 @@ page.homepage.recently_added_stacks: Recently Added Stacks
 ## About Us
 page.about_us.title: About Us
 page.about_us.description: Everything you need to know about StackUp, from why it was created to why you should use it.
+page.about_us.presentation: Here is the challenge project of the first semester, here a site project for creating its project stack.
 
 ## Contact
 page.contact.title: Contact
 page.contact.description: Learn how to get in touch with the StackUp staff here.
+page.contact.presentation: to contact us, please send us an email at challenge@stack_up.tech
 
 ## Cookie Policy
 page.cookie_policy.title: Cookie Policy for StackUp
