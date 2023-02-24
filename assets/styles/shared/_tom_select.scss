@@ -1,40 +1,87 @@
-.ts-wrapper {
-    @apply ml-0 w-full;
+.dropdown-active .ts-control {
+    @apply rounded-lg;
 }
 
-.ts-control {
-    @apply rounded-lg
-    border-gray-300
-    bg-white
-    py-2
-    px-3
-    text-base
-    shadow-sm;
+.ts {
+    &-wrapper {
+        &.single {
+            .ts {
+                &-control {
+                    @apply bg-base-100 text-base-content shadow-none dark:border-white dark:border-opacity-20 #{!important};
+                    border: 1px solid #d0d0d0;
 
-    /* Add caret https://github.com/orchidjs/tom-select/discussions/384 */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.5rem center;
-    background-repeat: no-repeat;
-    background-size: 1.5em 1.5em;
-}
+                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+                    background-position: right 0.5rem center;
+                    background-repeat: no-repeat;
+                    background-size: 1.5em;
+                }
 
-.ts-dropdown {
-    @apply rounded-md border border-t border-solid border-gray-300 text-base;
-}
+                &-dropdown {
+                    @apply border-none bg-base-100 text-base-content;
+                }
 
-.ts-dropdown [data-selectable].option:first-child {
-    @apply rounded-t-lg;
-}
+                &-dropdown-content {
+                    [data-selectable].option {
+                        &.active {
+                            @apply bg-base-200 text-base-content;
+                        }
 
-.ts-dropdown [data-selectable].option:last-child {
-    @apply rounded-b-lg;
-}
+                        &:first-child {
+                            @apply rounded-t-lg;
+                        }
 
-.ts-dropdown .create:hover,
-.ts-dropdown .option:hover {
-    @apply bg-sky-50 text-sky-900;
-}
+                        &:last-child {
+                            @apply rounded-b-lg;
+                        }
+                    }
+                }
+            }
+        }
 
-.ts-dropdown .active {
-    @apply bg-gray-100 text-gray-900;
+        &.multi .ts-control [data-value] {
+            @apply rounded-full border-none bg-primary pl-3 pr-1 #{!important};
+            background-image: none !important;
+        }
+
+        &.plugin-remove_button {
+            &:not(.rtl) .item .remove {
+                @apply border-l-0;
+            }
+
+            .item .remove:hover {
+                @apply bg-transparent;
+            }
+        }
+    }
+
+    &-control {
+        @apply rounded-lg bg-base-100 py-2 pl-3 pr-6 text-base dark:border-white dark:border-opacity-20;
+
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em;
+
+        input {
+            @apply text-base-content;
+        }
+    }
+
+    &-dropdown {
+        @apply rounded-md border-none bg-base-100 text-base text-base-content;
+
+        &[data-selectable].option {
+            &:first-child {
+                @apply rounded-t-lg;
+            }
+
+            &:last-child {
+                @apply rounded-b-lg;
+            }
+        }
+
+        .active {
+            @apply bg-base-200 text-base-content;
+        }
+    }
 }

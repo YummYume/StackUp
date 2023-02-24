@@ -13,8 +13,7 @@
 {% endblock %}
 
 {% block main_body %}
-    {{ form_start(form) }}
-    {{ form_row(form) }}
-    {{ component("button", { content: "page.stack.create.submit"|trans, submit: true }) }}
-    {{ form_end(form) }}
+    {% for type in types %}
+        <a class="link" href="{{ path("app_tech_create", { typeParam: type.value }) }}">{{ ("tech.type.#{type.value}")|trans }}</a>
+    {% endfor %}
 {% endblock %}

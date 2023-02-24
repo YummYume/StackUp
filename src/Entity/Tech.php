@@ -138,11 +138,11 @@ class Tech
     #[Assert\When(
         expression: 'this.getType().value === "library"',
         constraints: [
-            new Assert\NotBlank(message: 'tech.depends_on.not_blank'),
+            new Assert\NotNull(message: 'tech.depends_on.not_blank'),
         ],
     )]
     #[Assert\Expression(
-        expression: 'value === null or value?.getRequest()?.getStatus()?.value === "accepted"',
+        expression: 'value === null or value?.getRequest()?.getStatus()?.value !== "rejected"',
         message: 'tech.depends_on.only_accepted',
     )]
     private ?self $dependsOn = null;

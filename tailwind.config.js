@@ -6,6 +6,7 @@ module.exports = {
     './assets/**/*.(js|ts)',
     './templates/**/*.html.twig',
     './src/Components/**/*.php',
+    './src/Form/**/*Field.php',
   ],
   darkMode: 'class',
   theme: {
