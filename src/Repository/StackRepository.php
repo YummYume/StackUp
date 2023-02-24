@@ -38,4 +38,14 @@ final class StackRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findRecentlyAddedStacks(int $maxResults = 3): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.createdAt', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
