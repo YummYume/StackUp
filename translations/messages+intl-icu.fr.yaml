@@ -137,7 +137,7 @@ page.reset_password.description: Réinitialiser en toute sécurité votre mot de
 page.reset_password.reset: Réinitialiser mon mot de passe
 
 # Search
-page.search.title: Recherche
+page.search.title: Recherche Globale
 page.search.description: Recherchez n'importe quoi sur StackUp.
 page.search.no_result: Aucun résultat trouvé.
 page.search.result_time: >-

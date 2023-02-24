@@ -3,6 +3,8 @@
 namespace App\Components;
 
 use App\Entity\Profile;
+use App\Entity\Stack;
+use App\Entity\Tech;
 use App\Enum\SearchTypeEnum;
 use Meilisearch\Bundle\SearchService;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
@@ -31,6 +33,40 @@ final class GlobalSearchComponent
 
         $results = [];
 
+        $techs = $this->searchService->rawSearch(Tech::class, $this->query, [
+            ...SearchTypeEnum::getSearchOptions(SearchTypeEnum::Techs),
+            'highlightPreTag' => '<em class="bg-warning dark:bg-secondary">',
+            'limit' => 5,
+        ]);
+
+        if (!empty($techs['hits'])) {
+            $results['techs'] = [
+                'results' => $techs,
+                'nameProperty' => 'name',
+                'descProperty' => 'description',
+                'slugProperty' => 'slug',
+                'route' => 'app_tech_show',
+                'routeParam' => 'slug',
+            ];
+        }
+
+        $stacks = $this->searchService->rawSearch(Stack::class, $this->query, [
+            ...SearchTypeEnum::getSearchOptions(SearchTypeEnum::Stacks),
+            'highlightPreTag' => '<em class="bg-warning dark:bg-secondary">',
+            'limit' => 5,
+        ]);
+
+        if (!empty($stacks['hits'])) {
+            $results['stacks'] = [
+                'results' => $stacks,
+                'nameProperty' => 'name',
+                'descProperty' => 'description',
+                'slugProperty' => 'slug',
+                'route' => 'app_stack_show',
+                'routeParam' => 'slug',
+            ];
+        }
+
         $profiles = $this->searchService->rawSearch(Profile::class, $this->query, [
             ...SearchTypeEnum::getSearchOptions(SearchTypeEnum::Profiles),
             'highlightPreTag' => '<em class="bg-warning dark:bg-secondary">',
@@ -38,7 +74,14 @@ final class GlobalSearchComponent
         ]);
 
         if (!empty($profiles['hits'])) {
-            $results['profiles'] = $profiles;
+            $results['profiles'] = [
+                'results' => $profiles,
+                'nameProperty' => 'username',
+                'descProperty' => 'description',
+                'slugProperty' => 'slug',
+                'route' => 'app_profile_show',
+                'routeParam' => 'slug',
+            ];
         }
 
         return $results;

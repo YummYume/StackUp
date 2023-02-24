@@ -137,7 +137,7 @@ page.reset_password.description: Safely reset your forgotten password.
 page.reset_password.reset: Reset my password
 
 # Search
-page.search.title: Search
+page.search.title: Global Search
 page.search.description: Search anything on StackUp.
 page.search.no_result: No result found.
 page.search.result_time: >-
