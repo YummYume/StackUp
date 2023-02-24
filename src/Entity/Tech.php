@@ -122,7 +122,7 @@ class Tech
     )]
     private array $links = [];
 
-    #[ORM\OneToOne(mappedBy: 'tech', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
     #[Assert\Valid]
     private ?TechPicture $picture = null;
 
@@ -134,10 +134,27 @@ class Tech
     #[ORM\ManyToMany(targetEntity: Stack::class, mappedBy: 'techs')]
     private Collection $stacks;
 
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'techs')]
+    #[Assert\When(
+        expression: 'this.getType().value === "library"',
+        constraints: [
+            new Assert\NotBlank(message: 'tech.depends_on.not_blank'),
+        ],
+    )]
+    #[Assert\Expression(
+        expression: 'value === null or value?.getRequest()?.getStatus()?.value === "accepted"',
+        message: 'tech.depends_on.only_accepted',
+    )]
+    private ?self $dependsOn = null;
+
+    #[ORM\OneToMany(mappedBy: 'dependsOn', targetEntity: self::class)]
+    private Collection $techs;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->stacks = new ArrayCollection();
+        $this->techs = new ArrayCollection();
     }
 
     public function getId(): ?Uuid
@@ -288,5 +305,47 @@ class Tech
     public function isOfficial(): bool
     {
         return $this->request->isOfficial();
+    }
+
+    public function getDependsOn(): ?self
+    {
+        return $this->dependsOn;
+    }
+
+    public function setDependsOn(?self $dependsOn): self
+    {
+        $this->dependsOn = $dependsOn;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getTechs(): Collection
+    {
+        return $this->techs;
+    }
+
+    public function addTech(self $tech): self
+    {
+        if (!$this->techs->contains($tech)) {
+            $this->techs->add($tech);
+            $tech->setDependsOn($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTech(self $tech): self
+    {
+        if ($this->techs->removeElement($tech)) {
+            // set the owning side to null (unless already changed)
+            if ($tech->getDependsOn() === $this) {
+                $tech->setDependsOn(null);
+            }
+        }
+
+        return $this;
     }
 }

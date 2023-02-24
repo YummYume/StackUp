@@ -70,7 +70,7 @@ class Profile
     #[Assert\Url(message: 'profile.github_link.not_url')]
     private ?string $githubLink = null;
 
-    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: Vote::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: Vote::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $votes;
 
     #[ORM\OneToMany(mappedBy: 'profile', targetEntity: Stack::class, orphanRemoval: true)]

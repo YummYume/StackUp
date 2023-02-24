@@ -12,6 +12,6 @@ final class HomepageControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('title', 'Homepage');
+        $this->assertSelectorTextContains('title', 'StackUp');
     }
 }

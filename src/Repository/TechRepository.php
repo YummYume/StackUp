@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Tech;
+use App\Enum\RequestStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -55,6 +56,47 @@ final class TechRepository extends ServiceEntityRepository
             ->andWhere($qb->expr()->eq('r.created', true))
             ->setParameter('name', trim($name))
             ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findRecentlyAddedTechs(int $maxResults = 3): array
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+            ->leftJoin('t.request', 'r')
+            ->where($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->not($qb->expr()->eq('r.status', ':rejected')))
+            ->setParameter('rejected', RequestStatusEnum::Rejected)
+            ->orderBy('r.submittedAt', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findTrendingTechs(\DateTime $since, \DateTime $before = new \DateTime(), int $maxResults = 3): array
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+            ->leftJoin('t.request', 'r')
+            ->leftJoin('r.votes', 'v')
+            ->select('COUNT(v) AS HIDDEN voteCount', 't')
+            ->where($qb->expr()->between('r.submittedAt', ':since', ':before'))
+            ->andWhere($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->not($qb->expr()->eq('r.status', ':rejected')))
+            ->setParameters([
+                'since' => $since,
+                'before' => $before,
+                'rejected' => RequestStatusEnum::Rejected,
+            ])
+            ->setMaxResults($maxResults)
+            ->orderBy('voteCount', 'DESC')
+            ->addOrderBy('r.submittedAt', 'DESC')
+            ->groupBy('t')
             ->getQuery()
             ->getResult()
         ;

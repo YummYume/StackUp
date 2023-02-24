@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block main_body %}
-    <turbo-frame id="table_crud" data-turbo-action="advance">
+    <turbo-frame id="table_crud" class="flex flex-col gap-4" data-turbo-action="advance">
         <div class="flex gap-2 flex-col md:flex-row">
             {{ knp_menu_render('back_office', { template: knp_custom_menu }) }}
             {{ component('table', { config }) }}
