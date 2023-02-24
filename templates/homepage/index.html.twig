@@ -16,7 +16,6 @@
     <p class="mx-auto max-w-3xl">
         {{ "page.homepage.main_description"|trans }}
     </p>
-
     <div class="grid gap-6 lg:grid-cols-2">
         {% component shortList with { items: trendingTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_stack_index") } %}
         {% block header %}

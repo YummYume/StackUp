@@ -1,0 +1,10 @@
+<div class="card aspect-square h-full w-full bg-base-100 shadow-xl">
+    <div class="card-title p-8 pb-0">
+        {{ category.name }}
+    </div>
+    <div class="card-body relative flex-row flex-wrap items-start gap-4">
+        {% for tech in techs %}
+            {{ component("image", { src: vich_uploader_asset(tech.picture, "file"), filter: "short_list", alt: tech.name, width: 24, height: 24 }) }}
+        {% endfor %}
+    </div>
+</div>

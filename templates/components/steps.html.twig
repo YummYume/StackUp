@@ -1,0 +1,5 @@
+<ul class="steps">
+    {% for i in 1..steps %}
+        <li class="step {{ i <= step ? "step-primary" }}"></li>
+    {% endfor %}
+</ul>
