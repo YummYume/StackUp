@@ -34,3 +34,39 @@ profile_picture.file.max_size: This image is too large ({ size } { suffix }). Al
 profile_picture.file.mime_types: The type of this image is invalid ({ type }). Allowed types are { types }.
 profile_picture.file.corrupted: This image is corrupted and cannot be proceeded.
 profile_picture.file.size_not_detected: The size of the image could not be detected. Please try again.
+
+## Tech
+tech.name.unique: This tech already exists.
+tech.name.invalid: A tech's name must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
+tech.description.max_length: A tech's description must contain up to { limit } characters.
+tech.categories.min_count: A tech must belong to at least one category.
+tech.categories.max_count: A tech cannot belong to more than { limit } categories.
+tech.link.github.invalid: Please enter a valid GitHub link.
+tech.link.gitlab.invalid: Please enter a valid GitLab link.
+tech.link.npm_or_yarn.invalid: Please enter a valid NPM or Yarn link.
+tech.link.packagist.invalid: Please enter a valid Packagist link.
+tech.link.crates.invalid: Please enter a valid Crates link.
+tech.link.pkg.invalid: Please enter a valid Pkg link.
+tech.link.other.invalid: Please enter a valid link.
+tech.depends_on.not_blank: A library must depend on another tech.
+tech.depends_on.not_rejected: A tech cannot depend on a rejected tech.
+
+## Tech Picture
+tech_picture.file.max_size: This image is too large ({ size } { suffix }). Allowed maximum size is { limit } { suffix }.
+tech_picture.file.mime_types: The type of this image is invalid ({ type }). Allowed types are { types }.
+tech_picture.file.corrupted: This image is corrupted and cannot be proceeded.
+tech_picture.file.size_not_detected: The size of the image could not be detected. Please try again.
+
+## Vote
+vote.unique: This vote has already been registered.
+
+## Category
+category.name.unique: This category already exists.
+category.name.invalid: A category's name must contain between 2 and 30 characters and can only contain letters and whitespaces.
+
+## Stack
+stack.name.unique: You already have an existing stack with this name.
+stack.name.invalid: A stack's name must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
+stack.description.max_length: A stack's description must contain up to { limit } characters.
+stack.techs.min_count: A stack must contain at least one tech.
+stack.techs.max_count: A stack must contain up to { limit } techs.

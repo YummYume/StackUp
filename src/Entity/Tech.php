@@ -143,6 +143,7 @@ class Tech
     private Collection $stacks;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'techs')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     #[Assert\When(
         expression: 'this.getType().value === "library"',
         constraints: [
@@ -151,7 +152,7 @@ class Tech
     )]
     #[Assert\Expression(
         expression: 'value === null or value?.getRequest()?.getStatus()?.value !== "rejected"',
-        message: 'tech.depends_on.only_accepted',
+        message: 'tech.depends_on.not_rejected',
     )]
     private ?self $dependsOn = null;
 

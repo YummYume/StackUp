@@ -35,6 +35,7 @@ flash.user.already_verified: This user is already verified.
 ## Homepage
 page.homepage.title: Administration homepage
 page.homepage.description: The homepage of the administration for StackUp.
+page.homepage.welcome: Welcome to the administration dashboard.
 
 ## User
 ### List

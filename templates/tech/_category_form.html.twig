@@ -19,6 +19,12 @@
                     {{ form_row(categoryForm._token) }}
                 </div>
 
+                <noscript>
+                    <p class="mb-5 text-error">
+                        {{ "page.create_tech.add_category.no_script"|trans }}
+                    </p>
+                </noscript>
+
                 {{ component("button", { content: "common.add"|trans, submit: true }) }}
 
                 {{ form_end(categoryForm) }}
