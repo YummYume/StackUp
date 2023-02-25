@@ -62,6 +62,7 @@ services:
         bind:
             $publicDir: '%app.public_dir%'
             $fallback: '%app.blur_default_fallback%'
+            $redis: '@Redis'
 
     # Vich Uploader
     App\EventListener\UploadListener:
