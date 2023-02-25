@@ -18,7 +18,7 @@
 
 {% block main_body %}
     <div class="flex items-center justify-center gap-8 text-4xl">
-        {{ component("image", { alt: tech.name, class: "rounded", filter: "tech_picture_side", src: vich_uploader_asset(tech.picture, "file"), height: 64, width: 64 }) }}
+        {{ component("image", { alt: tech.name, filter: "tech_picture_side", src: vich_uploader_asset(tech.picture, "file"), height: 64, width: 64 }) }}
         <h2>
             {{ tech.name }}
         </h2>

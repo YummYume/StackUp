@@ -144,4 +144,24 @@ class Stack
 
         return $this;
     }
+
+    public function getCategoriesWithTechs(bool $noDuplicates = false): array
+    {
+        $categories = [];
+
+        foreach ($this->techs as $tech) {
+            /** @var Collection<Category> */
+            $techCategories = $tech->getCategories();
+
+            foreach ($techCategories as $i => $category) {
+                $categories[$category->getName()][] = $tech;
+
+                if (0 === $i && $noDuplicates) {
+                    continue;
+                }
+            }
+        }
+
+        return $categories;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Stack;
 use App\Repository\StackRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,8 +26,10 @@ final class StackController extends AbstractController
     }
 
     #[Route('/show/{slug}', name: 'app_stack_show')]
-    public function show(): Response
+    public function show(Stack $stack): Response
     {
-        return $this->render('stack/show.html.twig');
+        return $this->render('stack/show.html.twig', [
+            'stack' => $stack
+        ]);
     }
 }
