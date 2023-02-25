@@ -123,6 +123,8 @@
 
                 {% block main %}
                     <main class="container px-2 md:px-1 mx-auto flex grow flex-col gap-10 py-10">
+                        {% block steps %}{% endblock %}
+
                         {% if block('main_title') %}
                             <h1 class="text-center text-4xl">
                                 {% block main_title %}{% endblock %}

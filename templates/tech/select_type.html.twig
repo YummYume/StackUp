@@ -1,19 +1,25 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-
+    {{ "Step 1 - Type"|trans }}
 {% endblock %}
 
 {% block description %}
 
 {% endblock %}
 
-{% block main_title %}
+{% block steps %}
+    {{ component("steps", { step: 1, steps: 3 }) }}
+{% endblock %}
 
+{% block main_title %}
+    {{ "Step 1 - Type"|trans }}
 {% endblock %}
 
 {% block main_body %}
-    {% for type in types %}
-        <a class="link" href="{{ path("app_tech_create", { typeParam: type.value }) }}">{{ ("tech.type.#{type.value}")|trans }}</a>
-    {% endfor %}
+    <div class="flex flex-col justify-center gap-4 md:flex-row">
+        {% for type in types %}
+            {{ component("button", { centered: false, content: ("tech.type.#{type.value}")|trans, href: path("app_tech_create", { typeParam: type.value }) }) }}
+        {% endfor %}
+    </div>
 {% endblock %}
