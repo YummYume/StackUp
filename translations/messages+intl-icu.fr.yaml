@@ -36,6 +36,8 @@ common.next_step: Étape suivante
 common.previous_step: Étape précédente
 common.add: Ajouter
 common.remove: Supprimer
+common.edit: Modifier
+common.back_to_list: Retour à la liste
 common.form.name: Nom
 common.form.description: Description
 common.form.status: Status
@@ -197,6 +199,13 @@ page.create_tech.add_category: Ajouter une nouvelle catégorie
 page.create_tech.add_category.description: Vous ne trouvez pas la catégorie souhaitée ? Alors ajoutez-en une nouvelle !
 page.create_tech.add_category.no_script: Attention. Soumettre ce formulaire rechargera la page car Javascript n'est pas disponible. Assurez-vous de bien sauvegarder.
 
+## Create stack
+page.create_stack.title: Créer une stack
+page.create_stack.description: Selectionner les attributs de votre nouvelle stack.
+
+## Edit Stack 
+page.edit_stack.title: Paramètres de { name }
+
 ## Review and publish
 page.review_and_publish.title: Étape 3 - Réviser et publier
 page.review_and_publish.description: Passez en revue votre technologie avant de la publier.
@@ -276,6 +285,9 @@ request.status: Statut
 request.status.pending: En attente
 request.status.accepted: Accepté
 request.status.rejected: Rejeté
+
+## Tech
+tech.collection: Techs
 
 ## Tech picture
 tech_picture.file: Image

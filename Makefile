@@ -256,4 +256,6 @@ deploy:
 	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
 	$(COMPOSEPROD) exec php php bin/console d:m:m -n --allow-no-migration --all-or-nothing
 	$(COMPOSEPROD) exec php php bin/console cache:clear
-    $(COMPOSEPROD) exec php php bin/console cache:warmup
+	$(COMPOSEPROD) exec php php bin/console cache:warmup
+	$(COMPOSEPROD) exec php yarn cache clean && yarn build
+	$(COMPOSEPROD) exec php composer dump-env prod

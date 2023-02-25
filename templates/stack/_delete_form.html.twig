@@ -1,0 +1,29 @@
+{% component modal
+    with
+    {
+        title: "page.stack_delete.title"|trans,
+        modalId: "delete-stack-modal",
+        openButtonText: "common.remove"|trans,
+        openButtonClass: "btn-error btn-ghost btn-outline",
+        closeButtonText: "common.go_back"|trans,
+        closeButtonClass: "btn-primary"
+    }
+%}
+{% trans_default_domain "admin" %}
+
+{% block content %}
+    {{ "page.stack_delete.content"|trans }} <strong class="text-error">{{ "common.delete.cannot_be_undone"|trans }}</strong>
+{% endblock %}
+
+{% block modal_action %}
+    {{ parent() }}
+    {{ component("button", { id: "delete-stack", content: "common.remove"|trans, submit: true, variant: "error" }) }}
+{% endblock %}
+
+{% block modal_box %}
+    <form method="post" action="{{ path("app_stack_delete", { slug_stack: stack.slug, slug_profile: stack.profile.slug }) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token("delete-" ~ stack.id.toBase32) }}" />
+        {{ parent() }}
+    </form>
+{% endblock %}
+{% endcomponent %}

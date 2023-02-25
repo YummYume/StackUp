@@ -30,7 +30,7 @@ final class ListItemComponent
     private ?string $route;
 
     #[ExposeInTemplate]
-    private ?string $slug = '';
+    private ?array $slug = [];
 
     #[PostMount]
     public function postMount(): void
@@ -44,10 +44,15 @@ final class ListItemComponent
 
         if ($this->item instanceof Stack) {
             $this->route = 'app_stack_show';
-            $this->slug = $this->item->getSlug();
+            $this->slug = [
+                'slug_stack' => $this->item->getSlug(),
+                'slug_profile' => $this->item->getProfile()->getSlug(),
+            ];
         } elseif ($this->item instanceof Tech) {
             $this->route = 'app_tech_show';
-            $this->slug = $this->item->getSlug();
+            $this->slug = [
+                'slug' => $this->item->getSlug(),
+            ];
         } else {
             $this->route = null;
         }
@@ -73,7 +78,7 @@ final class ListItemComponent
         return $this->route;
     }
 
-    public function getSlug(): string
+    public function getSlug(): array
     {
         return $this->slug;
     }
