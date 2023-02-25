@@ -1,10 +1,14 @@
 <div class="card aspect-square h-full w-full bg-base-100 shadow-xl">
     <div class="card-title p-8 pb-0">
-        {{ category.name }}
+        {{ name }}
     </div>
-    <div class="card-body relative flex-row flex-wrap items-start gap-4">
+    <div class="card-body relative grid auto-rows-min grid-cols-5 justify-between justify-items-center gap-6">
         {% for tech in techs %}
-            {{ component("image", { src: vich_uploader_asset(tech.picture, "file"), filter: "short_list", alt: tech.name, width: 24, height: 24 }) }}
+            <div class="tooltip" data-tip="{{ tech.name }}">
+                <a class="block transition-transform duration-200 hover:scale-125" href="{{ path("app_tech_show", { slug: tech.slug }) }}">
+                    {{ component("image", { src: vich_uploader_asset(tech.picture, "file"), filter: "short_list", alt: tech.name, width: 36, height: 36 }) }}
+                </a>
+            </div>
         {% endfor %}
     </div>
 </div>

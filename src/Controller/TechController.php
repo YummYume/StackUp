@@ -29,9 +29,11 @@ final class TechController extends AbstractController
     }
 
     #[Route('/', name: 'app_tech_index', methods: ['GET'])]
-    public function index(): Response
+    public function index(TechRepository $techRepository): Response
     {
-        return $this->render('tech/index.html.twig');
+        return $this->render('tech/index.html.twig', [
+            'techs' => $techRepository->findRecentlyAddedTechs(50),
+        ]);
     }
 
     #[Route('/show/{slug}', name: 'app_tech_show', methods: ['GET'])]
