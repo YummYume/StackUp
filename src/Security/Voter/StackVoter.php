@@ -8,7 +8,6 @@ use App\Enum\UserRoleEnum;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
-use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class StackVoter extends Voter
@@ -16,7 +15,7 @@ final class StackVoter extends Voter
     public const EDIT = 'EDIT_STACK';
     public const DELETE = 'DELETE_STACK';
 
-    public function __construct(private readonly Security $security, private readonly RoleHierarchyInterface $roleHierarchy)
+    public function __construct(private readonly Security $security)
     {
     }
 
