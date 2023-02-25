@@ -92,9 +92,9 @@ final class TechController extends AbstractController
 
         $errors = $validator->validate($tech);
 
-        if (count($errors) > 0) {
+        if (\count($errors) > 0) {
             return $this->redirectToRoute('app_tech_choose_type', [
-                'typeParam' => $tech->getType()->value
+                'typeParam' => $tech->getType()->value,
             ]);
         }
 
