@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    {{ "page.review_and_publish.title"|trans }}
+{% endblock %}
+
+{% block description %}
+    {{ "page.review_and_publish.description"|trans }}
+{% endblock %}
+
+{% block steps %}
+    {{ component("steps", { step: 3, steps: 3 }) }}
+{% endblock %}
+
+{% block main_title %}
+    {{ "page.review_and_publish.title"|trans }}
+{% endblock %}
+
+{% block main_body %}
+    <div class="flex items-center justify-center gap-8 text-4xl">
+        {{ component("image", { alt: tech.name, filter: "tech_picture_side", src: vich_uploader_asset(tech.picture, "file"), height: 64, width: 64 }) }}
+        <h2>
+            {{ tech.name }}
+        </h2>
+    </div>
+    <div class="text-center text-xl">
+        <span class="font-bold">{{ "tech.type"|trans }}</span> : <span>{{ tech.type.name }}</span>
+    </div>
+    <div class="text-center text-xl">
+        <span class="font-bold">{{ "tech.categories"|trans }}</span> : <span>{{ tech.categories|map(c => c.name)|join(", ", " " ~ ("common.and"|trans) ~ " ") }}</span>
+    </div>
+    {% if tech.dependsOn %}
+        <div class="text-center text-xl">
+            <span class="font-bold">{{ "tech.depends_on"|trans }}</span> : <span>{{ component("button", { centered: false, content: tech.dependsOn.name, href: path("app_tech_show", { slug: tech.dependsOn.slug }) }) }}</span>
+        </div>
+    {% endif %}
+    {% if tech.description %}
+        <div class="card bg-base-100">
+            <p class="card-body text-xl">
+                {{ tech.description }}
+            </p>
+        </div>
+    {% endif %}
+    <div class="flex items-center justify-center gap-4">
+        {% for icon, link in tech.activeLinks %}
+            {{
+                component(
+                    "button",
+                    {
+                        icon: icon,
+                        href: link,
+                        target: "_blank",
+                        externalLink: true,
+                        circle: true,
+                        centered: false,
+                        ariaLabel: ("tech.link.#{icon}")|trans
+                    }
+                )
+            }}
+        {% endfor %}
+    </div>
+    <p class="my-2 text-center max-w-5xl mx-auto">{{ "page.review_and_publish.guide"|trans }}</p>
+    <div class="flex justify-center gap-4">
+        {{ component("button", { centered: false, content: "common.previous_step"|trans, href: path("app_tech_create", { typeParam: tech.type.value }) }) }}
+
+        <form method="post" action="{{ path("app_tech_review_and_publish") }}">
+            <input name="_token" type="hidden" value="{{ csrf_token("publish-#{tech.slug}") }}" />
+            {{ component("button", { content: "page.review_and_publish.publish"|trans, submit: true }) }}
+        </form>
+    </div>
+{% endblock %}

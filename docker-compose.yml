@@ -101,7 +101,7 @@ services:
   redis:
     image: redis:7.0-alpine
     restart: unless-stopped
-    command: "redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_AUTH:?err}"
+    command: "redis-server --save 20 1 --loglevel warning --maxmemory 100mb --maxmemory-policy allkeys-lru --requirepass ${REDIS_AUTH:?err}"
     container_name: su-redis
     volumes:
       - ./data/cache/redis:/data

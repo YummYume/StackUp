@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\BlameableTrait;
 use App\Entity\Traits\TimestampableTrait;
+use App\Enum\RequestStatusEnum;
 use App\Enum\TechTypeEnum;
 use App\Repository\TechRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,6 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -33,6 +35,8 @@ class Tech
     public const LINK_GITHUB = 'github';
     public const LINK_GITLAB = 'gitlab';
     public const LINK_NPM_OR_YARN = 'npm_or_yarn';
+    public const LINK_NPM = 'npm';
+    public const LINK_YARN = 'yarn';
     public const LINK_PACKAGIST = 'packagist';
     public const LINK_CRATES = 'crates';
     public const LINK_PKG = 'pkg';
@@ -56,10 +60,12 @@ class Tech
 
     #[ORM\Column(length: 100)]
     #[Assert\Regex(pattern: '/^[A-zÀ-ú\d ]{2,50}$/', message: 'tech.name.invalid')]
+    #[Groups('searchable')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(max: 2500, maxMessage: 'tech.description.max_length')]
+    #[Groups('searchable')]
     private ?string $description = null;
 
     #[ORM\Column(length: 100, enumType: TechTypeEnum::class)]
@@ -76,6 +82,7 @@ class Tech
 
     #[ORM\Column(length: 150)]
     #[Gedmo\Slug(fields: ['name'])]
+    #[Groups('searchable')]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::JSON)]
@@ -124,6 +131,7 @@ class Tech
 
     #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
     #[Assert\Valid]
+    #[Groups('searchable')]
     private ?TechPicture $picture = null;
 
     #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
@@ -135,15 +143,16 @@ class Tech
     private Collection $stacks;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'techs')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     #[Assert\When(
         expression: 'this.getType().value === "library"',
         constraints: [
-            new Assert\NotBlank(message: 'tech.depends_on.not_blank'),
+            new Assert\NotNull(message: 'tech.depends_on.not_blank'),
         ],
     )]
     #[Assert\Expression(
-        expression: 'value === null or value?.getRequest()?.getStatus()?.value === "accepted"',
-        message: 'tech.depends_on.only_accepted',
+        expression: 'value === null or value?.getRequest()?.getStatus()?.value !== "rejected"',
+        message: 'tech.depends_on.not_rejected',
     )]
     private ?self $dependsOn = null;
 
@@ -347,5 +356,41 @@ class Tech
         }
 
         return $this;
+    }
+
+    #[Groups('searchable')]
+    public function isIndexable(): bool
+    {
+        return $this->request->isCreated() && RequestStatusEnum::Accepted === $this->request->getStatus();
+    }
+
+    public function getActiveLinks(): array
+    {
+        $links = [];
+
+        foreach ($this->links as $key => $link) {
+            if (null === $link) {
+                continue;
+            }
+
+            $icon = $key;
+
+            if (self::LINK_NPM_OR_YARN === $icon) {
+                $icon = $this->isNpmLink() ? self::LINK_NPM : self::LINK_YARN;
+            }
+
+            $links[$icon] = $link;
+        }
+
+        return $links;
+    }
+
+    public function isNpmLink(): bool
+    {
+        if (null === $this->links[self::LINK_NPM_OR_YARN] ?? null) {
+            return false;
+        }
+
+        return preg_match('/^(https:\/\/)?www\.npmjs\.com\/package\/[a-zA-Z0-9_-]{1,50}$/', $this->links[self::LINK_NPM_OR_YARN]);
     }
 }

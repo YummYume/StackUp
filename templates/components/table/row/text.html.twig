@@ -1,5 +1,9 @@
 {% trans_default_domain "tables" %}
 
+{% set translate = config.col.extra.translate ?? false %}
+{% set key = config.col.extra.key ?? null %}
+{% set value = key ? table_parse_option(key, config.item) : config.value %}
+
 <td>
-    <span>{{ config.value }}</span>
+    <span>{{ (translate ? value|trans({}, config.col.extra.translationDomain ?? "tables") : value)|u.truncate(75, "...") }}</span>
 </td>

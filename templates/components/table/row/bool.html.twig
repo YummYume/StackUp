@@ -1,0 +1,13 @@
+{% trans_default_domain "tables" %}
+
+<td>
+  {% if config.col.extra.icon is defined and config.col.extra.icon %} 
+    {% if config.value %}
+        {% include "icon/success.html.twig" %}
+    {% else %}
+        {% include "icon/x-mark-circle.html.twig" %}
+    {% endif %}
+  {% else %}
+    {{ ("common." ~ (config.value ? "yes" : "no"))|trans() }}
+  {% endif %}
+</td>

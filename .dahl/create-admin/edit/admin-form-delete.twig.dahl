@@ -1,0 +1,31 @@
+{% trans_default_domain "admin" %}
+
+{% component modal
+    with
+    {
+        title: "page._{ @name }__delete.title"|trans,
+        modalId: "delete-_{ @name }_-modal",
+        openButtonText: "common.delete"|trans,
+        openButtonClass: "btn-error btn-ghost btn-outline",
+        closeButtonText: "common.go_back"|trans,
+        closeButtonClass: "btn-primary"
+    }
+%}
+{% trans_default_domain "admin" %}
+
+{% block content %}
+    {{ "page._{ @name }__delete.content"|trans }} <strong class="text-error">{{ "common.delete.cannot_be_undone"|trans }}</strong>
+{% endblock %}
+
+{% block modal_action %}
+    {{ parent() }}
+    {{ component("button", { id: "delete-_{ @name }_", content: "common.delete"|trans, submit: true, variant: "error" }) }}
+{% endblock %}
+
+{% block modal_box %}
+    <form method="post" action="{{ path("admin__{ @name }__delete", { id: _{ @name }_.id.toBase32 }) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token("delete-" ~ _{ @name }_.id.toBase32) }}" />
+        {{ parent() }}
+    </form>
+{% endblock %}
+{% endcomponent %}

@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Tech;
+use App\Entity\User;
 use App\Enum\RequestStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -99,6 +101,34 @@ final class TechRepository extends ServiceEntityRepository
             ->groupBy('t')
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    public function getPendingAndAcceptedTechs(): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+            ->leftJoin('t.request', 'r')
+            ->where($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->not($qb->expr()->eq('r.status', ':rejected')))
+            ->setParameter('rejected', RequestStatusEnum::Rejected)
+            ->orderBy('t.name', 'ASC')
+        ;
+    }
+
+    public function findUnreleasedTechForUser(User $user): ?Tech
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+            ->leftJoin('t.request', 'r')
+            ->where($qb->expr()->eq('r.created', 'false'))
+            ->andWhere($qb->expr()->eq('t.createdBy', ':user'))
+            ->setParameter('user', $user->getId()->toBinary())
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
         ;
     }
 }

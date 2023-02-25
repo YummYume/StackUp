@@ -1,9 +1,9 @@
-## Pages
-# Register
+# Pages
+## Register
 page.register.agree_terms: You must agree to our terms of use in order to register.
 
-## Entities
-# User
+# Entities
+## User
 user.email.not_blank: Please enter an email address.
 user.email.max_length: Your email address must contain up to { limit } characters.
 user.email.invalid: Please enter a valid email address.
@@ -14,14 +14,14 @@ user.password.not_blank: Please enter a password.
 user.password.no_match: Passwords do not match.
 user.current_password.invalid: Your current password does not match.
 
-# Reset Password Request
+## Reset Password Request
 reset_password_request.email.not_blank: Please enter your email address.
 reset_password_request.email.invalid: Please enter a valid email address.
 reset_password_request.new_password.not_blank: Please enter a new password.
 reset_password_request.new_password.length: Your password should contain at least { limit } characters.
 reset_password_request.plain_password.no_match: Passwords do not match.
 
-# Profile
+## Profile
 profile.username.unique: This username is already taken or cannot be used.
 profile.username.not_blank: Please enter a username.
 profile.username.invalid: Your username must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
@@ -29,8 +29,44 @@ profile.description.max_length: Your description must contain up to { limit } ch
 profile.github_link.not_url: Please enter a valid URL.
 profile.github_link.invalid: Please enter a valid GitHub link.
 
-# Profile Picture
+## Profile Picture
 profile_picture.file.max_size: This image is too large ({ size } { suffix }). Allowed maximum size is { limit } { suffix }.
 profile_picture.file.mime_types: The type of this image is invalid ({ type }). Allowed types are { types }.
 profile_picture.file.corrupted: This image is corrupted and cannot be proceeded.
 profile_picture.file.size_not_detected: The size of the image could not be detected. Please try again.
+
+## Tech
+tech.name.unique: This tech already exists.
+tech.name.invalid: A tech's name must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
+tech.description.max_length: A tech's description must contain up to { limit } characters.
+tech.categories.min_count: A tech must belong to at least one category.
+tech.categories.max_count: A tech cannot belong to more than { limit } categories.
+tech.link.github.invalid: Please enter a valid GitHub link.
+tech.link.gitlab.invalid: Please enter a valid GitLab link.
+tech.link.npm_or_yarn.invalid: Please enter a valid NPM or Yarn link.
+tech.link.packagist.invalid: Please enter a valid Packagist link.
+tech.link.crates.invalid: Please enter a valid Crates link.
+tech.link.pkg.invalid: Please enter a valid Pkg link.
+tech.link.other.invalid: Please enter a valid link.
+tech.depends_on.not_blank: A library must depend on another tech.
+tech.depends_on.not_rejected: A tech cannot depend on a rejected tech.
+
+## Tech Picture
+tech_picture.file.max_size: This image is too large ({ size } { suffix }). Allowed maximum size is { limit } { suffix }.
+tech_picture.file.mime_types: The type of this image is invalid ({ type }). Allowed types are { types }.
+tech_picture.file.corrupted: This image is corrupted and cannot be proceeded.
+tech_picture.file.size_not_detected: The size of the image could not be detected. Please try again.
+
+## Vote
+vote.unique: This vote has already been registered.
+
+## Category
+category.name.unique: This category already exists.
+category.name.invalid: A category's name must contain between 2 and 30 characters and can only contain letters and whitespaces.
+
+## Stack
+stack.name.unique: You already have an existing stack with this name.
+stack.name.invalid: A stack's name must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
+stack.description.max_length: A stack's description must contain up to { limit } characters.
+stack.techs.min_count: A stack must contain at least one tech.
+stack.techs.max_count: A stack must contain up to { limit } techs.

@@ -13,5 +13,13 @@
 {% endblock %}
 
 {% block main_body %}
-
+    <div class="card bg-base-100">
+        <div class="card-body">
+            {% for stack in stacks %}
+                {{ component("listItem", { item: stack }) }}
+            {% else %}
+                {{ "common.no_result"|trans }}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
