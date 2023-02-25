@@ -7,14 +7,12 @@ use App\Enum\ColorTypeEnum;
 use App\Form\Admin\CategoryType;
 use App\Manager\FlashManager;
 use App\Repository\CategoryRepository;
-use App\Security\Voter\UserVoter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('/categories')]
@@ -91,7 +89,6 @@ final class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'admin_category_delete', methods: ['POST'])]
-    #[IsGranted(UserVoter::DELETE, subject: 'category', statusCode: 403)]
     public function delete(Request $request, Category $category): Response
     {
         if ($this->isCsrfTokenValid('delete-'.$category->getId()->toBase32(), $request->request->get('_token'))) {
@@ -111,7 +108,7 @@ final class CategoryController extends AbstractController
         return $this->form($request, $category, true);
     }
 
-    public function form(Request $request, Category $category, bool $isEditing): Response
+    private function form(Request $request, Category $category, bool $isEditing): Response
     {
         $form = $this->createForm(CategoryType::class, $category)->handleRequest($request);
 

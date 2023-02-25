@@ -40,7 +40,24 @@ common.form.name: Nom
 common.form.description: Description
 common.form.status: Status
 common.form.type: Type 
+common.form.depends_on: Dépend de
 
+common.links: Liens
+common.link: Lien
+common.link.github: Github
+common.link.github.help: https://github.com/user/repo
+common.link.gitlab: Gitlab
+common.link.gitlab.help: https://gitlab.com/user/repo
+common.link.npm_or_yarn: NPM or Yarn
+common.link.npm_or_yarn.help: https://(www.npmjs.com ou yarnpkg.com)/package/name
+common.link.packagist: Packagist
+common.link.packagist.help: https://packagist.org/packages/user/name
+common.link.crates: Crates
+common.link.crates.help: https://crates.io/crates/name
+common.link.pkg: Pkg
+common.link.pkg.help: https://pkg.go.dev/(name ou github.com/user/name)
+common.link.other: Other
+common.link.other.help: https://www.exemple.com/
 
 # Icons
 icon.eye: Afficher
@@ -205,6 +222,7 @@ profile.username.help: Votre nom d'utilisateur est utilisé dans l'URL de votre 
 profile.description: Description
 profile.github_link: Lien GitHub
 profile.github_link.help: 'Un lien GitHub devrait ressembler à "https://github.com/votre-profil".'
+profile.choose: Choisi un profil
 
 ## Profile picture
 profile_picture.file: Image

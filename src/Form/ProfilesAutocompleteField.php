@@ -8,13 +8,14 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
 use Symfony\UX\Autocomplete\Form\ParentEntityAutocompleteType;
 
 #[AsEntityAutocompleteField]
 final class ProfilesAutocompleteField extends AbstractType
 {
-    public function __construct(private readonly HtmlSanitizerInterface $appSearchSanitizer)
+    public function __construct(private readonly HtmlSanitizerInterface $appSearchSanitizer, private readonly TranslatorInterface $trans)
     {
     }
 
@@ -35,7 +36,7 @@ final class ProfilesAutocompleteField extends AbstractType
             },
             'tom_select_options' => [
                 'maxItems' => 1,
-                'placeholder' => 'profile.choose',
+                'placeholder' => $this->trans->trans('profile.choose', domain: 'messages'),
                 'hidePlaceholder' => true,
                 'allowEmptyOption' => false,
             ],

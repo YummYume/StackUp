@@ -70,6 +70,14 @@
                         {% endif %}
                     </td>
                 </tr>
+                  <tr>
+                    <th>
+                        {{ "common.status"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ tech.request.status.value }}
+                    </td>
+                </tr>
                 {% for key, link in tech.links %}
                     {% if link %}
                         <tr>

@@ -15,7 +15,7 @@ class RequestType extends AbstractType
     {
         $builder
             ->add('status', EnumType::class, [
-                'label' => 'request.status',
+                'label' => 'common.form.status',
                 'class' => RequestStatusEnum::class,
                 'autocomplete' => true,
                 'required' => true,

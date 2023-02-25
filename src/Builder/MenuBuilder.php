@@ -57,18 +57,6 @@ final class MenuBuilder
                 'icon' => 'categories',
             ],
         ]);
-        $menu->addChild('back_office.requests', [
-            'route' => 'admin_request',
-            'extras' => [
-                'icon' => 'requests',
-            ],
-        ]);
-        $menu->addChild('back_office.votes', [
-            'route' => 'admin_vote',
-            'extras' => [
-                'icon' => 'votes',
-            ],
-        ]);
 
         return $menu;
     }

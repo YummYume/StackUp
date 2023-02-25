@@ -10,6 +10,7 @@ common.created_by: Créé par
 common.updated_by: Mise à jour par
 common.create: Créer
 common.edit: Modifier
+common.new: Ajouter
 common.delete: Supprimer
 common.back_to_list: Retour à la liste
 common.save: Sauvegarder
@@ -63,6 +64,10 @@ page.stack.description: Liste des stacks enregistrés sur le site.
 page.stack_show.title: Informations de { name }
 page.stack_show.description: Toutes les informations de { name }.
 
+### New
+page.stack_new.title: Ajouter une stack
+page.stack_new.description: Ajouter les informations de la nouvelle stack.
+
 ### Edit
 page.stack_edit.title: Modifier la stack
 page.stack_edit.description: Modifier les informations d'une stack.
@@ -79,6 +84,10 @@ page.tech.description: Liste des techs enregistrés sur le site.
 ### Show
 page.tech_show.title: Informations de { name }
 page.tech_show.description: Toutes les informations de { name }.
+
+### New
+page.tech_new.title: Ajouter une tech
+page.tech_new.description: Ajouter les informations de la nouvelle tech.
 
 ### Edit
 page.tech_edit.title: Modifier la tech
@@ -104,40 +113,6 @@ page.category_edit.description: Modifier les informations d'une catégorie.
 ### Delete
 page.category_delete.title: Supprimer la catégorie
 page.category_delete.content: Voulez-vous vraiment supprimer cette catégorie ?
-
-## Request
-### List
-page.request.title: Requêtes
-page.request.description: Liste des requêtes enregistrés sur le site.
-
-### Show
-page.request_show.title: Informations de la requête
-page.request_show.description: Toutes les informations de la requête.
-
-### Edit
-page.request_edit.title: Modifier la requête
-page.request_edit.description: Modifier les informations d'une requête.
-
-### Delete
-page.request_delete.title: Supprimer la requête
-page.request_delete.content: Voulez-vous vraiment supprimer cette requête ?
-
-## Vote
-### List
-page.vote.title: Votes
-page.vote.description: Liste des votes enregistrés sur le site.
-
-### Show
-page.vote_show.title: Informations du vote
-page.vote_show.description: Toutes les informations du vote.
-
-### Edit
-page.vote_edit.title: Modifier la vote
-page.vote_edit.description: Modifier les informations d'une vote.
-
-### Delete
-page.vote_delete.title: Supprimer la vote
-page.vote_delete.content: Voulez-vous vraiment supprimer cette vote ?
 
 # Flashes
 ## User

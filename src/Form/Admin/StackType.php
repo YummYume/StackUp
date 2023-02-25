@@ -3,17 +3,21 @@
 namespace App\Form\Admin;
 
 use App\Entity\Stack;
-use App\Entity\Tech;
 use App\Form\ProfilesAutocompleteField;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Form\TechAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class StackType extends AbstractType
 {
+    public function __construct(private readonly TranslatorInterface $trans)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -25,23 +29,13 @@ class StackType extends AbstractType
                 'label' => 'common.form.description',
                 'required' => true,
             ])
-            ->add('techs', EntityType::class, [
-                'class' => Tech::class,
+            ->add('techs', TechAutocompleteField::class, [
                 'label' => 'tech.collection',
-                'choice_label' => 'name',
-                'translation_domain' => 'tables',
                 'multiple' => true,
-                'autocomplete' => true,
                 'required' => true,
-            ])
-            ->add('techs', EntityType::class, [
-                'class' => Tech::class,
-                'label' => 'tech.collection',
-                'choice_label' => 'name',
-                'translation_domain' => 'tables',
-                'multiple' => true,
-                'autocomplete' => true,
-                'required' => true,
+                'tom_select_options' => [
+                    'placeholder' => $this->trans->trans('tech.choose.more', domain: 'messages'),
+                ],
             ])
             ->add('profile', ProfilesAutocompleteField::class)
         ;

@@ -15,8 +15,8 @@ final class TechLinksType extends AbstractType
         foreach (Tech::ALLOWED_LINKS as $link) {
             $builder
                 ->add(sprintf('%sLink', $link), UrlType::class, [
-                    'label' => sprintf('tech.link.%s', $link),
-                    'help' => sprintf('tech.link.%s.help', $link),
+                    'label' => sprintf('common.link.%s', $link),
+                    'help' => sprintf('common.link.%s.help', $link),
                     'property_path' => sprintf('[%s]', $link),
                     'default_protocol' => 'https',
                     'required' => false,

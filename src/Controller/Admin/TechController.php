@@ -7,14 +7,12 @@ use App\Enum\ColorTypeEnum;
 use App\Form\Admin\TechType;
 use App\Manager\FlashManager;
 use App\Repository\TechRepository;
-use App\Security\Voter\UserVoter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('/techs')]
@@ -31,7 +29,7 @@ final class TechController extends AbstractController
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(
-            $this->techRepository->createQueryBuilder('t'),
+            $this->techRepository->createQueryBuilder('t')->leftJoin('t.request', 'r'),
             $request->query->getInt('page', 1),
             5
         );
@@ -55,6 +53,11 @@ final class TechController extends AbstractController
                     'extra' => [
                         'icon' => true,
                     ],
+                ],
+                'request.status.value' => [
+                    'type' => 'text',
+                    'label' => 'common.status',
+                    'queryKey' => 'r.status',
                 ],
                 'updatedAt' => [
                     'type' => 'date',
@@ -89,7 +92,7 @@ final class TechController extends AbstractController
         return $this->render('admin/tech/index.html.twig', ['config' => $config]);
     }
 
-    #[Route('/new', name: 'admin_stack_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'admin_tech_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         return $this->form($request, new Tech(), false);
@@ -104,7 +107,6 @@ final class TechController extends AbstractController
     }
 
     #[Route('/{id}', name: 'admin_tech_delete', methods: ['POST'])]
-    #[IsGranted(UserVoter::DELETE, subject: 'tech', statusCode: 403)]
     public function delete(Request $request, Tech $tech): Response
     {
         if ($this->isCsrfTokenValid('delete-'.$tech->getId()->toBase32(), $request->request->get('_token'))) {
@@ -124,7 +126,7 @@ final class TechController extends AbstractController
         return $this->form($request, $tech, true);
     }
 
-    public function form(Request $request, Tech $tech, bool $isEditing): Response
+    private function form(Request $request, Tech $tech, bool $isEditing): Response
     {
         $form = $this->createForm(TechType::class, $tech)->handleRequest($request);
 
