@@ -1,5 +1,5 @@
 {% trans_default_domain "tables" %}
 
 <td>
-    <span>{{ config.value }}</span>
+    <span>{{ config.value|u.truncate(75, '...') }}</span>
 </td>

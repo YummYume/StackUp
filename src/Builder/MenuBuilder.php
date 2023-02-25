@@ -39,6 +39,24 @@ final class MenuBuilder
                 'icon' => 'users',
             ],
         ]);
+        $menu->addChild('back_office.stacks', [
+            'route' => 'admin_stack',
+            'extras' => [
+                'icon' => 'stacks',
+            ],
+        ]);
+        $menu->addChild('back_office.techs', [
+            'route' => 'admin_tech',
+            'extras' => [
+                'icon' => 'techs',
+            ],
+        ]);
+        $menu->addChild('back_office.categories', [
+            'route' => 'admin_category',
+            'extras' => [
+                'icon' => 'categories',
+            ],
+        ]);
 
         return $menu;
     }

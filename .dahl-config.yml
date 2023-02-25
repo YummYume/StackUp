@@ -24,4 +24,39 @@ templates:
   suffix: ".html"
   extension: ".twig"
 
+ a-controller:
+  from: "./.dahl/create-admin/admin-controller.dahl"
+  to: "./src/Controller/Admin"
+  suffix: "Controller"
+  extension: ".php"
+
+ a-template:
+  from: "./.dahl/create-admin/admin-template.dahl"
+  filename: "index"
+  suffix: ".html"
+  extension: ".twig"
+
+ a-form-edit:
+  from: "./.dahl/create-admin/edit/admin-form-edit.twig.dahl"
+  filename: "edit"
+  suffix: ".html"
+  extension: ".twig"
+
+ a-form-content:
+  from: "./.dahl/create-admin/edit/admin-form-content.twig.dahl"
+  filename: "_edit_content"
+  suffix: ".html"
+  extension: ".twig"
+
+ a-form-delete:
+  from: "./.dahl/create-admin/edit/admin-form-delete.twig.dahl"
+  filename: "_delete_form"
+  suffix: ".html"
+  extension: ".twig"
+  
+ a-form:
+  from: "./.dahl/create-admin/edit/admin-form.twig.dahl"
+  filename: "_form"
+  suffix: ".html"
+  extension: ".twig"
   

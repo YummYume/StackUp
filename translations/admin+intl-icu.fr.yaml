@@ -5,11 +5,12 @@ common.id: Identifiant
 common.yes: Oui
 common.no: Non
 common.created_at: Créé le
-common.updated_at: Mis à jour le
+common.updated_at: Mise à jour le
 common.created_by: Créé par
-common.updated_by: Mis à jour par
+common.updated_by: Mise à jour par
 common.create: Créer
 common.edit: Modifier
+common.new: Ajouter
 common.delete: Supprimer
 common.back_to_list: Retour à la liste
 common.save: Sauvegarder
@@ -18,8 +19,12 @@ common.delete.cannot_be_undone: Cette action est irréversible.
 
 # Flahshes
 ## Common
-flash.common.updated: Mis à jour avec succés.
+flash.common.updated: Mise à jour avec succès.
 flash.common.deleted: Supprimé avec succès.
+
+## Admin
+page.admin.title: Administration
+page.admin.description: L'administration pour StackUp
 
 ## User
 flash.user.validation_email_sent: E-mail de validation envoyé.
@@ -49,6 +54,68 @@ page.user_edit.send_validation_email: Envoyer un e-mail de validation (en Franç
 ### Delete
 page.user_delete.title: Supprimer l'utilisateur
 page.user_delete.content: Voulez-vous vraiment supprimer cet utilisateur ?
+
+## Stack
+### List
+page.stack.title: Stacks
+page.stack.description: Liste des stacks enregistrés sur le site.
+
+### Show
+page.stack_show.title: Informations de { name }
+page.stack_show.description: Toutes les informations de { name }.
+
+### New
+page.stack_new.title: Ajouter une stack
+page.stack_new.description: Ajouter les informations de la nouvelle stack.
+
+### Edit
+page.stack_edit.title: Modifier la stack
+page.stack_edit.description: Modifier les informations d'une stack.
+
+### Delete
+page.stack_delete.title: Supprimer la stack
+page.stack_delete.content: Voulez-vous vraiment supprimer cette stack ?
+
+## Tech
+### List
+page.tech.title: Techs
+page.tech.description: Liste des techs enregistrés sur le site.
+
+### Show
+page.tech_show.title: Informations de { name }
+page.tech_show.description: Toutes les informations de { name }.
+
+### New
+page.tech_new.title: Ajouter une tech
+page.tech_new.description: Ajouter les informations de la nouvelle tech.
+
+### Edit
+page.tech_edit.title: Modifier la tech
+page.tech_edit.description: Modifier les informations d'une tech.
+
+### Delete
+page.tech_delete.title: Supprimer la tech
+page.tech_delete.content: Voulez-vous vraiment supprimer cette tech ?
+
+## Category
+### List
+page.category.title: Catégories
+page.category.description: Liste des catégories enregistrés sur le site.
+
+### Show
+page.category_show.title: Informations de { name }
+page.category_show.description: Toutes les informations de { name }.
+
+### New
+page.category_new.title: Ajouter une categorie
+
+### Edit
+page.category_edit.title: Modifier la catégorie
+page.category_edit.description: Modifier les informations d'une catégorie.
+
+### Delete
+page.category_delete.title: Supprimer la catégorie
+page.category_delete.content: Voulez-vous vraiment supprimer cette catégorie ?
 
 # Flashes
 ## User
