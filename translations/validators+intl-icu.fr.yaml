@@ -34,3 +34,39 @@ profile_picture.file.max_size: Cette image est trop grande ({ size } { suffix })
 profile_picture.file.mime_types: Le type de cette image est invalide ({ type }). Les types autorisés sont { types }.
 profile_ picture.file.corrupted: Cette image est corrompue et ne peut pas être traitée.
 profile_picture.file.size_not_detected: La taille de l'image n'a pas pu être détectée. Veuillez réessayer.
+
+## Tech
+tech.name.unique: Cette technologie existe déjà.
+tech.name.invalid: Le nom d'une technologie doit contenir entre 2 et 50 caractères et ne peut contenir que des lettres, des chiffres et des espaces.
+tech.description.max_length: La description d'une technologie doit contenir jusqu'à { limit } caractères.
+tech.categories.min_count: Une technologie doit appartenir à au moins une catégorie.
+tech.categories.max_count: Une technologie ne peut pas appartenir à plus de { limit } catégories.
+tech.link.github.invalid: Veuillez entrer un lien GitHub valide.
+tech.link.gitlab.invalid: Veuillez saisir un lien GitLab valide.
+tech.link.npm_or_yarn.invalid: Veuillez saisir un lien NPM ou Yarn valide.
+tech.link.packagist.invalid: Veuillez saisir un lien de Packagist valide.
+tech.link.crates.invalid: Veuillez saisir un lien Crates valide.
+tech.link.pkg.invalid: Veuillez saisir un lien Pkg valide.
+tech.link.other.invalid: Veuillez saisir un lien valide.
+tech.depends_on.not_blank: Une bibliothèque doit dépendre d'une autre technologie.
+tech.depends_on.not_rejected: Une technologie ne peut pas dépendre d'une technologie rejetée.
+
+## Tech Picture
+tech_picture.file.max_size: Cette image est trop grande ({ size } { suffix }). La taille maximum autorisée est de { limit } { suffix }.
+tech_picture.file.mime_types: Le type de cette image est invalide ({ type }). Les types autorisés sont { types }.
+tech_picture.file.corrupted: Cette image est corrompue et ne peut pas être traitée.
+tech_picture.file.size_not_detected: La taille de l'image n'a pas pu être détectée. Veuillez réessayer.
+
+## Vote
+vote.unique: Ce vote a déjà été enregistré.
+
+## Category
+category.name.unique: Cette catégorie existe déjà.
+category.name.invalid: Le nom d'une catégorie doit contenir entre 2 et 30 caractères et ne peut contenir que des lettres et des espaces.
+
+## Stack
+stack.name.unique: Vous avez déjà une stack existante portant ce nom.
+stack.name.invalid: Le nom d'une stack doit contenir entre 2 et 50 caractères et ne peut contenir que des lettres, des chiffres et des espaces.
+stack.description.max_length: La description d'une stack doit contenir jusqu'à { limit } caractères.
+stack.techs.min_count: Une stack doit contenir au moins une technologie.
+stack.techs.max_count: Une stack doit contenir jusqu'à { limit } techs.

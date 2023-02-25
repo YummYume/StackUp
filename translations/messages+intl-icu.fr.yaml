@@ -195,6 +195,7 @@ page.create_tech.additional_info: Informations complémentaires
 page.create_tech.links: Liens
 page.create_tech.add_category: Ajouter une nouvelle catégorie
 page.create_tech.add_category.description: Vous ne trouvez pas la catégorie souhaitée ? Alors ajoutez-en une nouvelle !
+page.create_tech.add_category.no_script: Attention. Soumettre ce formulaire rechargera la page car Javascript n'est pas disponible. Assurez-vous de bien sauvegarder.
 
 ## Review and publish
 page.review_and_publish.title: Étape 3 - Réviser et publier

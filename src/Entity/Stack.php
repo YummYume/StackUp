@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: StackRepository::class)]
 #[UniqueEntity(
     fields: ['name', 'profile'],
-    message: 'category.name.unique',
+    message: 'stack.name.unique',
     errorPath: 'name',
     ignoreNull: false,
 )]

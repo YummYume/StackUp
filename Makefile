@@ -241,7 +241,7 @@ dahl-admin-form:
 	$(DAHL) run a-form-delete \
 		--to="./templates/admin/$(n)" \
 		--props '{"name":"$(n)"}' \
-	
+
 	$(DAHL) run a-form \
 		--to="./templates/admin/$(n)" \
 		--props '{"name":"$(n)"}' \
@@ -254,4 +254,6 @@ deploy:
 	git reset --hard origin/master
 	$(COMPOSEPROD) build --no-cache --force-rm
 	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
-	
+	$(COMPOSEPROD) exec php php bin/console d:m:m -n --allow-no-migration --all-or-nothing
+	$(COMPOSEPROD) exec php php bin/console cache:clear
+    $(COMPOSEPROD) exec php php bin/console cache:warmup

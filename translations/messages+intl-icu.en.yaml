@@ -195,6 +195,7 @@ page.create_tech.additional_info: Additional information
 page.create_tech.links: Links
 page.create_tech.add_category: Add a new category
 page.create_tech.add_category.description: Can't find the category you want? Then add a new one!
+page.create_tech.add_category.no_script: Attention. Submitting this form will reload the page as Javascript is not available. Make sure to save your change.
 
 ## Review and publish
 page.review_and_publish.title: Step 3 - Review and Publish
