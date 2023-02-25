@@ -3,4 +3,6 @@ back_office.home: Accueil
 back_office.users: Utilisateurs
 
 # Global search
+global_search.techs: Technologies
+global_search.stacks: Stacks
 global_search.profiles: Profils

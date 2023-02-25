@@ -13,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -36,14 +37,17 @@ class Stack
 
     #[ORM\Column(length: 100)]
     #[Assert\Regex(pattern: '/^[A-zÀ-ú\d ]{2,50}$/', message: 'stack.name.invalid')]
+    #[Groups('searchable')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(max: 2500, maxMessage: 'stack.description.max_length')]
+    #[Groups('searchable')]
     private ?string $description = null;
 
     #[ORM\Column(length: 150)]
     #[Gedmo\Slug(fields: ['name'])]
+    #[Groups('searchable')]
     private ?string $slug = null;
 
     #[ORM\ManyToMany(targetEntity: Tech::class, inversedBy: 'stacks')]

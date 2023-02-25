@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\BlameableTrait;
 use App\Entity\Traits\TimestampableTrait;
+use App\Enum\RequestStatusEnum;
 use App\Enum\TechTypeEnum;
 use App\Repository\TechRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,6 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -56,10 +58,12 @@ class Tech
 
     #[ORM\Column(length: 100)]
     #[Assert\Regex(pattern: '/^[A-zÀ-ú\d ]{2,50}$/', message: 'tech.name.invalid')]
+    #[Groups('searchable')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(max: 2500, maxMessage: 'tech.description.max_length')]
+    #[Groups('searchable')]
     private ?string $description = null;
 
     #[ORM\Column(length: 100, enumType: TechTypeEnum::class)]
@@ -76,6 +80,7 @@ class Tech
 
     #[ORM\Column(length: 150)]
     #[Gedmo\Slug(fields: ['name'])]
+    #[Groups('searchable')]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::JSON)]
@@ -124,6 +129,7 @@ class Tech
 
     #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
     #[Assert\Valid]
+    #[Groups('searchable')]
     private ?TechPicture $picture = null;
 
     #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
@@ -347,5 +353,11 @@ class Tech
         }
 
         return $this;
+    }
+
+    #[Groups('searchable')]
+    public function isIndexable(): bool
+    {
+        return $this->request->isCreated() && RequestStatusEnum::Accepted === $this->request->getStatus();
     }
 }
