@@ -45,7 +45,7 @@ final class ListItemComponent
         if ($this->item instanceof Stack) {
             $this->route = 'app_stack_show';
             $this->slug = $this->item->getSlug();
-        } else if ($this->item instanceof Tech) {
+        } elseif ($this->item instanceof Tech) {
             $this->route = 'app_tech_show';
             $this->slug = $this->item->getSlug();
         } else {

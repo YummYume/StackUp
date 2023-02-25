@@ -29,7 +29,7 @@ final class StackController extends AbstractController
     public function show(Stack $stack): Response
     {
         return $this->render('stack/show.html.twig', [
-            'stack' => $stack
+            'stack' => $stack,
         ]);
     }
 }
