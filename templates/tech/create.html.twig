@@ -1,11 +1,11 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    {{ "Step 2 - Attributes"|trans }}
+    {{ "page.create_tech.title"|trans }}
 {% endblock %}
 
 {% block description %}
-
+    {{ "page.create_tech.description"|trans }}
 {% endblock %}
 
 {% block steps %}
@@ -13,26 +13,46 @@
 {% endblock %}
 
 {% block main_title %}
-    {{ "Step 2 - Attributes"|trans }}
+    {{ "page.create_tech.title"|trans }}
 {% endblock %}
 
 {% block main_body %}
     <div class="mx-auto">
         {{ form_start(form) }}
 
-        <div class="grid auto-rows-min gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {{ form_row(form.name) }}
-            {{ form_row(form.description) }}
-            {{ form_row(form.categories) }}
-            {{ form_row(form.dependsOn) }}
-            {{ form_row(form.picture) }}
-            {{ form_row(form.links) }}
+        <div class="flex flex-col gap-8 md:flex-row">
+            <section class="flex-1">
+                <h2 class="mb-4 text-2xl">
+                    {{ "page.create_tech.essential_info"|trans }}
+                </h2>
+                {{ form_row(form.name) }}
+                {{ form_row(form.categories) }}
+                <div class="mb-2">
+                    <label for="add-category-modal" class="btn-outline btn-success btn mx-auto flex">{{ "page.create_tech.add_category"|trans }}</label>
+                </div>
+                {{ form_row(form.dependsOn) }}
+            </section>
+            <section class="flex-1">
+                <h2 class="mb-4 text-2xl">
+                    {{ "page.create_tech.additional_info"|trans }}
+                </h2>
+                {{ form_row(form.description) }}
+                {{ form_row(form.picture) }}
+            </section>
+            <section class="flex-1">
+                <h2 class="mb-4 text-2xl">
+                    {{ "page.create_tech.links"|trans }}
+                </h2>
+                {{ form_row(form.links) }}
+            </section>
         </div>
         <div class="flex justify-center gap-4">
-            {{ component("button", { centered: false, content: "common.back"|trans, href: path("app_tech_choose_type") }) }}
-            {{ component("button", { centered: false, content: "page.stack.create.submit"|trans, submit: true }) }}
+            {{ component("button", { centered: false, content: "common.previous_step"|trans, href: path("app_tech_choose_type") }) }}
+            {{ component("button", { centered: false, content: "common.next_step"|trans, submit: true }) }}
         </div>
 
         {{ form_end(form) }}
     </div>
+
+    {% include "tech/_category_form.html.twig" with { categoryForm } only %}
 {% endblock %}

@@ -20,6 +20,7 @@ final class TechLinksType extends AbstractType
                     'property_path' => sprintf('[%s]', $link),
                     'default_protocol' => 'https',
                     'required' => false,
+                    'error_bubbling' => false,
                 ])
             ;
         }

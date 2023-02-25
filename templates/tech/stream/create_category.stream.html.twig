@@ -1,0 +1,16 @@
+{% include "common/stream/alert.stream.html.twig" only %}
+
+{% if isValid %}
+    <turbo-stream action="update" target="category-add-form">
+        <template>
+            {% include "tech/_category_form.html.twig" with { categoryForm } only %}
+        </template>
+    </turbo-stream>
+{% else %}
+    <turbo-stream action="update" target="category-add-form-inner">
+        <template>
+            {{ form_row(categoryForm.name, { attr: { class: 'input input-bordered w-full' }}) }}
+            {{ form_row(categoryForm._token) }}
+        </template>
+    </turbo-stream>
+{% endif %}
