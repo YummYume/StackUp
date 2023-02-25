@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Stack;
-use App\Form\ProfilesAutocompleteField;
-use App\Form\TechAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

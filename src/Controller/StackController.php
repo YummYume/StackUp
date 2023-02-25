@@ -45,7 +45,6 @@ final class StackController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-
                 /** @var User */
                 $user = $this->getUser();
 
@@ -58,15 +57,14 @@ final class StackController extends AbstractController
                     'slug_stack' => $stack->getSlug(),
                     'slug_profile' => $stack->getProfile()->getSlug(),
                 ], Response::HTTP_SEE_OTHER);
-            } else {
-                $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
-
-                return $this->render('stack/edit.html.twig', [
-                    'stack' => $stack,
-                    'form' => $form,
-                    'isEditing' => false,
-                ]);
             }
+            $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
+
+            return $this->render('stack/edit.html.twig', [
+                'stack' => $stack,
+                'form' => $form,
+                'isEditing' => false,
+            ]);
         }
 
         return $this->render('stack/edit.html.twig', [
@@ -97,18 +95,20 @@ final class StackController extends AbstractController
     #[IsGranted(StackVoter::EDIT, subject: 'stack', statusCode: 403)]
     public function edit(Request $request, Stack $stack): Response
     {
+        $currentName = $stack->getName();
+
         $form = $this->createForm(StackType::class, $stack)->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $this->stackRepository->save($stack, true);
 
-                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated',);
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated');
             } else {
                 $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
             }
 
-            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat() && $currentName === $stack->getName()) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
                 return $this->render('stack/stream/edit.stream.html.twig', [
@@ -117,9 +117,10 @@ final class StackController extends AbstractController
                     'isEditing' => true,
                 ]);
             } elseif ($form->isValid()) {
-                return $this->redirectToRoute('admin_stack_edit', [
+                return $this->redirectToRoute('app_stack_edit', [
                     'slug_stack' => $stack->getSlug(),
                     'slug_profile' => $stack->getProfile()->getSlug(),
+                    'isEditing' => true,
                 ], Response::HTTP_SEE_OTHER);
             }
         }

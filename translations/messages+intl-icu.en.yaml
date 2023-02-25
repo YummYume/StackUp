@@ -36,6 +36,8 @@ common.next_step: Next step
 common.previous_step: Previous step
 common.add: Add
 common.remove: Remove
+common.edit: Edit
+common.back_to_list: Return to list
 common.form.name: Name
 common.form.description: Description
 common.form.status: Status
@@ -201,6 +203,9 @@ page.create_tech.add_category.no_script: Attention. Submitting this form will re
 page.create_stack.title: Create a stack
 page.create_stack.description: Select the attributes of your new stack.
 
+## Edit Stack 
+page.edit_stack.title: Settings of { name }
+
 ## Review and publish
 page.review_and_publish.title: Step 3 - Review and Publish
 page.review_and_publish.description: Review your tech before publishing it.
@@ -280,6 +285,9 @@ request.status: Status
 request.status.pending: Pending
 request.status.accepted: Accepted
 request.status.rejected: Rejected
+
+## Tech
+tech.collection: Techs
 
 ## Tech picture
 tech_picture.file: Picture

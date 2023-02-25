@@ -1,4 +1,4 @@
-{% include "stack/_form.html.twig" with { form, button_label: ("common." ~ (isEditing ? 'edit' : 'create'))|trans } only %}
+{% include "stack/_form.html.twig" with { form, button_label: ("common." ~ (isEditing ? 'edit' : 'add'))|trans } only %}
 
 <div class="flex w-full items-center justify-center gap-6">
     {{ component("button", { content: "common.back_to_list"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("app_stack_index") }) }}

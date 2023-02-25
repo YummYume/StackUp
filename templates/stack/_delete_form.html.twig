@@ -3,7 +3,7 @@
     {
         title: "page.stack_delete.title"|trans,
         modalId: "delete-stack-modal",
-        openButtonText: "common.delete"|trans,
+        openButtonText: "common.remove"|trans,
         openButtonClass: "btn-error btn-ghost btn-outline",
         closeButtonText: "common.go_back"|trans,
         closeButtonClass: "btn-primary"
@@ -17,7 +17,7 @@
 
 {% block modal_action %}
     {{ parent() }}
-    {{ component("button", { id: "delete-stack", content: "common.delete"|trans, submit: true, variant: "error" }) }}
+    {{ component("button", { id: "delete-stack", content: "common.remove"|trans, submit: true, variant: "error" }) }}
 {% endblock %}
 
 {% block modal_box %}

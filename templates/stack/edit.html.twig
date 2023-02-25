@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.title")|trans }}
+    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.title")|trans({ name: stack.name }) }}
 {% endblock %}
 
 {% block description %}
@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block main_title %}
-    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.title")|trans }}
+    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.title")|trans({ name: stack.name }) }}
 {% endblock %}
 
 {% block main_body %}
