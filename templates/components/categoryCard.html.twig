@@ -6,7 +6,7 @@
         {% for tech in techs %}
             <div class="tooltip" data-tip="{{ tech.name }}">
                 <a class="block transition-transform duration-200 hover:scale-125" href="{{ path("app_tech_show", { slug: tech.slug }) }}">
-                    {{ component("image", { src: vich_uploader_asset(tech.picture, "file"), filter: "short_list", alt: tech.name, width: 36, height: 36 }) }}
+                    {{ component("image", { src: vich_uploader_asset(tech.picture, "file"), filter: "tech_picture_side", alt: tech.name, width: 64, height: 64 }) }}
                 </a>
             </div>
         {% endfor %}

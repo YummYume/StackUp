@@ -36,14 +36,6 @@ final class TechController extends AbstractController
         ]);
     }
 
-    #[Route('/show/{slug}', name: 'app_tech_show', methods: ['GET'])]
-    public function show(Tech $tech): Response
-    {
-        return $this->render('tech/show.html.twig', [
-            'tech' => $tech,
-        ]);
-    }
-
     #[Route('/type', name: 'app_tech_choose_type', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function selectType(): Response
@@ -144,6 +136,14 @@ final class TechController extends AbstractController
         }
 
         return $this->render('tech/review_and_publish.html.twig', [
+            'tech' => $tech,
+        ]);
+    }
+
+    #[Route('/{slug}', name: 'app_tech_show', methods: ['GET'])]
+    public function show(Tech $tech): Response
+    {
+        return $this->render('tech/show.html.twig', [
             'tech' => $tech,
         ]);
     }
