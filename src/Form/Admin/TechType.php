@@ -33,6 +33,7 @@ final class TechType extends AbstractType
                 'class' => TechTypeEnum::class,
                 'autocomplete' => true,
                 'required' => true,
+                'choice_label' => static fn (TechTypeEnum $type): string => 'tech.type.'.$type->value,
             ])
             ->add('links', TechLinksType::class, [
                 'label' => false,

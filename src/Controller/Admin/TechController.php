@@ -45,6 +45,11 @@ final class TechController extends AbstractController
                     'type' => 'text',
                     'label' => 'common.type',
                     'queryKey' => 't.type',
+                    'extra' => [
+                        'translate' => true,
+                        'key' => static fn (Tech $tech): string => 'tech.type.'.$tech->getType()->value,
+                        'translationDomain' => 'messages',
+                    ],
                 ],
                 'isOfficial' => [
                     'type' => 'bool',
@@ -58,6 +63,11 @@ final class TechController extends AbstractController
                     'type' => 'text',
                     'label' => 'common.status',
                     'queryKey' => 'r.status',
+                    'extra' => [
+                        'translate' => true,
+                        'key' => static fn (Tech $tech): string => 'request.status.'.$tech->getRequest()->getStatus()->value,
+                        'translationDomain' => 'messages',
+                    ],
                 ],
                 'updatedAt' => [
                     'type' => 'date',

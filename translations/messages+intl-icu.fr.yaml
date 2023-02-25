@@ -39,7 +39,7 @@ common.remove: Supprimer
 common.form.name: Nom
 common.form.description: Description
 common.form.status: Status
-common.form.type: Type 
+common.form.type: Type
 common.form.depends_on: Dépend de
 
 common.links: Liens
@@ -271,10 +271,16 @@ tech.link.pkg.help: 'Ex: https://pkg.go.dev/mon-package'
 tech.link.other: Lien officiel
 tech.link.other.help: Devrait être le site officiel de cette technologie.
 
+## Request
+request.status: Statut
+request.status.pending: En attente
+request.status.accepted: Accepté
+request.status.rejected: Rejeté
+
 ## Tech picture
 tech_picture.file: Image
 tech_picture.file.help: Les dimensions recommandées pour une photo technique sont de 200x200. La taille de téléchargement maximale est de 2 Mo.
-tech_picture.current_tech_picture: L'image actuelle de cette technologie.
+tech_picture.current_picture: L'image actuelle de cette technologie.
 
 ## Category
 category.name: Nom

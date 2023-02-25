@@ -19,6 +19,7 @@ class RequestType extends AbstractType
                 'class' => RequestStatusEnum::class,
                 'autocomplete' => true,
                 'required' => true,
+                'choice_label' => static fn (RequestStatusEnum $status): string => 'request.status.'.$status->value,
             ])
         ;
     }

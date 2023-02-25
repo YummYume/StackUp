@@ -3,12 +3,12 @@
 {% trans_default_domain "admin" %}
 
 {% block main_body %}
-    <turbo-frame id="table_crud" data-turbo-action="advance">
+    <turbo-frame id="table_crud" class="flex flex-col gap-4" data-turbo-action="advance">
         <h1 class="text-center text-4xl">
             {{ "page.stack.title"|trans }}
         </h1>
 
-        <div class="flex gap-2 flex-col md:flex-row">
+        <div class="flex min-h-[28.5rem] gap-2 flex-col md:flex-row">
             {{ knp_menu_render('back_office', { template: knp_custom_menu }) }}
             {{ component('table', { config }) }}
         </div>

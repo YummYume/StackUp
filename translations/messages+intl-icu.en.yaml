@@ -39,7 +39,7 @@ common.remove: Remove
 common.form.name: Name
 common.form.description: Description
 common.form.status: Status
-common.form.type: Type 
+common.form.type: Type
 common.form.depends_on: Depends on
 
 common.links: Links
@@ -271,15 +271,25 @@ tech.link.pkg.help: 'Eg: https://pkg.go.dev/my-package'
 tech.link.other: Official link
 tech.link.other.help: Should be this tech's official website.
 
+## Request
+request.status: Status
+request.status.pending: Pending
+request.status.accepted: Accepted
+request.status.rejected: Rejected
+
 ## Tech picture
 tech_picture.file: Picture
 tech_picture.file.help: The recommended dimensions for a tech picture are 200x200. The maximum upload size is 2 MB.
-tech_picture.current_tech_picture: The tech's current picture.
+tech_picture.current_picture: The tech's current picture.
 
 ## Category
 category.name: Name
 category.collection: Categories
 category.name.help: A category's name must contain between 2 and 30 characters, using letters and white spaces only.
+
+## Stack
+stack.techs: Techs
+stack.profile: Owner
 
 # Components
 ## Deletion prompt modal

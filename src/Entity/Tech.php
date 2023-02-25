@@ -143,6 +143,7 @@ class Tech
     private Collection $stacks;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'techs')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     #[Assert\When(
         expression: 'this.getType().value === "library"',
         constraints: [

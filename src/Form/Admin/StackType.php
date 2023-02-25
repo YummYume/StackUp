@@ -25,11 +25,13 @@ class StackType extends AbstractType
                 'required' => true,
             ])
             ->add('techs', TechAutocompleteField::class, [
-                'label' => 'tech.collection',
+                'label' => 'stack.techs',
                 'multiple' => true,
                 'required' => true,
             ])
-            ->add('profile', ProfilesAutocompleteField::class)
+            ->add('profile', ProfilesAutocompleteField::class, [
+                'label' => 'stack.profile',
+            ])
         ;
     }
 
