@@ -26,6 +26,12 @@ final class ListItemComponent
     #[ExposeInTemplate]
     private ?TechPicture $picture = null;
 
+    #[ExposeInTemplate]
+    private ?string $route;
+
+    #[ExposeInTemplate]
+    private ?string $slug = '';
+
     #[PostMount]
     public function postMount(): void
     {
@@ -34,6 +40,16 @@ final class ListItemComponent
         if ($this->item instanceof Tech) {
             $this->picture = $this->item->getPicture();
             $this->itemFileProperty = 'file';
+        }
+
+        if ($this->item instanceof Stack) {
+            $this->route = 'app_stack_index';
+            $this->slug = $this->item->getSlug();
+        } else if ($this->item instanceof Tech) {
+            $this->route = 'app_tech_index';
+            $this->slug = $this->item->getSlug();
+        } else {
+            $this->route = null;
         }
     }
 
@@ -50,5 +66,15 @@ final class ListItemComponent
     public function getPicture(): ?TechPicture
     {
         return $this->picture;
+    }
+
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 }

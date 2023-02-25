@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\StackRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,9 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 final class StackController extends AbstractController
 {
     #[Route('/', name: 'app_stack_index')]
-    public function index(): Response
+    public function index(StackRepository $stackRepository): Response
     {
-        return $this->render('stack/index.html.twig');
+        return $this->render('stack/index.html.twig', [
+            'stacks' => $stackRepository->findRecentlyAddedStacks(50),
+        ]);
     }
 
     #[Route('/create', name: 'app_stack_create')]

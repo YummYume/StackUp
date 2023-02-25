@@ -17,7 +17,7 @@
         {{ "page.homepage.main_description"|trans }}
     </p>
     <div class="grid gap-6 lg:grid-cols-2">
-        {% component shortList with { items: trendingTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_stack_index") } %}
+        {% component shortList with { items: trendingTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index") } %}
         {% block header %}
             <div class="flex items-center gap-2">
                 <div class="text-error">
@@ -28,12 +28,9 @@
                 </h2>
             </div>
         {% endblock %}
-        {% block item %}
-            <a href="{{ path("app_stack_index") }}">{{ parent() }}</a>
-        {% endblock %}
         {% endcomponent %}
 
-        {% component shortList with { items: recentTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_stack_index") } %}
+        {% component shortList with { items: recentTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index") } %}
         {% block header %}
             <div class="flex items-center gap-2">
                 <div class="text-info">
@@ -44,12 +41,9 @@
                 </h2>
             </div>
         {% endblock %}
-        {% block item %}
-            <a href="{{ path("app_stack_index") }}">{{ parent() }}</a>
-        {% endblock %}
         {% endcomponent %}
 
-        {% component shortList with { items: trendingCategories, link: path("app_stack_index") } %}
+        {% component shortList with { items: trendingCategories } %}
         {% block header %}
             <div class="flex items-center gap-2">
                 <div class="text-error">
@@ -59,9 +53,6 @@
                     {{ "page.homepage.trending_categories"|trans }}
                 </h2>
             </div>
-        {% endblock %}
-        {% block item %}
-            <a href="{{ path("app_stack_index") }}">{{ parent() }}</a>
         {% endblock %}
         {% endcomponent %}
 
@@ -75,9 +66,6 @@
                     {{ "page.homepage.recently_added_stacks"|trans }}
                 </h2>
             </div>
-        {% endblock %}
-        {% block item %}
-            <a href="{{ path("app_stack_index") }}">{{ parent() }}</a>
         {% endblock %}
         {% endcomponent %}
     </div>
