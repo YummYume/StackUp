@@ -19,7 +19,6 @@ class RequestType extends AbstractType
                 'class' => RequestStatusEnum::class,
                 'autocomplete' => true,
                 'required' => true,
-                'help' => 'request.status.help',
             ])
         ;
     }

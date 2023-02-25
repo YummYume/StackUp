@@ -107,6 +107,9 @@ page.category.description: List of category saved on the website.
 page.category_show.title: Information of { name }
 page.category_show.description: All information of { name }.
 
+### New
+page.category_new.title: Add a category
+
 ### Edit
 page.category_edit.title: Edit category
 page.category_edit.description: Edit a category's information.

@@ -15,7 +15,7 @@ use Symfony\UX\Autocomplete\Form\ParentEntityAutocompleteType;
 #[AsEntityAutocompleteField]
 final class ProfilesAutocompleteField extends AbstractType
 {
-    public function __construct(private readonly HtmlSanitizerInterface $appSearchSanitizer, private readonly TranslatorInterface $trans)
+    public function __construct(private readonly HtmlSanitizerInterface $appSearchSanitizer, private readonly TranslatorInterface $translator)
     {
     }
 
@@ -36,7 +36,7 @@ final class ProfilesAutocompleteField extends AbstractType
             },
             'tom_select_options' => [
                 'maxItems' => 1,
-                'placeholder' => $this->trans->trans('profile.choose', domain: 'messages'),
+                'placeholder' => $this->translator->trans('profile.choose', domain: 'messages'),
                 'hidePlaceholder' => true,
                 'allowEmptyOption' => false,
             ],

@@ -254,3 +254,4 @@ deploy:
 	git reset --hard origin/master
 	$(COMPOSEPROD) build --no-cache --force-rm
 	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
+	

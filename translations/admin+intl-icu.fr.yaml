@@ -106,6 +106,9 @@ page.category.description: Liste des catégories enregistrés sur le site.
 page.category_show.title: Informations de { name }
 page.category_show.description: Toutes les informations de { name }.
 
+### New
+page.category_new.title: Ajouter une categorie
+
 ### Edit
 page.category_edit.title: Modifier la catégorie
 page.category_edit.description: Modifier les informations d'une catégorie.

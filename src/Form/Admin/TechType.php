@@ -33,14 +33,12 @@ final class TechType extends AbstractType
                 'class' => TechTypeEnum::class,
                 'autocomplete' => true,
                 'required' => true,
-                'help' => 'tech.type.help',
             ])
             ->add('links', TechLinksType::class, [
                 'label' => false,
             ])
             ->add('categories', CategoriesAutocompleteField::class, [
                 'label' => 'category.collection',
-                'help' => 'category.help',
             ])
             ->add('dependsOn', TechAutocompleteField::class, [
                 'label' => 'common.form.depends_on',

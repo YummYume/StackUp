@@ -277,6 +277,7 @@ tech_picture.current_tech_picture: L'image actuelle de cette technologie.
 
 ## Category
 category.name: Nom
+category.collection: Categories
 category.name.help: Le nom d'une catégorie doit contenir entre 2 et 30 caractères, en utilisant uniquement des lettres et des espaces blancs.
 
 # Components
