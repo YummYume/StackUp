@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Request as RequestEntity;
 use App\Entity\Tech;
 use App\Enum\ColorTypeEnum;
 use App\Enum\TechTypeEnum;
+use App\Form\CategoryType;
 use App\Form\TechType;
 use App\Manager\FlashManager;
+use App\Repository\CategoryRepository;
 use App\Repository\TechRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Requirement\EnumRequirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('/tech')]
 final class TechController extends AbstractController
@@ -54,12 +58,13 @@ final class TechController extends AbstractController
         requirements: ['type' => new EnumRequirement(TechTypeEnum::class)]
     )]
     #[IsGranted('ROLE_USER')]
-    public function create(Request $request, string $typeParam): Response
+    public function create(Request $request, string $typeParam, CategoryRepository $categoryRepository): Response
     {
         $tech = $this->techRepository->findUnreleasedTechForUser($this->getUser()) ?: new Tech();
         $type = TechTypeEnum::from($typeParam);
         $tech->setType($type);
         $form = $this->createForm(TechType::class, $tech)->handleRequest($request);
+        $categoryForm = $this->createForm(CategoryType::class, $category = new Category())->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
@@ -72,11 +77,32 @@ final class TechController extends AbstractController
             }
 
             $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
+        } elseif ($categoryForm->isSubmitted()) {
+            if ($categoryForm->isValid()) {
+                $categoryRepository->save($category, true);
+
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.create_category.success', [
+                    'name' => $category->getName(),
+                ]);
+            } else {
+                $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
+            }
+
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+                return $this->render('tech/stream/create_category.stream.html.twig', [
+                    'categoryForm' => $categoryForm->isValid() ? $this->createForm(CategoryType::class) : $categoryForm,
+                    'isValid' => $categoryForm->isValid(),
+                ]);
+            } elseif ($categoryForm->isValid()) {
+                return $this->redirectToRoute('app_tech_create', status: Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->render('tech/create.html.twig', [
             'form' => $form,
-            'type' => $type,
+            'categoryForm' => $categoryForm,
         ]);
     }
 
@@ -93,6 +119,8 @@ final class TechController extends AbstractController
         $errors = $validator->validate($tech);
 
         if (\count($errors) > 0) {
+            $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.tech.invalid_form');
+
             return $this->redirectToRoute('app_tech_choose_type', [
                 'typeParam' => $tech->getType()->value,
             ]);

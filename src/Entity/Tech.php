@@ -35,6 +35,8 @@ class Tech
     public const LINK_GITHUB = 'github';
     public const LINK_GITLAB = 'gitlab';
     public const LINK_NPM_OR_YARN = 'npm_or_yarn';
+    public const LINK_NPM = 'npm';
+    public const LINK_YARN = 'yarn';
     public const LINK_PACKAGIST = 'packagist';
     public const LINK_CRATES = 'crates';
     public const LINK_PKG = 'pkg';
@@ -359,5 +361,35 @@ class Tech
     public function isIndexable(): bool
     {
         return $this->request->isCreated() && RequestStatusEnum::Accepted === $this->request->getStatus();
+    }
+
+    public function getActiveLinks(): array
+    {
+        $links = [];
+
+        foreach ($this->links as $key => $link) {
+            if (null === $link) {
+                continue;
+            }
+
+            $icon = $key;
+
+            if (self::LINK_NPM_OR_YARN === $icon) {
+                $icon = $this->isNpmLink() ? self::LINK_NPM : self::LINK_YARN;
+            }
+
+            $links[$icon] = $link;
+        }
+
+        return $links;
+    }
+
+    public function isNpmLink(): bool
+    {
+        if (null === $this->links[self::LINK_NPM_OR_YARN] ?? null) {
+            return false;
+        }
+
+        return preg_match('/^(https:\/\/)?www\.npmjs\.com\/package\/[a-zA-Z0-9_-]{1,50}$/', $this->links[self::LINK_NPM_OR_YARN]);
     }
 }

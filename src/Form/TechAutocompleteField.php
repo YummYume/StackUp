@@ -22,7 +22,7 @@ final class TechAutocompleteField extends AbstractType
     {
         $resolver->setDefaults([
             'class' => Tech::class,
-            'placeholder' => 'Choose a Tech',
+            'placeholder' => 'tech.depends_on.placeholder',
             'required' => false,
             'choice_label' => function (Tech $tech): string {
                 $name = $tech->getName();

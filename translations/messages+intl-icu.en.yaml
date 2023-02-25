@@ -1,4 +1,4 @@
-## Common
+# Common
 common.app_name: StackUp
 common.description: Welcome to StackUp!
 common.login: Login
@@ -30,32 +30,46 @@ common.no_script_message: It looks like JavaScript is not enabled in your browse
 common.more: More
 common.position: Position { position }
 common.no_result: No result found.
+common.back: Go back
+common.and: and
+common.next_step: Next step
+common.previous_step: Previous step
+common.add: Add
+common.remove: Remove
 
 # Icons
 icon.eye: Show
 icon.pencil: Edit
 
-## Flashes
-# Common
+# Flashes
+## Common
 flash.common.invalid_form: Invalid form. Please try again.
 flash.common.invalid_csrf: Invalid CSRF token. Please try again.
 
-# Register email
+## Register email
 flash.register.email_sent: Thank you for registering. We sent you an email to verify your account.
 flash.register.link_expired: This link has expired. A new one is on the way to your email address!
 flash.register.email_verified: Account verified. You can now safely log in.
 
-# Reset password
+## Reset password
 flash.reset_password.updated: Password successfully updated.
 
-# Delete profile
+## Delete profile
 flash.update_profile.account_updated: Account updated.
 flash.update_profile.profile_updated: Profile updated.
 flash.delete_profile.invalid_prompt: Invalid input. Please try again.
 flash.delete_profile.success: Account deleted. You should receive an email shortly to confirm the deletion.
 
-## Pages
-# Homepage
+## Tech
+flash.tech.saved: Tech saved.
+flash.tech.published: Tech published.
+flash.tech.invalid_form: Oops... This tech seems to contain invalid data. Please fix them in order to publish this tech.
+
+# Category
+flash.create_category.success: Category "{ name }" added successfully.
+
+# Pages
+## Homepage
 page.homepage.title: StackUp
 page.homepage.description: Welcome to StackUp. Here, you can create your ideal stack in no time. Can't find the tech you're looking for? You can add your own!
 page.homepage.main_title: Create your ideal stack
@@ -65,39 +79,39 @@ page.homepage.recently_added_techs: Recently Added Techs
 page.homepage.trending_categories: Trending Categories
 page.homepage.recently_added_stacks: Recently Added Stacks
 
-# About Us
+## About Us
 page.about_us.title: About Us
 page.about_us.description: Everything you need to know about StackUp, from why it was created to why you should use it.
 
-# Contact
+## Contact
 page.contact.title: Contact
 page.contact.description: Learn how to get in touch with the StackUp staff here.
 
-# Cookie Policy
+## Cookie Policy
 page.cookie_policy.title: Cookie Policy
 page.cookie_policy.description: Concerned about your privacy and why we use cookies? Your answers here.
 
-# Privacy Policy
+## Privacy Policy
 page.privacy_policy.title: Privacy Policy
 page.privacy_policy.description: StackUp's official privacy policy.
 
-# Terms of Use
+## Terms of Use
 page.terms_of_use.title: Terms of Use
 page.terms_of_use.description: General terms of use of StackUp.
 
-# Register
+## Register
 page.register.title: Create an account
 page.register.description: Register an account to access all the functionalities of StackUp.
 page.register.agree_terms: I agree to the terms of use
 
-# Login
+## Login
 page.login.title: Login
 page.login.description: Log in with your account to StackUp.
 page.login.forgot_password: Forgot your password?
 page.login.remember_me: Remember me
 page.login.no_account: No account yet? Click here to register.
 
-# Edit profile
+## Edit profile
 page.edit_profile.title: Account settings
 page.edit_profile.description: Update your account and profile information here.
 page.edit_profile.user: My account
@@ -112,12 +126,12 @@ page.edit_profile.delete_account_back: I changed my mind
 page.edit_profile.delete_account_confirm: Delete my account
 page.edit_profile.deletion_prompt: I understand the consequences and wish to delete my account
 
-# Show Profile
+## Show Profile
 page.show_profile.title: Profile of { username }
 page.show_profile.description: The profile of { username } on StackUp.
 page.show_profile.github_link: GitHub profile of { username }
 
-# Check email
+## Check email
 page.check_email.title: Reset my password
 page.check_email.description: Process to get a new password via mail.
 page.check_email.email_sent: If an account matching your email exists, then an email was just sent with a link that you can use to reset your password.
@@ -125,18 +139,18 @@ page.check_email.link_expires_in: This link will expire in
 page.check_email.check_spam: If you didn't receive any email, please check your spam folder or
 page.check_email.try_again: try again
 
-# Request password
+## Request password
 page.request_password.title: Reset your password
 page.request_password.description: Forgot your password? No problem. You can easily get a link to reset it.
 page.request_password.enter_your_email: Enter your email address and we will send you a link to reset your password.
 page.request_password.send: Send password reset email
 
-# Reset password
+## Reset password
 page.reset_password.title: Reset your password
 page.reset_password.description: Safely reset your forgotten password.
 page.reset_password.reset: Reset my password
 
-# Search
+## Search
 page.search.title: Global Search
 page.search.description: Search anything on StackUp.
 page.search.no_result: No result found.
@@ -146,8 +160,28 @@ page.search.show_profile: Show profile
 page.search.type_to_search: Type anything to start searching.
 page.search.search_username: For example, try to type in { username }...
 
-## Entities
-# User
+## Select type
+page.select_type.title: Step 1 - Type
+page.select_type.description: Choose the type of tech you want to create.
+page.select_type.guide: Let's create a new tech! First, choose the type of tech you want to create.
+
+## Create tech
+page.create_tech.title: Step 2 - Attributes
+page.create_tech.description: Select the attributes of your new tech.
+page.create_tech.essential_info: Essential information
+page.create_tech.additional_info: Additional information
+page.create_tech.links: Links
+page.create_tech.add_category: Add a new category
+page.create_tech.add_category.description: Can't find the category you want? Then add a new one!
+
+## Review and publish
+page.review_and_publish.title: Step 3 - Review and Publish
+page.review_and_publish.description: Review your tech before publishing it.
+page.review_and_publish.guide: This is the last step! Review your tech and when you think you're ready, publish it! You can come back here any time, your tech has been saved.
+page.review_and_publish.publish: Publish
+
+# Entities
+## User
 user.email: Email
 user.password: Password
 user.password.help: Should contain at least 8 characters, with at least one lowercase letter, one uppercase letter, one digit and one special character (#\?!@$%^&*-).
@@ -160,24 +194,68 @@ user.roles: Roles
 user.verified: Verified
 user.profile.picture: Profile picture of { username }
 
-# Profile
+## Profile
 profile.username: Username
 profile.username.help: Your username is used in your profile's URL. It must contain between 2 and 50 characters and cannot contain special characters.
 profile.description: Description
 profile.github_link: GitHub link
 profile.github_link.help: 'A GitHub link should look like "https://github.com/your-profile".'
 
-# Profile picture
+## Profile picture
 profile_picture.file: Picture
 profile_picture.file.help: The recommended dimensions for a profile picture are 200x200. The maximum upload size is 2 MB.
 profile_picture.current_profile_picture: Your current profile picture.
 
-# ResetPasswordRequest
+## ResetPasswordRequest
 reset_password_request.email: Email
 reset_password_request.email.help: The email address associated with your account.
 reset_password_request.new_password: New password
 reset_password_request.repeat_password: Repeat your password
 
-## Components
-# Deletion prompt modal
+## Tech
+tech.name: Name
+tech.name.help: This name must be unique. It will be used in the tech's URL.
+tech.description: Description
+tech.description.help: Adding a description is highly recommended to let people know more about this tech.
+tech.depends_on: Depends on
+tech.depends_on.help: Is this tech dependent? Mandatory if this tech is a library. Official techs appear in green.
+tech.depends_on.placeholder: Choose a tech
+tech.categories: Categories
+tech.categories.help: Where does this tech belong? A tech should have between 1 and 3 categories. Official categories appear in green.
+tech.categories.placeholder: Choose one or more categories
+tech.type: Type
+tech.type.language: Language
+tech.type.language.help: A programming language is a formal language used to communicate instructions to a computer.
+tech.type.library: Library
+tech.type.library.help: A collection of code that can be reused in other projects.
+tech.type.tool: Tool
+tech.type.tool.help: A program or set of programs that perform a specific task or group of functions.
+tech.link.github: GitHub link
+tech.link.github.help: 'Eg: https://github.com/my-profile/my-repo'
+tech.link.gitlab: GitLab link
+tech.link.gitlab.help: 'Eg: https://gitlab.com/my-profile/my-repo'
+tech.link.npm_or_yarn: NPM or Yarn link
+tech.link.npm_or_yarn.help: 'Eg: https://www.npmjs.com/package/my-package or https://yarnpkg.com/package/my-package'
+tech.link.npm: NPM link
+tech.link.yarn: Yarn link
+tech.link.packagist: Packagist link
+tech.link.packagist.help: 'Eg: https://packagist.org/packages/my-package'
+tech.link.crates: Crates link
+tech.link.crates.help: 'Eg: https://crates.io/crates/my-crate'
+tech.link.pkg: Pkg link
+tech.link.pkg.help: 'Eg: https://pkg.go.dev/my-package'
+tech.link.other: Official link
+tech.link.other.help: Should be this tech's official website.
+
+## Tech picture
+tech_picture.file: Picture
+tech_picture.file.help: The recommended dimensions for a tech picture are 200x200. The maximum upload size is 2 MB.
+tech_picture.current_tech_picture: The tech's current picture.
+
+## Category
+category.name: Name
+category.name.help: A category's name must contain between 2 and 30 characters, using letters and white spaces only.
+
+# Components
+## Deletion prompt modal
 component.deletion_prompt_modal.label: To continue, type in "{ prompt }".

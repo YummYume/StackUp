@@ -29,12 +29,15 @@ final class TechType extends AbstractType
             ])
             ->add('categories', CategoriesAutocompleteField::class, [
                 'label' => 'tech.categories',
+                'help' => 'tech.categories.help',
             ])
             ->add('dependsOn', TechAutocompleteField::class, [
                 'label' => 'tech.depends_on',
                 'help' => 'tech.depends_on.help',
             ])
-            ->add('picture', TechPictureType::class)
+            ->add('picture', TechPictureType::class, [
+                'label' => false,
+            ])
         ;
     }
 

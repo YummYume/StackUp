@@ -43,3 +43,9 @@ liip_imagine:
             filters:
                 thumbnail:
                     size: [200, 200]
+
+        tech_picture_side:
+            quality: 90
+            filters:
+                thumbnail:
+                    size: [64, 64]

@@ -1,11 +1,11 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    {{ "Step 1 - Type"|trans }}
+    {{ "page.select_type.title"|trans }}
 {% endblock %}
 
 {% block description %}
-
+    {{ "page.select_type.title"|trans }}
 {% endblock %}
 
 {% block steps %}
@@ -13,13 +13,18 @@
 {% endblock %}
 
 {% block main_title %}
-    {{ "Step 1 - Type"|trans }}
+    {{ "page.select_type.title"|trans }}
 {% endblock %}
 
 {% block main_body %}
-    <div class="flex flex-col justify-center gap-4 md:flex-row">
+    <p class="mx-auto mt-4 max-w-5xl text-center">
+        {{ "page.select_type.guide"|trans }}
+    </p>
+    <div class="mt-4 flex flex-col justify-center gap-4 md:flex-row">
         {% for type in types %}
-            {{ component("button", { centered: false, content: ("tech.type.#{type.value}")|trans, href: path("app_tech_create", { typeParam: type.value }) }) }}
+            <div class="tooltip tooltip-bottom tooltip-primary" data-tip="{{ ("tech.type.#{type.value}.help")|trans }}">
+                {{ component("button", { centered: false, content: ("tech.type.#{type.value}")|trans, href: path("app_tech_create", { typeParam: type.value }) }) }}
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
