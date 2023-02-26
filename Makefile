@@ -260,6 +260,6 @@ deploy:
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console cache:clear
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console cache:warmup
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php composer dump-env prod
-	$(COMPOSEPROD) exec php chown -R www-data:www-data ./var/ ./public/media/profile ./public/media/cache ./public/media/tech
+	$(COMPOSEPROD) exec php chown -R www-data:www-data ./var/ ./public/media/
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console meili:create
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console meili:import
