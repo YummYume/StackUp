@@ -246,6 +246,8 @@ reset_password_request.new_password: Nouveau mot de passe
 reset_password_request.repeat_password: Répétez votre mot de passe
 
 ## Tech
+tech: Technologie
+techs: Technologies
 tech.name: Nom
 tech.name.help: Ce nom doit être unique. Il sera utilisé dans l'URL de la technologie.
 tech.description: Description
@@ -299,6 +301,12 @@ tech_picture.current_picture: L'image actuelle de cette technologie.
 category.name: Nom
 category.collection: Categories
 category.name.help: Le nom d'une catégorie doit contenir entre 2 et 30 caractères, en utilisant uniquement des lettres et des espaces blancs.
+
+## Stack
+stack: Stack
+stacks: Stacks
+stack.techs: Technologies
+stack.profile: Propriétaire
 
 # Components
 ## Deletion prompt modal
