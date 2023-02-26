@@ -44,6 +44,13 @@
             {% endif %}
         </div>
     </div>
+    {% if stack.description %}
+        <div class="card bg-base-100">
+            <p class="card-body text-xl">
+                {{ stack.description }}
+            </p>
+        </div>
+    {% endif %}
     <div class="grid gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
         {% for name, techs in stack.getCategoriesWithTechs %}
             {{ component('categoryCard', { name, techs }) }}
