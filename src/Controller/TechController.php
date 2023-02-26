@@ -16,6 +16,7 @@ use App\Manager\VoteManager;
 use App\Repository\CategoryRepository;
 use App\Repository\TechRepository;
 use App\Repository\VoteRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,10 +34,17 @@ final class TechController extends AbstractController
     }
 
     #[Route('/', name: 'app_tech_index', methods: ['GET'])]
-    public function index(TechRepository $techRepository): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
+        $pagination = $paginator->paginate(
+            $this->techRepository->createQueryBuilder('t'),
+            $request->query->getInt('page', 1),
+            10,
+            ['defaultSortFieldName' => 't.createdAt', 'defaultSortDirection' => 'desc']
+        );
+
         return $this->render('tech/index.html.twig', [
-            'techs' => $techRepository->findRecentlyAddedTechs(50),
+            'pagination' => $pagination,
         ]);
     }
 

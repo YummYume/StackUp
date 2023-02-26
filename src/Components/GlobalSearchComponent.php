@@ -44,9 +44,9 @@ final class GlobalSearchComponent
                 'results' => $techs,
                 'nameProperty' => 'name',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => ['slug' => 'slug'],
                 'route' => 'app_tech_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug'],
             ];
         }
 
@@ -61,9 +61,12 @@ final class GlobalSearchComponent
                 'results' => $stacks,
                 'nameProperty' => 'name',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => [
+                    'slug_stack' => 'slug',
+                    'slug_profile' => 'profileSlug',
+                ],
                 'route' => 'app_stack_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug_stack', 'slug_profile'],
             ];
         }
 
@@ -78,9 +81,9 @@ final class GlobalSearchComponent
                 'results' => $profiles,
                 'nameProperty' => 'username',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => ['slug' => 'slug'],
                 'route' => 'app_profile_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug'],
             ];
         }
 

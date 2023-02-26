@@ -21,38 +21,42 @@ final class SearchController extends AbstractController
         $query = trim($request->get('q', ''));
         $page = (int) $request->get('p', 1);
         $type = SearchTypeEnum::tryFrom($request->get('t', SearchTypeEnum::Techs->value)) ?? SearchTypeEnum::Techs;
+
         $searchAttributes = match ($type) {
             SearchTypeEnum::Techs => [
                 'class' => Tech::class,
                 'nameProperty' => 'name',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => ['slug' => 'slug'],
                 'route' => 'app_tech_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug'],
             ],
             SearchTypeEnum::Stacks => [
                 'class' => Stack::class,
                 'nameProperty' => 'name',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => [
+                    'slug_stack' => 'slug',
+                    'slug_profile' => 'profileSlug',
+                ],
                 'route' => 'app_stack_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug_stack', 'slug_profile'],
             ],
             SearchTypeEnum::Profiles => [
                 'class' => Profile::class,
                 'nameProperty' => 'username',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => ['slug' => 'slug'],
                 'route' => 'app_profile_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug'],
             ],
             default => [
                 'class' => Profile::class,
                 'nameProperty' => 'username',
                 'descProperty' => 'description',
-                'slugProperty' => 'slug',
+                'slugProperty' => ['slug' => 'slug'],
                 'route' => 'app_profile_show',
-                'routeParam' => 'slug',
+                'routeParam' => ['slug'],
             ],
         };
 

@@ -14,7 +14,7 @@ meilisearch:
           class: App\Entity\Stack
           enable_serializer_groups: true
           settings:
-              searchableAttributes: ['name', 'slug', 'description']
+              searchableAttributes: ['name', 'slug', 'profileSlug', 'description']
 
         - name: profiles
           class: App\Entity\Profile
