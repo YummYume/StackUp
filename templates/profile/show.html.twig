@@ -44,19 +44,21 @@
             {% endif %}
         </div>
     </div>
-    <div class="flex flex-col gap-4">
-        <h2 class="text-2xl">
-            {{ "common.stacks"|trans }}
-        </h2>
+    {% if profile.stacks is not empty %}
+        <div class="flex flex-col gap-4">
+            <h2 class="text-2xl">
+                {{ "common.stacks"|trans }}
+            </h2>
 
-        {% for stack in profile.stacks %}
-            <a class="transition-transform hover:translate-x-4" href="{{ path("app_stack_show", { slug_profile: profile.slug, slug_stack: stack.slug }) }}">
-                <div class="card w-full bg-base-100 px-6 py-4 shadow-lg">
-                    <div class="card-title justify-between text-lg font-semibold">
-                        {{ stack.name }}
+            {% for stack in profile.stacks %}
+                <a class="transition-transform hover:translate-x-4" href="{{ path("app_stack_show", { slug_profile: profile.slug, slug_stack: stack.slug }) }}">
+                    <div class="card w-full bg-base-100 px-6 py-4 shadow-lg">
+                        <div class="card-title justify-between text-lg font-semibold">
+                            {{ stack.name }}
+                        </div>
                     </div>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
