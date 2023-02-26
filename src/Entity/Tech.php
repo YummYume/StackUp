@@ -403,4 +403,9 @@ class Tech
             default => '',
         };
     }
+
+    public function getProfileVote(?Profile $profile): ?Vote
+    {
+        return $this->request->getVotes()->findFirst(static fn (int $key, Vote $vote): bool => $vote->getProfile() === $profile);
+    }
 }

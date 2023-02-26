@@ -465,6 +465,12 @@ stacks: Stacks
 stack.techs: Techs
 stack.profile: Owner
 
+## Vote
+vote.upvote: Upvote
+vote.upvote.remove: Remove my upvote
+vote.downvote: Downvote
+vote.downvote.remove: Remove my downvote
+
 # Components
 ## Deletion prompt modal
 component.deletion_prompt_modal.label: To continue, type in "{ prompt }".

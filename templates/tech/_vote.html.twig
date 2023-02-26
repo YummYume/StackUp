@@ -1,0 +1,46 @@
+{% set isUpvote = vote is not null and vote.upvote %}
+{% set isDownvote = vote is not null and not vote.upvote %}
+
+<div class="flex flex-col items-center justify-center gap-2" id="tech-{{ tech.slug }}-votes">
+    {% if app.user %}
+        <form method="post" action="{{ path("app_tech_vote", { slug: tech.slug, voteType: "upvote" }) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token("vote-" ~ tech.id.toBase32) }}" />
+            {{
+                component(
+                    "button",
+                    {
+                        icon: "chevron_up",
+                        circle: true,
+                        submit: true,
+                        centered: false,
+                        ghost: true,
+                        class: isUpvote ? "text-primary" : "",
+                        ariaLabel: (isUpvote ? "vote.upvote.remove" : "vote.upvote")|trans
+                    }
+                )
+            }}
+        </form>
+    {% endif %}
+    <div class="badge badge-lg" id="tech-{{ tech.slug }}-vote-count" {{ turbo_stream_listen("App\\Entity\\Vote") }}>
+        {{ tech.request.voteCount }}
+    </div>
+    {% if app.user %}
+        <form method="post" action="{{ path("app_tech_vote", { slug: tech.slug, voteType: "downvote" }) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token("vote-" ~ tech.id.toBase32) }}" />
+            {{
+                component(
+                    "button",
+                    {
+                        icon: "chevron_down",
+                        circle: true,
+                        submit: true,
+                        centered: false,
+                        ghost: true,
+                        class: isDownvote ? "text-error" : "",
+                        ariaLabel: (isDownvote ? "vote.downvote.remove" : "vote.downvote")|trans
+                    }
+                )
+            }}
+        </form>
+    {% endif %}
+</div>

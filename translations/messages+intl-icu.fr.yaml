@@ -467,6 +467,12 @@ stacks: Stacks
 stack.techs: Technologies
 stack.profile: Propriétaire
 
+## Vote
+vote.upvote: Voter pour
+vote.upvote.remove: Supprimer mon vote positif
+vote.downvote: Voter contre
+vote.downvote.remove: Supprimer mon vote négatif
+
 # Components
 ## Deletion prompt modal
 component.deletion_prompt_modal.label: Pour continuer, tapez "{ prompt }".
