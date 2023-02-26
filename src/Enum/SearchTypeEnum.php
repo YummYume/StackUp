@@ -22,7 +22,7 @@ enum SearchTypeEnum: string
                 'cropMarker' => '...',
             ],
             self::Stacks => [
-                'attributesToRetrieve' => ['name', 'slug', 'description'],
+                'attributesToRetrieve' => ['name', 'slug', 'description', 'profileSlug'],
                 'attributesToHighlight' => ['name', 'description'],
                 'attributesToCrop' => ['description'],
                 'cropMarker' => '...',

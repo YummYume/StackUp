@@ -13,6 +13,40 @@
 {% endblock %}
 
 {% block main_body %}
+    <div class="flex flex-row justify-between">
+        <a href="{{ path('app_profile_show', { slug: stack.profile.slug }) }}">
+            <div class="card w-96 bg-secondary text-primary-content">
+                <div class="card-body">
+                    <div class="card-title gap-6">
+                        {{ "common.author"|trans }} :
+                        <div class="flex gap-2 items-center">
+                            {{ component('image', {
+                                alt: "user.profile.picture"|trans({ username: stack.profile.username }),
+                                class: "rounded-full",
+                                filter: "avatar_small",
+                                height: 32,
+                                src: stack.profile.picture ? vich_uploader_asset(stack.profile.picture, "file") : null,
+                                width: 32
+                            }) }}
+                            {{ stack.profile.username }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <span>
+            {% if is_granted(constant("App\\Security\\Voter\\StackVoter::EDIT"), stack) %}
+                {{ component("button", {
+                    centered: true,
+                    class: "btn-outline",
+                    content: button_label|default("common.edit"|trans),
+                    href: path("app_stack_edit", { slug_stack: stack.slug, slug_profile: stack.profile.slug }),
+                    ghost: true,
+                    variant: "success"
+                }) }}
+            {% endif %}
+        </span>
+    </div>
     <div class="grid gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
         {% for name, techs in stack.getCategoriesWithTechs %}
             {{ component('categoryCard', { name, techs }) }}

@@ -16,6 +16,8 @@ use App\Manager\VoteManager;
 use App\Repository\CategoryRepository;
 use App\Repository\TechRepository;
 use App\Repository\VoteRepository;
+use App\Security\Voter\TechVoter;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,10 +35,17 @@ final class TechController extends AbstractController
     }
 
     #[Route('/', name: 'app_tech_index', methods: ['GET'])]
-    public function index(TechRepository $techRepository): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
+        $pagination = $paginator->paginate(
+            $this->techRepository->createQueryBuilder('t'),
+            $request->query->getInt('page', 1),
+            10,
+            ['defaultSortFieldName' => 't.createdAt', 'defaultSortDirection' => 'desc']
+        );
+
         return $this->render('tech/index.html.twig', [
-            'techs' => $techRepository->findRecentlyAddedTechs(50),
+            'pagination' => $pagination,
         ]);
     }
 
@@ -213,5 +222,57 @@ final class TechController extends AbstractController
         }
 
         return $this->redirectToRoute('app_tech_show', ['slug' => $tech->getSlug()], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{slug}', name: 'app_tech_delete', methods: ['POST'])]
+    #[IsGranted(TechVoter::DELETE, subject: 'tech', statusCode: 403)]
+    public function delete(Request $request, Tech $tech): Response
+    {
+        if ($this->isCsrfTokenValid('delete-'.$tech->getId()->toBase32(), $request->request->get('_token'))) {
+            $this->techRepository->remove($tech, true);
+
+            $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.deleted');
+        } else {
+            $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_csrf');
+        }
+
+        return $this->redirectToRoute('app_tech_index', status: Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{slug}/edit', name: 'app_tech_edit', methods: ['GET', 'POST'])]
+    #[IsGranted(TechVoter::EDIT, subject: 'tech', statusCode: 403)]
+    public function edit(Request $request, Tech $tech): Response
+    {
+        $form = $this->createForm(TechType::class, $tech, ['can_edit_type' => true])->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $this->techRepository->save($tech, true);
+
+                $this->flashManager->flash(ColorTypeEnum::Success->value, 'flash.common.updated');
+            } else {
+                $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
+            }
+
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+                return $this->render('tech/stream/edit.stream.html.twig', [
+                    'tech' => $tech,
+                    'form' => $form->isValid() ? $this->createForm(TechType::class, $tech, ['can_edit_type' => true]) : $form,
+                    'isEditing' => true,
+                ]);
+            } elseif ($form->isValid()) {
+                return $this->redirectToRoute('app_tech_edit', [
+                    'slug' => $tech->getSlug(),
+                ], Response::HTTP_SEE_OTHER);
+            }
+        }
+
+        return $this->render('tech/edit.html.twig', [
+            'tech' => $tech,
+            'form' => $form,
+            'isEditing' => true,
+        ]);
     }
 }

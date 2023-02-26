@@ -98,7 +98,7 @@
                                 {{ component('button', { content: 'common.app_name'|trans, class: 'text-xl normal-case' }) }}
                             </a>
                         </div>
-                        <div class="navbar-end gap-4">
+                        <div class="navbar-end gap-0.5 lg:gap-4">
                             <div class="tooltip tooltip-bottom" data-tip="{{ 'common.switch_theme'|trans }}">
                                 <a role="button" aria-label="{{ 'common.switch_theme'|trans }}" href="{{ path('app_change_theme', { mode: themeMode }) }}">
                                     {% component button with { circle: true, centered: false, ariaLabel: "common.switch_theme"|trans } %}
@@ -110,6 +110,15 @@
                                         {% endblock %}
                                     {% endcomponent %}
                                 </a>
+                            </div>
+                            <div class="dropdown dropdown-end">
+                                <label tabindex="0" class="btn btn-primary btn-circle text-white">
+                                    {% include "icon/plus.html.twig" %}
+                                </label>
+                                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><a aria-label="{{ "icon.add-circle"|trans }}" href="{{ path("app_stack_create", { typeParam: "language" }) }}">{{ "common.new_stack"|trans }}</a></li>
+                                    <li><a aria-label="{{ "icon.add-circle"|trans }}" href="{{ path("app_tech_choose_type") }}">{{ "common.new_tech"|trans }}</a></li>
+                                </ul>
                             </div>
                             <div class="hidden lg:block">
                                 {% include "common/_locale_switcher.html.twig" only %}

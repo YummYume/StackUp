@@ -8,6 +8,7 @@ use App\Form\StackType;
 use App\Manager\FlashManager;
 use App\Repository\StackRepository;
 use App\Security\Voter\StackVoter;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,10 +29,17 @@ final class StackController extends AbstractController
     }
 
     #[Route('/', name: 'app_stack_index')]
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
+        $pagination = $paginator->paginate(
+            $this->stackRepository->createQueryBuilder('s'),
+            $request->query->getInt('page', 1),
+            10,
+            ['defaultSortFieldName' => 's.createdAt', 'defaultSortDirection' => 'desc']
+        );
+
         return $this->render('stack/index.html.twig', [
-            'stacks' => $this->stackRepository->findRecentlyAddedStacks(50),
+            'pagination' => $pagination,
         ]);
     }
 

@@ -17,7 +17,7 @@
         {{ "page.homepage.main_description"|trans }}
     </p>
     <div class="grid gap-6 lg:grid-cols-2">
-        {% component shortList with { items: trendingTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index") } %}
+        {% component shortList with { items: trendingTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index"), moreText: "common.more_techs"|trans } %}
         {% block header %}
             <div class="flex items-center gap-2">
                 <div class="text-error">
@@ -30,7 +30,7 @@
         {% endblock %}
         {% endcomponent %}
 
-        {% component shortList with { items: recentTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index") } %}
+        {% component shortList with { items: recentTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index"), moreText: "common.more_techs"|trans } %}
         {% block header %}
             <div class="flex items-center gap-2">
                 <div class="text-info">
@@ -56,7 +56,7 @@
         {% endblock %}
         {% endcomponent %}
 
-        {% component shortList with { items: recentStacks, link: path("app_stack_index") } %}
+        {% component shortList with { items: recentStacks, link: path("app_stack_index"), moreText: "common.more_stacks"|trans } %}
         {% block header %}
             <div class="flex items-center gap-2">
                 <div class="text-info">
