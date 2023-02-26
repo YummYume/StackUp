@@ -13,7 +13,7 @@ use Symfony\Component\Uid\Uuid;
 use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: VoteRepository::class)]
-// #[Broadcast]
+#[Broadcast]
 #[UniqueEntity(
     fields: ['profile', 'request'],
     message: 'vote.unique',

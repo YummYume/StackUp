@@ -10,22 +10,16 @@
 
 {% block main_body %}
     <div class="flex items-center justify-center gap-8 text-4xl">
+        {% set vote = app.user ? tech.getProfileVote(app.user.profile) : null %}
+
         <div class="indicator">
-            <span class="indicator-item badge {{ tech.badgeColor }}">{{ ("request.status.#{tech.request.status.value}")|trans }}</span>
+            {% include "tech/_status.html.twig" with { tech } only %}
             {{ component("image", { alt: tech.name, filter: "tech_picture_side", src: vich_uploader_asset(tech.picture, "file"), height: 64, width: 64 }) }}
         </div>
         <h2>
             {{ tech.name }}
         </h2>
-        <div class="flex flex-col justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-            </svg>
-            <div class="badge badge-lg">{{ tech.request.voteCount }}</div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-            </svg>
-        </div>
+        {% include "tech/_vote.html.twig" with { tech, vote } only %}
     </div>
     <div class="text-center text-xl">
         <span class="font-bold">{{ "tech.type"|trans }}</span> : <span>{{ tech.type.name }}</span>

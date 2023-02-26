@@ -1,0 +1,13 @@
+{% include "common/stream/alert.stream.html.twig" only %}
+
+<turbo-stream action="replace" target="tech-{{ tech.slug }}-status">
+    <template>
+        {% include "tech/_status.html.twig" with { tech } only %}
+    </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="tech-{{ tech.slug }}-votes">
+    <template>
+        {% include "tech/_vote.html.twig" with { tech, vote } only %}
+    </template>
+</turbo-stream>

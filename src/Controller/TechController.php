@@ -5,13 +5,17 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Request as RequestEntity;
 use App\Entity\Tech;
+use App\Entity\User;
+use App\Entity\Vote;
 use App\Enum\ColorTypeEnum;
 use App\Enum\TechTypeEnum;
 use App\Form\CategoryType;
 use App\Form\TechType;
 use App\Manager\FlashManager;
+use App\Manager\VoteManager;
 use App\Repository\CategoryRepository;
 use App\Repository\TechRepository;
+use App\Repository\VoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -146,5 +150,68 @@ final class TechController extends AbstractController
         return $this->render('tech/show.html.twig', [
             'tech' => $tech,
         ]);
+    }
+
+    #[Route('/{slug}/vote/{voteType<upvote|downvote>}', name: 'app_tech_vote', methods: ['POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function vote(Request $request, Tech $tech, VoteRepository $voteRepository, string $voteType, VoteManager $voteManager): Response
+    {
+        if ($this->isCsrfTokenValid('vote-'.$tech->getId()->toBase32(), $request->request->get('_token'))) {
+            /** @var User */
+            $user = $this->getUser();
+            $vote = $tech->getProfileVote($user->getProfile());
+            $isUpvote = 'upvote' === $voteType;
+
+            if ($isUpvote) {
+                if (null !== $vote && $vote->isUpvote()) {
+                    $voteRepository->remove($vote, true);
+                    $vote = null;
+                } else {
+                    if (null === $vote) {
+                        $vote = (new Vote())
+                            ->setRequest($tech->getRequest())
+                            ->setProfile($user->getProfile())
+                        ;
+                        $tech->getRequest()->addVote($vote);
+                    }
+
+                    $vote->setUpvote(true);
+                }
+            } else {
+                if (null !== $vote && !$vote->isUpvote()) {
+                    $voteRepository->remove($vote, true);
+                    $vote = null;
+                } else {
+                    if (null === $vote) {
+                        $vote = (new Vote())
+                            ->setRequest($tech->getRequest())
+                            ->setProfile($user->getProfile())
+                        ;
+                        $tech->getRequest()->addVote($vote);
+                    }
+
+                    $vote->setUpvote(false);
+                }
+            }
+
+            $voteManager->handleRequestStatus($tech->getRequest());
+
+            if ($vote) {
+                $voteRepository->save($vote, true);
+            }
+        } else {
+            $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_csrf');
+        }
+
+        if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+            return $this->render('tech/stream/vote.stream.html.twig', [
+                'tech' => $tech,
+                'vote' => $vote,
+            ]);
+        }
+
+        return $this->redirectToRoute('app_tech_show', ['slug' => $tech->getSlug()], Response::HTTP_SEE_OTHER);
     }
 }

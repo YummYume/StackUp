@@ -7,9 +7,8 @@ use Psr\Log\LogLevel;
 
 final class LogManager
 {
-    public function __construct(
-        private readonly LoggerInterface $logger
-    ) {
+    public function __construct(private readonly LoggerInterface $logger)
+    {
     }
 
     public function logException(\Exception $exception, string $level = LogLevel::CRITICAL): void

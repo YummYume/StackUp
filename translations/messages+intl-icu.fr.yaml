@@ -106,23 +106,22 @@ page.homepage.recently_added_stacks: Stacks récemment ajoutées
 ## About Us
 page.about_us.title: À Propos
 page.about_us.description: Tout ce que vous devez savoir sur StackUp, de pourquoi il a été créé à pourquoi vous devriez l'utiliser.
-page.about_us.presentation: Voici le projet de challenge du premier semeste, ici un projet de site de création de sa stack de travail.
+page.about_us.presentation: StackUp est un projet ambitieux visant à créer une plateforme en ligne qui permet aux développeurs web de créer, partager et découvrir des stacks techniques pour leurs projets web. L'objectif principal de ce projet est de faciliter la recherche et la décision pour les développeurs qui cherchent des solutions techniques pour leurs projets.
 
 ## Contact
 page.contact.title: Contact
 page.contact.description: Apprenez comment entrer en contact avec l'équipe StackUp ici.
-page.contact.presentation: Pour nous contacter, veuillez s'il vous plait nous envoyer un mail à contact@stack-up.tech
-
+page.contact.presentation: Pour nous contacter, veuillez s'il vous plait nous envoyer un mail à contact@stack-up.tech.
 
 ## Cookie Policy
 page.cookie_policy.title: Politique de cookies
 page.cookie_policy.description: Préoccupé par votre vie privée et pourquoi nous utilisons des cookies ? Vos réponses ici.
-page.cookie_policy.presentation: Ci-dessous la politique de cookies de StackUp, accessible depuis www.stack-up.tech
+page.cookie_policy.presentation: Ci-dessous la politique de cookies de StackUp, accessible depuis stack-up.tech.
 page.cookie_policy.what_are_cookies.title: Qu'est ce que les cookies
 page.cookie_policy.what_are_cookies.description: Comme c'est la pratique courante avec presque tous les sites Web professionnels, ce site utilise des cookies, qui sont de petits fichiers téléchargés sur votre ordinateur, pour améliorer votre expérience. Cette page décrit les informations qu'ils recueillent, comment nous les utilisons et pourquoi nous avons parfois besoin de stocker ces cookies. Nous partagerons également comment vous pouvez empêcher le stockage de ces cookies, mais cela peut dégrader ou "casser" certains éléments de la fonctionnalité des sites.
 page.cookie_policy.how_we_use_cookies.title: Comment nous utilisons les cookies
 page.cookie_policy.how_we_use_cookies.description: Nous utilisons des cookies pour diverses raisons détaillées ci-dessous. Malheureusement, dans la plupart des cas, il n'existe pas d'options standard de l'industrie pour désactiver les cookies sans désactiver complètement les fonctionnalités et fonctionnalités qu'ils ajoutent à ce site. Il est recommandé de laisser tous les cookies si vous n'êtes pas sûr d'en avoir besoin ou non au cas où ils seraient utilisés pour fournir un service que vous utilisez.
-page.cookie_policy.disabling_cookies.title: désactiver les cookies
+page.cookie_policy.disabling_cookies.title: Désactiver les cookies
 page.cookie_policy.disabling_cookies.description: Vous pouvez empêcher l'installation de cookies en ajustant les paramètres de votre navigateur (voir l'aide de votre navigateur pour savoir comment procéder). Sachez que la désactivation des cookies affectera la fonctionnalité de ce site et de nombreux autres sites Web que vous visitez. La désactivation des cookies entraînera généralement la désactivation de certaines fonctionnalités et caractéristiques de ce site. Par conséquent, il est recommandé de ne pas désactiver les cookies.
 page.cookie_policy.the_cookies_we_set.title: Les cookies que nous utilisons
 page.cookie_policy.the_cookies_we_set.account_related_cookies.title: Cookies liés au compte
@@ -141,7 +140,7 @@ page.cookie_policy.more_information.description: Nous espérons que cela a clari
 page.privacy_policy.title: Politique de confidentialité
 page.privacy_policy.description: Politique de confidentialité officielle de StackUp.
 page.privacy_policy.presentation.title: Politique de confidentialité pour StackUp
-page.privacy_policy.presentation.description1: Chez StackUp, accessible depuis www.stack-up.tech, l'une de nos principales priorités est la confidentialité de nos visiteurs. Ce document de politique de confidentialité contient des types d'informations qui sont collectées et enregistrées par StackUp et comment nous les utilisons.
+page.privacy_policy.presentation.description1: Chez StackUp, accessible depuis stack-up.tech, l'une de nos principales priorités est la confidentialité de nos visiteurs. Ce document de politique de confidentialité contient des types d'informations qui sont collectées et enregistrées par StackUp et comment nous les utilisons.
 page.privacy_policy.presentation.description2: Si vous avez des questions supplémentaires ou souhaitez plus d'informations sur notre politique de confidentialité, n'hésitez pas à nous contacter.
 page.privacy_policy.presentation.description3: Cette politique de confidentialité s'applique uniquement à nos activités en ligne et est valable pour les visiteurs de notre site Web en ce qui concerne les informations qu'ils ont partagées et/ou collectées dans StackUp. Cette politique ne s'applique pas aux informations collectées hors ligne ou via des canaux autres que ce site Web.
 page.privacy_policy.consent.title: Consentement
@@ -193,7 +192,7 @@ page.privacy_policy.children_information.description2: StackUp ne collecte sciem
 page.terms_of_use.title: Conditions d'utilisation
 page.terms_of_use.description: Conditions générales d'utilisation de StackUp.
 page.terms_of_use.version1.title: Version 1.0
-page.terms_of_use.version1.description1: Le site Web StackUp situé à l'adresse www.stack-up.tech est une œuvre protégée par le droit d'auteur appartenant à StackUp. Certaines fonctionnalités du site peuvent être soumises à des directives, conditions ou règles supplémentaires, qui seront publiées sur le site en relation avec ces fonctionnalités.
+page.terms_of_use.version1.description1: Le site Web StackUp situé à l'adresse stack-up.tech est une œuvre protégée par le droit d'auteur appartenant à StackUp. Certaines fonctionnalités du site peuvent être soumises à des directives, conditions ou règles supplémentaires, qui seront publiées sur le site en relation avec ces fonctionnalités.
 page.terms_of_use.version1.description2: Tous ces termes, directives et règles supplémentaires sont incorporés par référence dans les présentes Conditions.
 page.terms_of_use.version1.description3: Ces conditions d'utilisation décrivent les termes et conditions juridiquement contraignants qui régissent votre utilisation du site. EN VOUS CONNECTANT AU SITE, VOUS RECONNAISSEZ CES CONDITIONS et vous déclarez que vous avez l'autorité et la capacité d'accepter ces Conditions. VOUS DEVEZ AVOIR AU MOINS 18 ANS POUR ACCÉDER AU SITE. SI VOUS N'ÊTES PAS D'ACCORD AVEC TOUTES LES DISPOSITIONS DE CES CONDITIONS, NE VOUS CONNECTEZ PAS ET/OU N'UTILISEZ PAS LE SITE.
 page.terms_of_use.version1.description4: Ces conditions exigent le recours à l'arbitrage Section 10.2 sur une base individuelle pour résoudre les litiges et limitent également les recours à votre disposition en cas de litige.
@@ -230,7 +229,7 @@ page.terms_of_use.limitation_on_liability.description1: Dans la mesure maximale 
 page.terms_of_use.limitation_on_liability.description2: Dans la mesure maximale permise par la loi, nonobstant toute disposition contraire contenue dans les présentes, notre responsabilité envers vous pour tout dommage découlant de ou lié à cet accord, sera à tout moment limitée à un maximum de cinquante dollars américains (50 $ US). L'existence de plus d'un sinistre n'augmentera pas cette limite. Vous acceptez que nos fournisseurs n'auront aucune responsabilité de quelque nature que ce soit découlant de ou liée à cet accord.
 page.terms_of_use.limitation_on_liability.description3: Certaines juridictions n'autorisent pas la limitation ou l'exclusion de responsabilité pour les dommages accessoires ou consécutifs, de sorte que la limitation ou l'exclusion ci-dessus peut ne pas s'appliquer à vous.
 page.terms_of_use.term_and_termination.title: Durée et résiliation.
-page.terms_of_use.term_and_termination.description:  Sous réserve de cette section, ces conditions resteront en vigueur et de plein effet pendant que vous utilisez le site. Nous pouvons suspendre ou résilier vos droits d'utilisation du Site à tout moment pour quelque raison que ce soit à notre seule discrétion, y compris pour toute utilisation du Site en violation des présentes Conditions. À la résiliation de vos droits en vertu des présentes conditions, votre compte et votre droit d'accès et d'utilisation du site seront immédiatement résiliés. Vous comprenez que toute résiliation de votre compte peut impliquer la suppression de votre contenu utilisateur associé à votre compte de nos bases de données en direct. La Société n'aura aucune responsabilité envers vous pour toute résiliation de vos droits en vertu des présentes Conditions. Même après la résiliation de vos droits en vertu des présentes Conditions, les dispositions suivantes des présentes Conditions resteront en vigueur, Sections 2 à 2.5, Section 3 et Sections 4 à 10.
+page.terms_of_use.term_and_termination.description: Sous réserve de cette section, ces conditions resteront en vigueur et de plein effet pendant que vous utilisez le site. Nous pouvons suspendre ou résilier vos droits d'utilisation du Site à tout moment pour quelque raison que ce soit à notre seule discrétion, y compris pour toute utilisation du Site en violation des présentes Conditions. À la résiliation de vos droits en vertu des présentes conditions, votre compte et votre droit d'accès et d'utilisation du site seront immédiatement résiliés. Vous comprenez que toute résiliation de votre compte peut impliquer la suppression de votre contenu utilisateur associé à votre compte de nos bases de données en direct. La Société n'aura aucune responsabilité envers vous pour toute résiliation de vos droits en vertu des présentes Conditions. Même après la résiliation de vos droits en vertu des présentes Conditions, les dispositions suivantes des présentes Conditions resteront en vigueur, Sections 2 à 2.5, Section 3 et Sections 4 à 10.
 page.terms_of_use.copyright_policy.title: Politique de droit d'auteur.
 page.terms_of_use.copyright_policy.description1: La Société respecte la propriété intellectuelle d'autrui et demande aux utilisateurs de notre Site de faire de même. Dans le cadre de notre Site, nous avons adopté et mis en œuvre une politique respectant la loi sur le droit d'auteur qui prévoit la suppression de tout matériel contrefait et la résiliation des utilisateurs de notre Site en ligne qui enfreignent à plusieurs reprises les droits de propriété intellectuelle, y compris les droits d'auteur. Si vous pensez que l'un de nos utilisateurs, par l'utilisation de notre site, enfreint illégalement le(s) droit(s) d'auteur sur une œuvre et que vous souhaitez que le matériel prétendument contrefait soit supprimé, les informations suivantes sous la forme d'une notification écrite (conformément à à 17 U.S.C. § 512(c)) doit être fourni à notre agent de droit d'auteur désigné
 page.terms_of_use.copyright_policy.subtab1: votre signature physique ou électronique ;
@@ -280,7 +279,6 @@ page.terms_of_use.entire_terms.title: Termes entiers
 page.terms_of_use.entire_terms.description: Ces conditions constituent l'intégralité de l'accord entre vous et nous concernant l'utilisation du site. Notre incapacité à exercer ou à appliquer tout droit ou disposition des présentes Conditions ne constituera pas une renonciation à ce droit ou à cette disposition. Les titres des sections des présentes Conditions sont fournis à titre indicatif uniquement et n'ont aucun effet légal ou contractuel. Le mot "y compris" signifie "y compris sans s'y limiter". Si une disposition de ces Conditions est jugée invalide ou inapplicable, les autres dispositions de ces Conditions seront intactes et la disposition invalide ou inapplicable sera réputée modifiée de sorte qu'elle soit valide et exécutoire dans la mesure maximale permise par la loi. Votre relation avec la Société est celle d'un entrepreneur indépendant, et aucune des parties n'est un agent ou un partenaire de l'autre. Ces Conditions, et vos droits et obligations aux présentes, ne peuvent être cédés, sous-traités, délégués ou autrement transférés par vous sans le consentement écrit préalable de la Société, et toute tentative de cession, de sous-traitance, de délégation ou de transfert en violation de ce qui précède sera nulle et annuler. La Société peut librement céder ces Conditions. Les termes et conditions énoncés dans les présentes Conditions lieront les cessionnaires.
 page.terms_of_use.copyright.title: Informations sur les droits d'auteur/marques de commerce.
 page.terms_of_use.copyright.description: Droit d'auteur ©. Tous les droits sont réservés. Toutes les marques de commerce, logos et marques de service affichés sur le Site sont notre propriété ou la propriété d'autres tiers. Vous n'êtes pas autorisé à utiliser ces Marques sans notre consentement écrit préalable ou le consentement de ce tiers qui peut être propriétaire des Marques.
-
 
 ## Register
 page.register.title: Créer un compte
@@ -466,6 +464,12 @@ stack: Stack
 stacks: Stacks
 stack.techs: Technologies
 stack.profile: Propriétaire
+
+## Vote
+vote.upvote: Voter pour
+vote.upvote.remove: Supprimer mon vote positif
+vote.downvote: Voter contre
+vote.downvote.remove: Supprimer mon vote négatif
 
 # Components
 ## Deletion prompt modal
