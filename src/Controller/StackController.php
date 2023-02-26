@@ -104,7 +104,6 @@ final class StackController extends AbstractController
     public function edit(Request $request, Stack $stack): Response
     {
         $currentName = $stack->getName();
-
         $form = $this->createForm(StackType::class, $stack)->handleRequest($request);
 
         if ($form->isSubmitted()) {

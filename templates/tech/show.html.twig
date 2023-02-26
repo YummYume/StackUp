@@ -20,18 +20,18 @@
             {{ tech.name }}
         </h2>
         {% include "tech/_vote.html.twig" with { tech, vote } only %}
-        <span>
         {% if is_granted(constant("App\\Security\\Voter\\TechVoter::EDIT"), tech) %}
-            {{ component("button", 
-                { icon: "pencil", 
-                href: path("app_tech_edit", { slug: tech.slug }),
-                ariaLabel: "icon.pencil",
-                variant: "success", 
-                centered: true, 
-                }) 
-            }}
+            <span>
+                {{ component("button",
+                    { icon: "pencil",
+                        href: path("app_tech_edit", { slug: tech.slug }),
+                        ariaLabel: ("icon.pencil")|trans,
+                        variant: "success",
+                        centered: true,
+                    })
+                }}
+            </span>
         {% endif %}
-        </span>
     </div>
     <div class="text-center text-xl">
         <span class="font-bold">{{ "tech.type"|trans }}</span> : <span>{{ tech.type.name }}</span>

@@ -72,6 +72,7 @@ common.author: Author
 # Icons
 icon.eye: Show
 icon.pencil: Edit
+icon.add_circle: Add
 
 # Flashes
 ## Common
@@ -373,10 +374,14 @@ page.create_stack.description: Select the attributes of your new stack.
 
 ## Edit Stack
 page.edit_stack.title: Settings of { name }
+page.edit_stack.see: See stack
 
 ## Delete Stack
 page.stack_delete.title: Delete stack
 page.stack_delete.content: Are you sure you want to delete this stack ?
+
+## Edit Tech
+page.edit_tech.see: See tech
 
 ## Delete Tech
 page.tech_delete.title: Delete tech

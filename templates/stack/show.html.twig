@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block main_body %}
-    <div class="flex flex-row justify-between">
+    <div class="flex md:flex-row flex-col gap-4 justify-between">
         <a href="{{ path('app_profile_show', { slug: stack.profile.slug }) }}">
             <div class="card w-96 bg-secondary text-primary-content">
                 <div class="card-body">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </a>
-        <span>
+        <div class="flex item-center justify-center flex-col">
             {% if is_granted(constant("App\\Security\\Voter\\StackVoter::EDIT"), stack) %}
                 {{ component("button", {
                     centered: true,
@@ -45,7 +45,7 @@
                     variant: "success"
                 }) }}
             {% endif %}
-        </span>
+        </div>
     </div>
     <div class="grid gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
         {% for name, techs in stack.getCategoriesWithTechs %}

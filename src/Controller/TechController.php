@@ -243,6 +243,7 @@ final class TechController extends AbstractController
     #[IsGranted(TechVoter::EDIT, subject: 'tech', statusCode: 403)]
     public function edit(Request $request, Tech $tech): Response
     {
+        $currentName = $tech->getName();
         $form = $this->createForm(TechType::class, $tech, ['can_edit_type' => true])->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -254,7 +255,7 @@ final class TechController extends AbstractController
                 $this->flashManager->flash(ColorTypeEnum::Error->value, 'flash.common.invalid_form');
             }
 
-            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat() && $currentName === $tech->getName()) {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
                 return $this->render('tech/stream/edit.stream.html.twig', [
