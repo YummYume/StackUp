@@ -20,9 +20,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="{% block description %}{{ 'common.description'|trans }}{% endblock %}">
         {% block meta %}{% endblock %}
-        {% block icon %}
-            <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
-        {% endblock %}
         {% block stylesheets %}
             {{ encore_entry_link_tags("app") }}
         {% endblock %}
@@ -94,8 +91,8 @@
                             </div>
                         </div>
                         <div class="navbar-center">
-                            <a href="{{ path("app_homepage") }}">
-                                {{ component('button', { content: 'common.app_name'|trans, class: 'text-xl normal-case' }) }}
+                            <a class="btn btn-primary h-full" href="{{ path("app_homepage") }}">
+                                {% include "icon/logo.html.twig" %}
                             </a>
                         </div>
                         <div class="navbar-end gap-0.5 lg:gap-4">

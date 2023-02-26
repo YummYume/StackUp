@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block main_body %}
-    <div class="flex grow flex-col items-center justify-center">
+    <div class="mx-auto flex max-w-xs grow flex-col items-center justify-center">
         {{ form_start(resetForm) }}
         {{ form_row(resetForm.plainPassword) }}
         {{ component("button", { content: "page.reset_password.reset"|trans, submit: true }) }}
