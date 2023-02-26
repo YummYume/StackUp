@@ -68,6 +68,8 @@ common.stacks: Stacks
 common.delete.cannot_be_undone: This cannot be undone.
 common.go_back: Go back
 common.author: Author
+common.created_at: Created at
+common.updated_at: Updated at
 
 # Icons
 icon.eye: Show
