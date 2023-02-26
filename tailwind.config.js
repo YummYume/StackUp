@@ -8,6 +8,7 @@ module.exports = {
     './src/Components/**/*.php',
     './src/Form/**/*Field.php',
     './src/Builder/**/*.php',
+    './src/Entity/**/*.php',
   ],
   darkMode: 'class',
   theme: {

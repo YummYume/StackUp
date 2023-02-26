@@ -393,4 +393,14 @@ class Tech
 
         return preg_match('/^(https:\/\/)?www\.npmjs\.com\/package\/[a-zA-Z0-9_-]{1,50}$/', $this->links[self::LINK_NPM_OR_YARN]);
     }
+
+    public function getBadgeColor(): string
+    {
+        return match ($this->request->getStatus()) {
+            RequestStatusEnum::Accepted => 'badge-primary',
+            RequestStatusEnum::Pending => '',
+            RequestStatusEnum::Rejected => 'badge-error',
+            default => '',
+        };
+    }
 }
