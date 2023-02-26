@@ -106,17 +106,17 @@ page.homepage.recently_added_stacks: Recently Added Stacks
 ## About Us
 page.about_us.title: About Us
 page.about_us.description: Everything you need to know about StackUp, from why it was created to why you should use it.
-page.about_us.presentation: Here is the challenge project of the first semester, here a site project for creating its project stack.
+page.about_us.presentation: StackUp is an ambitious project to create an online platform that allows web developers to create, share and discover technical stacks for their web projects. The main objective of this project is to facilitate research and decision-making for developers seeking technical solutions for their projects.
 
 ## Contact
 page.contact.title: Contact
 page.contact.description: Learn how to get in touch with the StackUp staff here.
-page.contact.presentation: to contact us, please send us an email at contact@stack_up.tech
+page.contact.presentation: To contact us, please send us an email at contact@stack-up.tech.
 
 ## Cookie Policy
 page.cookie_policy.title: Cookie Policy for StackUp
 page.cookie_policy.description: Concerned about your privacy and why we use cookies? Your answers here.
-page.cookie_policy.presentation: This is the Cookie Policy for StackUp, accessible from www.stack-up.tech
+page.cookie_policy.presentation: This is the Cookie Policy for StackUp, accessible from stack-up.tech.
 page.cookie_policy.what_are_cookies.title: What Are Cookies
 page.cookie_policy.what_are_cookies.description: As is common practice with almost all professional websites this site uses cookies, which are tiny files that are downloaded to your computer, to improve your experience. This page describes what information they gather, how we use it and why we sometimes need to store these cookies. We will also share how you can prevent these cookies from being stored however this may downgrade or 'break' certain elements of the sites functionality.
 page.cookie_policy.how_we_use_cookies.title: How We Use Cookies
@@ -140,7 +140,7 @@ page.cookie_policy.more_information.description: Hopefully that has clarified th
 page.privacy_policy.title: Privacy Policy
 page.privacy_policy.description: StackUp's official privacy policy.
 page.privacy_policy.presentation.title: Privacy Policy for StackUp
-page.privacy_policy.presentation.description1: At StackUp, accessible from www.stack-up.tech, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by StackUp and how we use it.
+page.privacy_policy.presentation.description1: At StackUp, accessible from stack-up.tech, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by StackUp and how we use it.
 page.privacy_policy.presentation.description2: If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
 page.privacy_policy.presentation.description3: This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in StackUp. This policy is not applicable to any information collected offline or via channels other than this website.
 page.privacy_policy.consent.title: Consent
@@ -192,7 +192,7 @@ page.privacy_policy.children_information.description2: StackUp does not knowingl
 page.terms_of_use.title: Terms of Use
 page.terms_of_use.description: General terms of use of StackUp.
 page.terms_of_use.version1.title: Version 1.0
-page.terms_of_use.version1.description1: The StackUp website located at www.stack-up.tech is a copyrighted work belonging to StackUp. Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.
+page.terms_of_use.version1.description1: The StackUp website located at stack-up.tech is a copyrighted work belonging to StackUp. Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.
 page.terms_of_use.version1.description2: All such additional terms, guidelines, and rules are incorporated by reference into these Terms.
 page.terms_of_use.version1.description3: These Terms of Use described the legally binding terms and conditions that oversee your use of the Site. BY LOGGING INTO THE SITE, YOU ARE BEING COMPLIANT THAT THESE TERMS and you represent that you have the authority and capacity to enter into these Terms. YOU SHOULD BE AT LEAST 18 YEARS OF AGE TO ACCESS THE SITE. IF YOU DISAGREE WITH ALL OF THE PROVISION OF THESE TERMS, DO NOT LOG INTO AND/OR USE THE SITE.
 page.terms_of_use.version1.description4: These terms require the use of arbitration Section 10.2 on an individual basis to resolve disputes and also limit the remedies available to you in the event of a dispute.
@@ -229,7 +229,7 @@ page.terms_of_use.limitation_on_liability.description1: To the maximum extent pe
 page.terms_of_use.limitation_on_liability.description2: To the maximum extent permitted by law, notwithstanding anything to the contrary contained herein, our liability to you for any damages arising from or related to this agreement, will at all times be limited to a maximum of fifty U.S. dollars (u.s. $50). The existence of more than one claim will not enlarge this limit.  You agree that our suppliers will have no liability of any kind arising from or relating to this agreement.
 page.terms_of_use.limitation_on_liability.description3: Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages, so the above limitation or exclusion may not apply to you.
 page.terms_of_use.term_and_termination.title: Term and Termination.
-page.terms_of_use.term_and_termination.description:  Subject to this Section, these Terms will remain in full force and effect while you use the Site.  We may suspend or terminate your rights to use the Site at any time for any reason at our sole discretion, including for any use of the Site in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site will terminate immediately.  You understand that any termination of your Account may involve deletion of your User Content associated with your Account from our live databases.  Company will not have any liability whatsoever to you for any termination of your rights under these Terms.  Even after your rights under these Terms are terminated, the following provisions of these Terms will remain in effect Sections 2 through 2.5, Section 3 and Sections 4 through 10.
+page.terms_of_use.term_and_termination.description: Subject to this Section, these Terms will remain in full force and effect while you use the Site.  We may suspend or terminate your rights to use the Site at any time for any reason at our sole discretion, including for any use of the Site in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site will terminate immediately.  You understand that any termination of your Account may involve deletion of your User Content associated with your Account from our live databases.  Company will not have any liability whatsoever to you for any termination of your rights under these Terms.  Even after your rights under these Terms are terminated, the following provisions of these Terms will remain in effect Sections 2 through 2.5, Section 3 and Sections 4 through 10.
 page.terms_of_use.copyright_policy.title: Copyright Policy.
 page.terms_of_use.copyright_policy.description1: Company respects the intellectual property of others and asks that users of our Site do the same.  In connection with our Site, we have adopted and implemented a policy respecting copyright law that provides for the removal of any infringing materials and for the termination of users of our online Site who are repeated infringers of intellectual property rights, including copyrights.  If you believe that one of our users is, through the use of our Site, unlawfully infringing the copyright(s) in a work, and wish to have the allegedly infringing material removed, the following information in the form of a written notification (pursuant to 17 U.S.C. § 512(c)) must be provided to our designated Copyright Agent
 page.terms_of_use.copyright_policy.subtab1: your physical or electronic signature;
