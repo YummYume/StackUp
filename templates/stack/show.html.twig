@@ -37,12 +37,9 @@
         <div class="flex item-center justify-center flex-col">
             {% if is_granted(constant("App\\Security\\Voter\\StackVoter::EDIT"), stack) %}
                 {{ component("button", {
-                    centered: true,
-                    class: "btn-outline",
-                    content: button_label|default("common.edit"|trans),
                     href: path("app_stack_edit", { slug_stack: stack.slug, slug_profile: stack.profile.slug }),
-                    ghost: true,
-                    variant: "success"
+                    icon: 'pencil',
+                    square: true
                 }) }}
             {% endif %}
         </div>

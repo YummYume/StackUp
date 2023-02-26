@@ -29,7 +29,7 @@ final class TechAutocompleteField extends AbstractType
                 $name = $tech->getName();
 
                 if ($tech->isOfficial()) {
-                    $name = sprintf('<span class="text-primary">%s</span>', $name);
+                    $name = sprintf('<span class="validated">%s</span>', $name);
                 }
 
                 return $this->appSearchSanitizer->sanitize($name);

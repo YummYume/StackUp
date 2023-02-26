@@ -21,16 +21,15 @@
         </h2>
         {% include "tech/_vote.html.twig" with { tech, vote } only %}
         {% if is_granted(constant("App\\Security\\Voter\\TechVoter::EDIT"), tech) %}
-            <span>
-                {{ component("button",
-                    { icon: "pencil",
-                        href: path("app_tech_edit", { slug: tech.slug }),
-                        ariaLabel: ("icon.pencil")|trans,
-                        variant: "success",
-                        centered: true,
-                    })
-                }}
-            </span>
+            {{ component("button",
+                {
+                    ariaLabel: ("icon.pencil")|trans,
+                    centered: false,
+                    href: path("app_tech_edit", { slug: tech.slug }),
+                    icon: "pencil",
+                    square: true
+                })
+            }}
         {% endif %}
     </div>
     <div class="text-center text-xl">
