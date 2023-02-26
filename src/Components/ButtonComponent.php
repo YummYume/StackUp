@@ -33,7 +33,7 @@ final class ButtonComponent
 
     public bool $disabled = false;
 
-    public string $target = self::TARGET_SELF;
+    public ?string $target = null;
 
     public bool $externalLink = false;
 
