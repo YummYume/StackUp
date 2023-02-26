@@ -203,7 +203,7 @@ page.create_tech.add_category.no_script: Attention. Soumettre ce formulaire rech
 page.create_stack.title: Créer une stack
 page.create_stack.description: Selectionner les attributs de votre nouvelle stack.
 
-## Edit Stack 
+## Edit Stack
 page.edit_stack.title: Paramètres de { name }
 
 ## Review and publish
@@ -279,15 +279,16 @@ tech.link.pkg: Lien Pkg
 tech.link.pkg.help: 'Ex: https://pkg.go.dev/mon-package'
 tech.link.other: Lien officiel
 tech.link.other.help: Devrait être le site officiel de cette technologie.
+tech.collection: Technologies
+tech.used_by: Utilisé par
+tech.used_by.count: >-
+    { count, plural, =0 {# stack} one {# stack} other {# stacks} }
 
 ## Request
 request.status: Statut
 request.status.pending: En attente
 request.status.accepted: Accepté
 request.status.rejected: Rejeté
-
-## Tech
-tech.collection: Techs
 
 ## Tech picture
 tech_picture.file: Image

@@ -10,17 +10,31 @@
 
 {% block main_body %}
     <div class="flex items-center justify-center gap-8 text-4xl">
-        {{ component("image", { alt: tech.name, filter: "tech_picture_side", src: vich_uploader_asset(tech.picture, "file"), height: 64, width: 64 }) }}
+        <div class="indicator">
+            <span class="indicator-item badge {{ tech.badgeColor }}">{{ ("request.status.#{tech.request.status.value}")|trans }}</span>
+            {{ component("image", { alt: tech.name, filter: "tech_picture_side", src: vich_uploader_asset(tech.picture, "file"), height: 64, width: 64 }) }}
+        </div>
         <h2>
             {{ tech.name }}
         </h2>
-        {% include "icon/star.html.twig" %}
+        <div class="flex flex-col justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+            </svg>
+            <div class="badge badge-lg">{{ tech.request.voteCount }}</div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
     </div>
     <div class="text-center text-xl">
         <span class="font-bold">{{ "tech.type"|trans }}</span> : <span>{{ tech.type.name }}</span>
     </div>
     <div class="text-center text-xl">
         <span class="font-bold">{{ "tech.categories"|trans }}</span> : <span>{{ tech.categories|map(c => c.name)|join(", ", " " ~ ("common.and"|trans) ~ " ") }}</span>
+    </div>
+    <div class="text-center text-xl">
+        <span class="font-bold">{{ "tech.used_by"|trans }}</span> : <span>{{ "tech.used_by.count"|trans({ count: tech.stacks.count }) }}</span>
     </div>
     {% if tech.dependsOn %}
         <div class="text-center text-xl">
@@ -36,20 +50,22 @@
     {% endif %}
     <div class="flex items-center justify-center gap-4">
         {% for icon, link in tech.activeLinks %}
-            {{
-                component(
-                    "button",
-                    {
-                        icon: icon,
-                        href: link,
-                        target: "_blank",
-                        externalLink: true,
-                        circle: true,
-                        centered: false,
-                        ariaLabel: ("tech.link.#{icon}")|trans
-                    }
-                )
-            }}
+            <div class="tooltip" data-tip="{{ ("tech.link.#{icon}")|trans }}">
+                {{
+                    component(
+                        "button",
+                        {
+                            icon: icon,
+                            href: link,
+                            target: "_blank",
+                            externalLink: true,
+                            circle: true,
+                            centered: false,
+                            ariaLabel: ("tech.link.#{icon}")|trans
+                        }
+                    )
+                }}
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
