@@ -116,8 +116,8 @@
                                     {% include "icon/plus.html.twig" %}
                                 </label>
                                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><a aria-label="{{ "icon.add-circle"|trans }}" href="{{ path("app_tech_choose_type") }}">{{ "common.new_stack"|trans }}</a></li>
-                                    <li><a aria-label="{{ "icon.add-circle"|trans }}" href="{{ path("app_tech_create", { typeParam: "language" }) }}">{{ "common.new_tech"|trans }}</a></li>
+                                    <li><a aria-label="{{ "icon.add-circle"|trans }}" href="{{ path("app_stack_create", { typeParam: "language" }) }}">{{ "common.new_stack"|trans }}</a></li>
+                                    <li><a aria-label="{{ "icon.add-circle"|trans }}" href="{{ path("app_tech_choose_type") }}">{{ "common.new_tech"|trans }}</a></li>
                                 </ul>
                             </div>
                             <div class="hidden lg:block">

@@ -44,7 +44,6 @@ common.form.description: Description
 common.form.status: Status
 common.form.type: Type
 common.form.depends_on: Depends on
-
 common.links: Links
 common.link: Link
 common.link.github: Github
@@ -65,6 +64,7 @@ common.more_stacks: More stacks
 common.more_techs: More techs
 common.new_stack: New stack
 common.new_tech: New tech
+common.stacks: Stacks
 
 # Icons
 icon.eye: Show
