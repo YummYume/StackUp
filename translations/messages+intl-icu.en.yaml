@@ -65,6 +65,7 @@ common.more_techs: More techs
 common.new_stack: New stack
 common.new_tech: New tech
 common.stacks: Stacks
+common.author: Author
 
 # Icons
 icon.eye: Show
