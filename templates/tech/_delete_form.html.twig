@@ -1,0 +1,28 @@
+{% component modal
+    with
+    {
+        title: "page.tech_delete.title"|trans,
+        modalId: "delete-tech-modal",
+        openButtonText: "common.remove"|trans,
+        openButtonClass: "btn-error btn-ghost btn-outline",
+        closeButtonText: "common.go_back"|trans,
+        closeButtonClass: "btn-primary"
+    }
+%}
+
+{% block content %}
+    {{ "page.tech_delete.content"|trans }} <strong class="text-error">{{ "common.delete.cannot_be_undone"|trans }}</strong>
+{% endblock %}
+
+{% block modal_action %}
+    {{ parent() }}
+    {{ component("button", { id: "delete-tech", content: "common.remove"|trans, submit: true, variant: "error" }) }}
+{% endblock %}
+
+{% block modal_box %}
+    <form method="post" action="{{ path("app_tech_delete", { slug: tech.slug }) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token("delete-" ~ tech.id.toBase32) }}" />
+        {{ parent() }}
+    </form>
+{% endblock %}
+{% endcomponent %}

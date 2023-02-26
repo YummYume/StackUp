@@ -65,6 +65,8 @@ common.more_techs: More techs
 common.new_stack: New stack
 common.new_tech: New tech
 common.stacks: Stacks
+common.delete.cannot_be_undone: This cannot be undone.
+common.go_back: Go back
 common.author: Author
 
 # Icons
@@ -75,6 +77,9 @@ icon.pencil: Edit
 ## Common
 flash.common.invalid_form: Invalid form. Please try again.
 flash.common.invalid_csrf: Invalid CSRF token. Please try again.
+flash.common.created: Created successfully.
+flash.common.updated: Updated successfully.
+flash.common.deleted: Deleted successfully.
 
 ## Register email
 flash.register.email_sent: Thank you for registering. We sent you an email to verify your account.
@@ -368,6 +373,14 @@ page.create_stack.description: Select the attributes of your new stack.
 
 ## Edit Stack
 page.edit_stack.title: Settings of { name }
+
+## Delete Stack
+page.stack_delete.title: Delete stack
+page.stack_delete.content: Are you sure you want to delete this stack ?
+
+## Delete Tech
+page.tech_delete.title: Delete tech
+page.tech_delete.content: Are you sure you want to delete this tech ?
 
 ## Review and publish
 page.review_and_publish.title: Step 3 - Review and Publish

@@ -65,6 +65,8 @@ common.more_techs: Plus de techs
 common.new_stack: Créer une stack
 common.new_tech: Créer une tech
 common.stacks: Stacks
+common.go_back: Retour en arrière
+common.delete.cannot_be_undone: Cette action est irréversible.
 common.author: Créateur
 
 # Icons
@@ -75,6 +77,9 @@ icon.pencil: Modifier
 ## Common
 flash.common.invalid_form: Formulaire non valide. Veuillez réessayer.
 flash.common.invalid_csrf: jeton CSRF non valide. Veuillez réessayer.
+flash.common.created: Crée avec succès.
+flash.common.updated: Mise à jour avec succès.
+flash.common.deleted: Supprimé avec succès.
 
 ## Register email
 flash.register.email_sent: Merci de vous être enregistré. Nous vous avons envoyé un email pour vérifier votre compte.
@@ -368,6 +373,14 @@ page.create_stack.description: Selectionner les attributs de votre nouvelle stac
 
 ## Edit Stack
 page.edit_stack.title: Paramètres de { name }
+
+## Delete
+page.stack_delete.title: Supprimer la stack
+page.stack_delete.content: Voulez-vous vraiment supprimer cette stack ?
+
+### Delete Tech
+page.tech_delete.title: Supprimer la tech
+page.tech_delete.content: Voulez-vous vraiment supprimer cette tech ?
 
 ## Review and publish
 page.review_and_publish.title: Étape 3 - Réviser et publier
