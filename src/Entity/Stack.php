@@ -138,6 +138,12 @@ class Stack
         return $this->profile;
     }
 
+    #[Groups('searchable')]
+    public function getProfileSlug(): ?string
+    {
+        return $this->profile->getSlug();
+    }
+
     public function setProfile(?Profile $profile): self
     {
         $this->profile = $profile;

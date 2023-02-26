@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Tech;
+use App\Enum\TechTypeEnum;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -39,12 +41,23 @@ final class TechType extends AbstractType
                 'label' => false,
             ])
         ;
+
+        if ($options['can_edit_type']) {
+            $builder->add('type', EnumType::class, [
+                'label' => 'common.form.type',
+                'class' => TechTypeEnum::class,
+                'autocomplete' => true,
+                'required' => true,
+                'choice_label' => static fn (TechTypeEnum $type): string => 'tech.type.'.$type->value,
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Tech::class,
+            'can_edit_type' => false,
         ]);
     }
 }

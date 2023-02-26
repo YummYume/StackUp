@@ -1,22 +1,53 @@
-{# Learn how to use Turbo Streams: https://github.com/symfony/ux-turbo#broadcast-doctrine-entities-update #}
 {% block create %}
-<turbo-stream action="append" target="votes">
-    <template>
-        <div id="{{ 'vote_' ~ id }}">
-            #{{ id }} created
-        </div>
-    </template>
-</turbo-stream>
+    {% set slug = entity.request.tech.slug|default("") %}
+
+    <turbo-stream action="update" target="tech-{{ slug }}-vote-count">
+        <template>
+            {{ entity.request.voteCount|default(0) }}
+        </template>
+    </turbo-stream>
+
+    {% if entity.request.tech|default(false) %}
+        <turbo-stream action="replace" target="tech-{{ slug }}-status">
+            <template>
+                {% include "tech/_status.html.twig" with { tech: entity.request.tech } only %}
+            </template>
+        </turbo-stream>
+    {% endif %}
 {% endblock %}
 
 {% block update %}
-<turbo-stream action="update" target="vote_{{ id }}">
-    <template>
-        #{{ id }} updated
-    </template>
-</turbo-stream>
+    {% set slug = entity.request.tech.slug|default("") %}
+
+    <turbo-stream action="update" target="tech-{{ slug }}-vote-count">
+        <template>
+            {{ entity.request.voteCount|default(0) }}
+        </template>
+    </turbo-stream>
+
+    {% if entity.request.tech|default(false) %}
+        <turbo-stream action="replace" target="tech-{{ slug }}-status">
+            <template>
+                {% include "tech/_status.html.twig" with { tech: entity.request.tech } only %}
+            </template>
+        </turbo-stream>
+    {% endif %}
 {% endblock %}
 
 {% block remove %}
-<turbo-stream action="remove" target="vote_{{ id }}"></turbo-stream>
+    {% set slug = entity.request.tech.slug|default("") %}
+
+    <turbo-stream action="update" target="tech-{{ slug }}-vote-count">
+        <template>
+            {{ entity.request.voteCount|default(0) }}
+        </template>
+    </turbo-stream>
+
+    {% if entity.request.tech|default(false) %}
+        <turbo-stream action="replace" target="tech-{{ slug }}-status">
+            <template>
+                {% include "tech/_status.html.twig" with { tech: entity.request.tech } only %}
+            </template>
+        </turbo-stream>
+    {% endif %}
 {% endblock %}

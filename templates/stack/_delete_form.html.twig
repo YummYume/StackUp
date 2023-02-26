@@ -17,7 +17,7 @@
 
 {% block modal_action %}
     {{ parent() }}
-    {{ component("button", { id: "delete-stack", content: "common.remove"|trans, submit: true, variant: "error" }) }}
+    {{ component("button", { id: "delete-stack", content: "common.delete"|trans, submit: true, variant: "error" }) }}
 {% endblock %}
 
 {% block modal_box %}

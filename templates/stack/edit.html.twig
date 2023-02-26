@@ -1,19 +1,19 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.title")|trans({ name: stack.name }) }}
+    {{ ("page." ~ (isEditing ? "edit" : "create") ~ "_stack.title")|trans({ name: stack.name }) }}
 {% endblock %}
 
 {% block description %}
-    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.description")|trans }}
+    {{ ("page." ~ (isEditing ? "edit" : "create") ~ "_stack.description")|trans }}
 {% endblock %}
 
 {% block main_title %}
-    {{ ("page."~(isEditing ? 'edit' : 'create')~"_stack.title")|trans({ name: stack.name }) }}
+    {{ ("page." ~ (isEditing ? "edit" : "create") ~ "_stack.title")|trans({ name: stack.name }) }}
 {% endblock %}
 
 {% block main_body %}
-  <div id="stack-app-form" class="mx-auto flex max-w-4xl flex-col gap-4">
-    {% include "stack/_edit_content.html.twig" %}
-  </div>
+    <div id="stack-app-form" class="mx-auto flex max-w-4xl flex-col gap-4">
+        {% include "stack/_edit_content.html.twig" %}
+    </div>
 {% endblock %}
