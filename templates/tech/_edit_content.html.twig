@@ -3,7 +3,9 @@
 <div class="flex w-full items-center justify-center gap-6">
     <div class="btn-group" role="group">
         {{ component("button", { content: "common.back_to_list"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("app_tech_index") }) }}
-        {{ component("button", { content: "page.edit_tech.see"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("app_tech_show", { slug: tech.slug }) }) }}
+        {% if isEditing %}
+            {{ component("button", { content: "page.edit_tech.see"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("app_tech_show", { slug: tech.slug }) }) }}
+        {% endif %}
     </div>
 </div>
 
