@@ -13,5 +13,5 @@ when@prod:
         handlers:
             sentry:
                 type: sentry
-                level: !php/const Monolog\Logger::ERROR
+                level: !php/const Monolog\Logger::CRITICAL
                 hub_id: Sentry\State\HubInterface

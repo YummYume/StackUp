@@ -7,7 +7,7 @@
         {% if form %}form="{{ form }}"{% endif %}
     {% else %}
         href="{{ href }}"
-        target="{{ target }}"
+        {% if target %}target="{{ target }}"{% endif %}
         {% if externalLink %}
             rel="external noopener noreferrer"
         {% endif %}
