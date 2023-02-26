@@ -37,6 +37,7 @@ common.previous_step: Previous step
 common.add: Add
 common.remove: Remove
 common.edit: Edit
+common.made_by: Made by
 common.back_to_list: Return to list
 common.form.name: Name
 common.form.description: Description

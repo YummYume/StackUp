@@ -37,6 +37,7 @@ common.previous_step: Étape précédente
 common.add: Ajouter
 common.remove: Supprimer
 common.edit: Modifier
+common.made_by: Fait par
 common.back_to_list: Retour à la liste
 common.form.name: Nom
 common.form.description: Description

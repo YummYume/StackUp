@@ -13,6 +13,33 @@
 {% endblock %}
 
 {% block main_body %}
+    
+    <div class="flex flex-row justify-between">
+        <div class="card w-96 bg-secondary text-primary-content">
+            <a href="{{ path('app_profile_show', { slug: stack.profile.slug }) }}">
+                <div class="card-body">
+                    <h2 class="card-title">{{ "common.made_by"|trans }} :</h2>
+                    <figure class="min-w-[12.5rem] max-h-[5.5rem]">
+                        {{ component("avatar", { user: stack.profile.user, small: false, class: "mask mask-squircle md:mask-square" }) }}
+                    </figure>
+                    <span class="text-center">{{ stack.profile.username }}</span>
+                </div>
+            </a>
+        </div>
+        <span>
+        {% if is_granted(constant("App\\Security\\Voter\\StackVoter::EDIT"), stack) %}
+            {{ component("button", 
+                { content: button_label|default("common.edit"|trans), 
+                class: "btn-outline", 
+                href: path("app_stack_edit", { slug_stack: stack.slug, slug_profile: stack.profile.slug }),
+                variant: "success", 
+                centered: true, 
+                ghost: true 
+                }) 
+            }}
+        {% endif %}
+        </span>
+    </div>
     <div class="grid gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
         {% for name, techs in stack.getCategoriesWithTechs %}
             {{ component('categoryCard', { name, techs }) }}

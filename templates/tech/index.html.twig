@@ -14,6 +14,18 @@
 
 {% block main_body %}
 <turbo-frame id="table_crud" data-turbo-action="advance">
+    <span class="flex justify-end mb-3">
+        {{ component(
+            "button",
+            {
+                icon: "add-circle",
+                square: true,
+                href: path("app_tech_create", { typeParam: "language" }),
+                ariaLabel: ("icon.add-circle")|trans,
+                centered: false
+            })
+        }}
+    </span>
     <div class="card bg-base-100">
         <span class="m-3">
             {{ knp_pagination_sortable(pagination, 
@@ -32,7 +44,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center mt-3">
         {{ knp_pagination_render(pagination, 'knp_custom/paginator.html.twig') }}
     </div>
 </turbo-frame>
