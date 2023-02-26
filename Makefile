@@ -255,8 +255,8 @@ deploy:
 	$(COMPOSEPROD) build --no-cache --force-rm
 	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console d:m:m -n --allow-no-migration --all-or-nothing
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php yarn build
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php yarn cache clean
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console cache:clear
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console cache:warmup
-	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php yarn cache clean
-	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php yarn build
 	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php composer dump-env prod
