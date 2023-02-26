@@ -30,7 +30,7 @@ final class CategoriesAutocompleteField extends AbstractType
                 $name = $category->getName();
 
                 if ($category->isOfficial()) {
-                    $name = sprintf('<span class="text-primary">%s</span>', $name);
+                    $name = sprintf('<span class="validated">%s</span>', $name);
                 }
 
                 return $this->appSearchSanitizer->sanitize($name);
