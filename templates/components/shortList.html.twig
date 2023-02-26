@@ -6,7 +6,7 @@
             {% endblock %}
         </div>
         {% if link is not null %}
-            <a class="flex items-center gap-3 text-secondary" href="{{ link }}"><span>{{ "common.more"|trans }}</span>{% include "icon/chevron_right.html.twig" %}</a>
+            <a class="flex items-center gap-3 hover:gap-6 text-secondary mr-2 hover:mr-0 transition-all" href="{{ link }}"><span>{{ moreText }}</span>{% include "icon/arrow-right.html.twig" %}</a>
         {% endif %}
     </div>
     <div class="card-body">

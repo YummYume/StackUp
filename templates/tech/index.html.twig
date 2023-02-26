@@ -13,39 +13,19 @@
 {% endblock %}
 
 {% block main_body %}
-<turbo-frame id="table_crud" data-turbo-action="advance">
-    <span class="flex justify-end mb-3">
-        {{ component(
-            "button",
-            {
-                icon: "add-circle",
-                square: true,
-                href: path("app_tech_create", { typeParam: "language" }),
-                ariaLabel: ("icon.add-circle")|trans,
-                centered: false
-            })
-        }}
-    </span>
-    <div class="card bg-base-100">
-        <span class="m-3">
-            {{ knp_pagination_sortable(pagination, 
-                'common.created_at'|trans, 
-                't.createdAt', 
-                {},
-                {},
-                'knp_custom/paginator_sortable.html.twig') 
-            }}
-        </span>
-        <div class="card-body">
-            {% for tech in pagination %}
-                {{ component("listItem", { item: tech }) }}
-            {% else %}
-                {{ "common.no_result"|trans }}
-            {% endfor %}
+    <turbo-frame id="table_crud" data-turbo-action="advance">
+        <div class="card bg-base-100">
+            <span class="m-3">{{ knp_pagination_sortable(pagination, "common.created_at"|trans, "t.createdAt", {}, {}, "knp_custom/paginator_sortable.html.twig") }}</span>
+            <div class="card-body">
+                {% for tech in pagination %}
+                    {{ component("listItem", { item: tech }) }}
+                {% else %}
+                    {{ "common.no_result"|trans }}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    <div class="flex items-center justify-center mt-3">
-        {{ knp_pagination_render(pagination, 'knp_custom/paginator.html.twig') }}
-    </div>
-</turbo-frame>
+        <div class="mt-3 flex items-center justify-center">
+            {{ knp_pagination_render(pagination, "knp_custom/paginator.html.twig") }}
+        </div>
+    </turbo-frame>
 {% endblock %}

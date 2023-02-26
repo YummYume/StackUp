@@ -61,6 +61,10 @@ common.link.pkg: Pkg
 common.link.pkg.help: https://pkg.go.dev/(name ou github.com/user/name)
 common.link.other: Other
 common.link.other.help: https://www.exemple.com/
+common.more_stacks: Plus de stacks
+common.more_techs: Plus de techs
+common.new_stack: Créer une stack
+common.new_tech: Créer une tech
 
 # Icons
 icon.eye: Afficher
