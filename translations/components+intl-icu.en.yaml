@@ -2,6 +2,10 @@
 global_search.search: Search
 global_search.type_to_search: Type anything to start searching.
 global_search.search_username: For example, try to type in { username }...
+global_search.techs: Techs
+global_search.techs.more: Search more techs
+global_search.stacks: Stacks
+global_search.stacks.more: Search more stacks
 global_search.profiles: Profiles
 global_search.profiles.more: Search more profiles
 global_search.total_search_time: 'Search time : { time } ms'

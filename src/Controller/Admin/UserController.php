@@ -18,6 +18,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\UX\Turbo\TurboBundle;
 
+#[Route('/users')]
 final class UserController extends AbstractController
 {
     public function __construct(
@@ -27,7 +28,7 @@ final class UserController extends AbstractController
     ) {
     }
 
-    #[Route('/users', name: 'admin_user', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'admin_user', methods: ['GET', 'POST'])]
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(

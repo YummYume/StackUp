@@ -1,0 +1,10 @@
+{% trans_default_domain "admin" %}
+
+{% include "admin/_{ @name }_/_form.html.twig" with { form, button_label: "common.edit"|trans } only %}
+
+<div class="flex w-full items-center justify-center gap-6">
+    {{ component("button", { content: "common.back_to_list"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("admin__{ @name }_") }) }}
+    {% if is_granted(constant("App\\Security\\Voter\\UserVoter::DELETE"), _{ @name }_) %}
+        {% include "admin/_{ @name }_/_delete_form.html.twig" with { _{ @name }_ } only %}
+    {% endif %}
+</div>

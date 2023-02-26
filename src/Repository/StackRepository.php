@@ -48,4 +48,20 @@ final class StackRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findBySlugProfile(string $slugProfile, string $slugStack): ?Stack
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.profile', 'p')
+            ->setParameters([
+                'slugStack' => $slugStack,
+                'slugProfile' => $slugProfile,
+            ])
+            ->where('s.slug = :slugStack')
+            ->andWhere('p.slug = :slugProfile')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

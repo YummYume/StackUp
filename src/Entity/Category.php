@@ -34,7 +34,7 @@ class Category
     private ?Uuid $id = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\Regex(pattern: '/^[A-zÀ-ú\d ]{2,50}$/', message: 'category.name.invalid')]
+    #[Assert\Regex(pattern: '/^[A-zÀ-ú ]{2,30}$/', message: 'category.name.invalid')]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Tech::class, mappedBy: 'categories')]

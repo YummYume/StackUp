@@ -1,0 +1,137 @@
+{% extends "admin/layout.html.twig" %}
+
+{% trans_default_domain "admin" %}
+
+{% block title %}
+    {{ "page.tech_show.title"|trans({ name: tech.name }) }}
+{% endblock %}
+
+{% block description %}
+    {{ "page.tech_show.description"|trans({ name: tech.name }) }}
+{% endblock %}
+
+{% block main_title %}
+    {{ "page.tech_show.title"|trans({ name: tech.name }) }}
+{% endblock %}
+
+{% block main_body %}
+    <div class="w-full overflow-x-auto">
+        <table class="table-zebra table w-full">
+            <tbody>
+                <tr>
+                    <th>
+                        {{ "common.id"|trans }}
+                    </th>
+                    <td>
+                        {{ tech.id }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.name"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ tech.name }}
+                    </td>
+                </tr>
+                 <tr>
+                    <th>
+                        {{ "common.description"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ tech.description }}
+                    </td>
+                </tr>
+                 <tr>
+                    <th>
+                        {{ "common.type"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ tech.type.value }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "tech.collection"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ tech.categories ? tech.categories|map(category => category.name)|join(", ") }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.official.female"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {% if tech.isOfficial() %}
+                            {% include "icon/success.html.twig" %}
+                        {% else %}
+                            {% include "icon/x-mark-circle.html.twig" %}
+                        {% endif %}
+                    </td>
+                </tr>
+                  <tr>
+                    <th>
+                        {{ "common.status"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ tech.request.status.value }}
+                    </td>
+                </tr>
+                {% for key, link in tech.links %}
+                    {% if link %}
+                        <tr>
+                            <th>{{ key|title }}</th>
+                            <td>{{ link }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                <tr>
+                    <th>
+                        {{ "common.created_at"|trans }}
+                    </th>
+                    <td>
+                        {{ tech.createdAt ? tech.createdAt|format_datetime : "" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.updated_at"|trans }}
+                    </th>
+                    <td>
+                        {{ tech.updatedAt ? tech.updatedAt|format_datetime : "" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.created_by"|trans }}
+                    </th>
+                    <td>
+                        {% if tech.createdBy %}
+                            <a class="link link-primary link-hover" href="{{ path("admin_user_show", { id: tech.createdBy.id.toBase32 }) }}">
+                                {{ tech.createdBy.profile.username }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.updated_by"|trans }}
+                    </th>
+                    <td>
+                        {% if tech.updatedBy %}
+                            <a class="link link-primary link-hover" href="{{ path("admin_user_show", { id: tech.updatedBy.id.toBase32 }) }}">
+                                {{ tech.updatedBy.profile.username }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="btn-group items-center justify-center">
+        {{ component("button", { button: false, content: "common.back_to_list"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("admin_tech") }) }}
+        {{ component("button", { button: false, content: "common.edit"|trans, class: "btn-outline", variant: "success", centered: false, ghost: true, href: path("admin_tech_edit", { id: tech.id.toBase32 }) }) }}
+    </div>
+{% endblock %}

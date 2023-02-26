@@ -217,9 +217,45 @@ dahl-component:
 		-n="$(call lowercase, $(n))" \
 		--props '{"twigLocation":"$(l)","twigName":"$(n)"}'
 
+# n for name
+dahl-admin:
+	$(DAHL) run a-controller \
+		-n="$(call capitalize, $(n))" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-template \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	make perm
+
+dahl-admin-form:
+	$(DAHL) run a-form-edit \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-form-content \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-form-delete \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	$(DAHL) run a-form \
+		--to="./templates/admin/$(n)" \
+		--props '{"name":"$(n)"}' \
+
+	make perm
+
 # Deploy
 deploy:
 	git fetch origin master
 	git reset --hard origin/master
 	$(COMPOSEPROD) build --no-cache --force-rm
 	$(COMPOSEPROD) up -d --remove-orphans --force-recreate
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console d:m:m -n --allow-no-migration --all-or-nothing
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console cache:clear
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php php bin/console cache:warmup
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php yarn cache clean && yarn build
+	$(COMPOSEPROD) exec -e APP_ENV=prod -e APP_DEBUG=0 php composer dump-env prod

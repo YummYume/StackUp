@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Controller\Admin;
+
+use App\Entity\_{ filename }_;
+use App\Manager\FlashManager;
+use App\Repository\_{ filename }_Repository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+
+#[Route('/_{ @name }_s')]
+final class _{ filename }__{ suffix }_ extends AbstractController
+{
+    public function __construct(
+        private readonly FlashManager $flashManager,
+        private readonly _{ filename }_Repository $_{ @name }_Repository,
+        private readonly CsrfTokenManagerInterface $csrfTokenManager
+    ) {
+    }
+
+    #[Route('/', name: 'admin__{ @name }_', methods: ['GET', 'POST'])]
+    public function index(PaginatorInterface $paginator, Request $request): Response
+    {
+        $pagination = $paginator->paginate(
+            $this->_{ @name }_Repository->createQueryBuilder('s'),
+            $request->query->getInt('page', 1),
+            5
+        );
+
+        $config = [
+            'cols' => [
+                ...
+                'actions' => [
+                  'info' => [
+                      'route' => 'admin__{ @name }__show',
+                      'routeParams' => [
+                          'id' => static fn (_{ filename }_ $_{ @name }_): string => $_{ @name }_->getId()->toBase32(),
+                      ],
+                      'icon' => 'eye',
+                  ],
+                  'accent' => [
+                      'route' => 'admin__{ @name }__edit',
+                      'routeParams' => [
+                          'id' => static fn (_{ filename }_ $_{ @name }_): string => $_{ @name }_->getId()->toBase32(),
+                      ],
+                      'icon' => 'pencil',
+                  ],
+              ],
+            ],
+            'pagination' => $pagination,
+        ];
+
+        return $this->render('admin/_{ @name }_/index.html.twig', ['config' => $config]);
+    }
+
+    #[Route('/{id}', name: 'admin__{ @name }__show', methods: ['GET'])]
+    public function show(_{ filename }_ $_{ @name }_): Response
+    {
+        return $this->render('admin/_{ @name }_/show.html.twig', [
+            '_{ @name }_' => $_{ @name }_,
+        ]);
+    }
+}

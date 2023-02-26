@@ -1,19 +1,21 @@
-<div class="flex h-12 items-center gap-8 rounded-full py-3 px-6 hover:bg-base-200">
-    <div class="flex gap-4 font-medium" aria-label="{{ "common.position"|trans({ position: index }) }}">
-        {% include "icon/star.html.twig" %}
-        <span>{{ index }}</span>
-    </div>
-    <span class="flex h-full items-center gap-2 font-semibold">
-        {% if picture and itemFileProperty %}
-            {% set src = vich_uploader_asset(picture, itemFileProperty) %}
+<a {{ route is not null ? "href=#{path(route, {}|merge(slug))}"}}>
+    <div class="flex h-12 items-center gap-8 rounded-full py-3 px-6 hover:bg-base-200">
+        <div class="flex gap-4 font-medium" aria-label="{{ "common.position"|trans({ position: index }) }}">
+            {% include "icon/star.html.twig" %}
+            <span>{{ index }}</span>
+        </div>
+        <span class="flex h-full items-center gap-2 font-semibold">
+            {% if picture and itemFileProperty %}
+                {% set src = vich_uploader_asset(picture, itemFileProperty) %}
 
-            <div class="avatar h-full">
-                <div class="h-full">
-                    {{ component("image", { src: src ?? asset(no_picture_fallback), class: "mask mask-squircle", filter: "short_list", alt: name, width: 24, height: 24 }) }}
+                <div class="avatar h-full">
+                    <div class="h-full">
+                        {{ component("image", { src: src ?? asset(no_picture_fallback), class: "rounded-full", filter: "short_list", alt: name, width: 24, height: 24 }) }}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
 
-        {{ name }}
-    </span>
-</div>
+            {{ name }}
+        </span>
+    </div>
+</a>

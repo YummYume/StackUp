@@ -1,0 +1,101 @@
+{% extends "admin/layout.html.twig" %}
+
+{% trans_default_domain "admin" %}
+
+{% block title %}
+    {{ "page.stack_show.title"|trans({ name: stack.name }) }}
+{% endblock %}
+
+{% block description %}
+    {{ "page.stack_show.description"|trans({ name: stack.name }) }}
+{% endblock %}
+
+{% block main_title %}
+    {{ "page.stack_show.title"|trans({ name: stack.name }) }}
+{% endblock %}
+
+{% block main_body %}
+    <div class="w-full overflow-x-auto">
+        <table class="table-zebra table w-full">
+            <tbody>
+                <tr>
+                    <th>
+                        {{ "common.id"|trans }}
+                    </th>
+                    <td>
+                        {{ stack.id }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.name"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ stack.name }}
+                    </td>
+                </tr>
+                 <tr>
+                    <th>
+                        {{ "common.description"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ stack.description }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "tech.collection"|trans({}, "tables") }}
+                    </th>
+                    <td>
+                        {{ stack.techs ? stack.techs|map(tech => tech.name)|join(", ") }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.created_at"|trans }}
+                    </th>
+                    <td>
+                        {{ stack.createdAt ? stack.createdAt|format_datetime : "" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.updated_at"|trans }}
+                    </th>
+                    <td>
+                        {{ stack.updatedAt ? stack.updatedAt|format_datetime : "" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.created_by"|trans }}
+                    </th>
+                    <td>
+                        {% if stack.createdBy %}
+                            <a class="link link-primary link-hover" href="{{ path("admin_user_show", { id: stack.createdBy.id.toBase32 }) }}">
+                                {{ stack.createdBy.profile.username }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ "common.updated_by"|trans }}
+                    </th>
+                    <td>
+                        {% if stack.updatedBy %}
+                            <a class="link link-primary link-hover" href="{{ path("admin_user_show", { id: stack.updatedBy.id.toBase32 }) }}">
+                                {{ stack.updatedBy.profile.username }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="btn-group items-center justify-center">
+        {{ component("button", { button: false, content: "common.back_to_list"|trans, class: "btn-outline", variant: "info", centered: false, ghost: true, href: path("admin_stack") }) }}
+        {{ component("button", { button: false, content: "common.edit"|trans, class: "btn-outline", variant: "success", centered: false, ghost: true, href: path("admin_stack_edit", { id: stack.id.toBase32 }) }) }}
+    </div>
+{% endblock %}

@@ -1,4 +1,4 @@
-## Common
+# Common
 common.app_name: StackUp
 common.description: Bienvenue sur StackUp !
 common.login: Connexion
@@ -30,53 +30,91 @@ common.no_script_message: Il semble que Javascript ne soit pas activé dans votr
 common.more: Plus
 common.position: Position { position }
 common.no_result: Aucun résultat trouvé.
+common.back: Retour en arrière
+common.and: et
+common.next_step: Étape suivante
+common.previous_step: Étape précédente
+common.add: Ajouter
+common.remove: Supprimer
+common.edit: Modifier
+common.back_to_list: Retour à la liste
+common.form.name: Nom
+common.form.description: Description
+common.form.status: Status
+common.form.type: Type
+common.form.depends_on: Dépend de
+
+common.links: Liens
+common.link: Lien
+common.link.github: Github
+common.link.github.help: https://github.com/user/repo
+common.link.gitlab: Gitlab
+common.link.gitlab.help: https://gitlab.com/user/repo
+common.link.npm_or_yarn: NPM or Yarn
+common.link.npm_or_yarn.help: https://(www.npmjs.com ou yarnpkg.com)/package/name
+common.link.packagist: Packagist
+common.link.packagist.help: https://packagist.org/packages/user/name
+common.link.crates: Crates
+common.link.crates.help: https://crates.io/crates/name
+common.link.pkg: Pkg
+common.link.pkg.help: https://pkg.go.dev/(name ou github.com/user/name)
+common.link.other: Other
+common.link.other.help: https://www.exemple.com/
 
 # Icons
 icon.eye: Afficher
 icon.pencil: Modifier
 
-## Flashes
-# Common
+# Flashes
+## Common
 flash.common.invalid_form: Formulaire non valide. Veuillez réessayer.
 flash.common.invalid_csrf: jeton CSRF non valide. Veuillez réessayer.
 
-# Register email
+## Register email
 flash.register.email_sent: Merci de vous être enregistré. Nous vous avons envoyé un email pour vérifier votre compte.
 flash.register.link_expired: Ce lien a expiré. Un nouveau est en route vers votre adresse email !
 flash.register.email_verified: Compte vérifié. Vous pouvez maintenant vous connecter en toute sécurité.
 
-# Reset password
+## Reset password
 flash.reset_password.updated: Mot de passe mis à jour avec succès.
 
-# Delete profile
+## Delete profile
 flash.update_profile.account_updated: Compte mis à jour.
 flash.update_profile.profile_updated: Profil mis à jour.
 flash.delete_profile.invalid_prompt: Entrée non valide. Veuillez réessayer.
 flash.delete_profile.success: Compte supprimé. Vous devriez recevoir un email sous peu pour confirmer la suppression.
 
-## Pages
-# Homepage
+## Tech
+flash.tech.saved: Technologie sauvegardée.
+flash.tech.published: Technologie publiée.
+flash.tech.invalid_form: Oups... Cette technologie semble contenir des données invalides. Veuillez les corriger afin de publier cette technologie.
+
+# Category
+flash.create_category.success: La catégorie "{ name }" a été ajoutée avec succès.
+
+# Pages
+## Homepage
 page.homepage.title: StackUp
 page.homepage.description: Bienvenue sur Stack Up. Ici, vous pouvez créer votre pile idéale en un rien de temps. Vous ne trouvez pas la technologie que vous recherchez ? Vous pouvez ajouter le vôtre !
 page.homepage.main_title: Créez votre stack idéale
-page.homepage.main_description: Créer une stack n'est souvent pas facile. Vous ne savez pas quoi choisir ou si vous vous en tiendrez à une certaine technologie. Avec StackUp, vous pouvez créer vos piles facilement et démarrer votre nouveau projet sans soucis.
+page.homepage.main_description: Créer une stack n'est souvent pas facile. Vous ne savez pas quoi choisir ou si vous vous en tiendrez à une certaine technologie. Avec StackUp, vous pouvez créer vos stacks facilement et démarrer votre nouveau projet sans soucis.
 page.homepage.trending_techs: Technologies tendance
 page.homepage.recently_added_techs: Technologies récemment ajoutées
 page.homepage.trending_categories: Catégories tendance
 page.homepage.recently_added_stacks: Stacks récemment ajoutées
 
-# About Us
+## About Us
 page.about_us.title: À Propos
 page.about_us.description: Tout ce que vous devez savoir sur StackUp, de pourquoi il a été créé à pourquoi vous devriez l'utiliser.
 page.about_us.presentation: Voici le projet de challenge du premier semeste, ici un projet de site de création de sa stack de travail.
 
-# Contact
+## Contact
 page.contact.title: Contact
 page.contact.description: Apprenez comment entrer en contact avec l'équipe StackUp ici.
 page.contact.presentation: Pour nous contacter, veuillez s'il vous plait nous envoyer un mail à contact@stack-up.tech
 
 
-# Cookie Policy
+## Cookie Policy
 page.cookie_policy.title: Politique de cookies
 page.cookie_policy.description: Préoccupé par votre vie privée et pourquoi nous utilisons des cookies ? Vos réponses ici.
 page.cookie_policy.presentation: Ci-dessous la politique de cookies de StackUp, accessible depuis www.stack-up.tech
@@ -99,7 +137,7 @@ page.cookie_policy.third_party_cookies.social_media.description: Nous utilisons 
 page.cookie_policy.more_information.title: Plus d'informations
 page.cookie_policy.more_information.description: Nous espérons que cela a clarifié les choses pour vous et, comme mentionné précédemment, s'il y a quelque chose dont vous n'êtes pas sûr d'avoir besoin ou non, il est généralement plus sûr de laisser les cookies activés au cas où ils interagissent avec l'une des fonctionnalités que vous utilisez sur notre site.
 
-# Privacy Policy
+## Privacy Policy
 page.privacy_policy.title: Politique de confidentialité
 page.privacy_policy.description: Politique de confidentialité officielle de StackUp.
 page.privacy_policy.presentation.title: Politique de confidentialité pour StackUp
@@ -151,7 +189,7 @@ page.privacy_policy.children_information.title: Informations sur les enfants
 page.privacy_policy.children_information.description1: Une autre partie de notre priorité est d'ajouter une protection pour les enfants lors de l'utilisation d'Internet. Nous encourageons les parents et les tuteurs à observer, participer et/ou surveiller et guider leur activité en ligne.
 page.privacy_policy.children_information.description2: StackUp ne collecte sciemment aucune information personnelle identifiable d'enfants de moins de 13 ans. Si vous pensez que votre enfant a fourni ce type d'informations sur notre site Web, nous vous encourageons fortement à nous contacter immédiatement et nous ferons de notre mieux pour supprimer rapidement ces informations de nos dossiers.
 
-# Terms of Use
+## Terms of Use
 page.terms_of_use.title: Conditions d'utilisation
 page.terms_of_use.description: Conditions générales d'utilisation de StackUp.
 page.terms_of_use.version1.title: Version 1.0
@@ -244,19 +282,19 @@ page.terms_of_use.copyright.title: Informations sur les droits d'auteur/marques 
 page.terms_of_use.copyright.description: Droit d'auteur ©. Tous les droits sont réservés. Toutes les marques de commerce, logos et marques de service affichés sur le Site sont notre propriété ou la propriété d'autres tiers. Vous n'êtes pas autorisé à utiliser ces Marques sans notre consentement écrit préalable ou le consentement de ce tiers qui peut être propriétaire des Marques.
 
 
-# Register
+## Register
 page.register.title: Créer un compte
 page.register.description: Enregistrez un compte pour accéder à toutes les fonctionnalités de StackUp.
 page.register.agree_terms: J'accepte les conditions d'utilisation
 
-# Login
+## Login
 page.login.title: Connexion
 page.login.description: Connectez-vous avec votre compte à StackUp.
 page.login.forgot_password: Mot de passe oublié ?
 page.login.remember_me: Se souvenir de moi
 page.login.no_account: Pas encore de compte ? Cliquez ici pour vous enregistrer.
 
-# Edit profile
+## Edit profile
 page.edit_profile.title: Paramètres du compte
 page.edit_profile.description: Mettez à jour les informations de votre compte et de votre profil ici.
 page.edit_profile.user: Mon compte
@@ -271,12 +309,12 @@ page.edit_profile.delete_account_back: J'ai changé d'avis
 page.edit_profile.delete_account_confirm: Supprimer mon compte
 page.edit_profile.deletion_prompt: Je comprends les conséquences et je souhaite supprimer mon compte.
 
-# Show Profile
+## Show Profile
 page.show_profile.title: Profil de {username}
 page.show_profile.description: Le profil de {username} sur StackUp.
 page.show_profile.github_link: Profil GitHub de { username }
 
-# Check email
+## Check email
 page.check_email.title: Réinitialiser mon mot de passe
 page.check_email.description: Processus pour obtenir un nouveau mot de passe par courrier.
 page.check_email.email_sent: Si un compte correspondant à votre adresse e-mail existe, un e-mail vous a été envoyé avec un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
@@ -284,19 +322,19 @@ page.check_email.link_expires_in: Ce lien expirera dans
 page.check_email.check_spam: Si vous n'avez pas reçu d'email, veuillez vérifier votre dossier spam ou
 page.check_email.try_again: réessayer
 
-# Request password
+## Request password
 page.request_password.title: Réinitialiser votre mot de passe
 page.request_password.description: Vous avez oublié votre mot de passe? Pas de problème. Vous pouvez facilement obtenir un lien pour le réinitialiser.
 page.request_password.enter_your_email: Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
 page.request_password.send: Envoyer un e-mail de réinitialisation du mot de passe
 
-# Reset password
+## Reset password
 page.reset_password.title: Réinitialiser votre mot de passe
 page.reset_password.description: Réinitialiser en toute sécurité votre mot de passe oublié.
 page.reset_password.reset: Réinitialiser mon mot de passe
 
-# Search
-page.search.title: Recherche
+## Search
+page.search.title: Recherche Globale
 page.search.description: Recherchez n'importe quoi sur StackUp.
 page.search.no_result: Aucun résultat trouvé.
 page.search.result_time: >-
@@ -305,8 +343,36 @@ page.search.show_profile: Voir le profil
 page.search.type_to_search: Tapez n'importe quoi pour commencer la recherche.
 page.search.search_username: Par exemple, essayez de saisir { username }...
 
-## Entities
-# User
+## Select type
+page.select_type.title: Étape 1 - Type
+page.select_type.description: Choisissez le type de technologie que vous souhaitez créer.
+page.select_type.guide: Créons une nouvelle technologie ! Tout d'abord, choisissez le type de technologie que vous souhaitez créer.
+
+## Create tech
+page.create_tech.title: Étape 2 - Attributs
+page.create_tech.description: Sélectionnez les attributs de votre nouvelle technologie.
+page.create_tech.essential_info: Information essentielle
+page.create_tech.additional_info: Informations complémentaires
+page.create_tech.links: Liens
+page.create_tech.add_category: Ajouter une nouvelle catégorie
+page.create_tech.add_category.description: Vous ne trouvez pas la catégorie souhaitée ? Alors ajoutez-en une nouvelle !
+page.create_tech.add_category.no_script: Attention. Soumettre ce formulaire rechargera la page car Javascript n'est pas disponible. Assurez-vous de bien sauvegarder.
+
+## Create stack
+page.create_stack.title: Créer une stack
+page.create_stack.description: Selectionner les attributs de votre nouvelle stack.
+
+## Edit Stack 
+page.edit_stack.title: Paramètres de { name }
+
+## Review and publish
+page.review_and_publish.title: Étape 3 - Réviser et publier
+page.review_and_publish.description: Passez en revue votre technologie avant de la publier.
+page.review_and_publish.guide: C'est la dernière étape ! Passez en revue votre technologie et lorsque vous pensez être prêt, publiez-la ! Vous pouvez revenir ici à tout moment, votre technologie a été sauvegardée.
+page.review_and_publish.publish: Publier
+
+# Entities
+## User
 user.email: Courrier électronique
 user.password: Mot de passe
 user.password.help: Doit contenir au moins 8 caractères, avec au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial (#\?!@$%^&*-).
@@ -319,24 +385,79 @@ user.roles: Rôles
 user.verified: Vérifié
 user.profile.picture: Image de profil de { username }
 
-# Profile
+## Profile
 profile.username: Nom d'utilisateur
 profile.username.help: Votre nom d'utilisateur est utilisé dans l'URL de votre profil. Il doit contenir entre 2 et 50 caractères et ne peut pas contenir de caractères spéciaux.
 profile.description: Description
 profile.github_link: Lien GitHub
 profile.github_link.help: 'Un lien GitHub devrait ressembler à "https://github.com/votre-profil".'
+profile.choose: Choisi un profil
 
-# Profile picture
+## Profile picture
 profile_picture.file: Image
 profile_picture.file.help: Les dimensions recommandées pour une photo de profil sont 200x200. La taille de téléchargement maximale est de 2 Mo.
 profile_picture.current_profile_picture: Votre image de profil actuelle.
 
-# ResetPasswordRequest
+## ResetPasswordRequest
 reset_password_request.email: Adresse email
 reset_password_request.email.help: L'adresse email associée à votre compte.
 reset_password_request.new_password: Nouveau mot de passe
 reset_password_request.repeat_password: Répétez votre mot de passe
 
-## Components
-# Deletion prompt modal
+## Tech
+tech.name: Nom
+tech.name.help: Ce nom doit être unique. Il sera utilisé dans l'URL de la technologie.
+tech.description: Description
+tech.description.help: L'ajout d'une description est fortement recommandé pour permettre aux gens d'en savoir plus sur cette technologie.
+tech.depends_on: Dépend de
+tech.depends_on.help: Cette technologie est-elle dépendante ? Obligatoire si cette technologie est une bibliothèque. Les technologies officielles apparaissent en vert.
+tech.depends_on.placeholder: Choisissez une technologie
+tech.categories: Catégories
+tech.categories.help: À quelle(s) catégorie(s) appartient cette technologie ? Une technologie doit avoir entre 1 et 3 catégories. Les catégories officielles apparaissent en vert.
+tech.categories.placeholder: Choisissez une ou plusieurs catégories
+tech.type: Type
+tech.type.language: Langue
+tech.type.language.help: Un langage de programmation est un langage formel utilisé pour communiquer des instructions à un ordinateur.
+tech.type.library: Librairie
+tech.type.library.help: Une collection de code qui peut être réutilisée dans d'autres projets.
+tech.type.tool: Outil
+tech.type.tool.help: Un programme ou un ensemble de programmes qui exécutent une tâche spécifique ou un groupe de fonctions.
+tech.link.github: Lien GitHub
+tech.link.github.help: 'Ex : https://github.com/mon-profil/mon-repo'
+tech.link.gitlab: Lien GitLab
+tech.link.gitlab.help: 'Ex: https://gitlab.com/mon-profil/mon-repo'
+tech.link.npm_or_yarn: Lien NPM ou Yarn
+tech.link.npm_or_yarn.help: 'Ex: https://www.npmjs.com/package/mon-package ou https://yarnpkg.com/package/mon-package'
+tech.link.npm: Lien NPM
+tech.link.yarn: Lien Yarn
+tech.link.packagist: Lien Packagist
+tech.link.packagist.help: 'Ex: https://packagist.org/packages/mon-package'
+tech.link.crates: Lien Crates
+tech.link.crates.help: 'Ex: https://crates.io/crates/ma-crate'
+tech.link.pkg: Lien Pkg
+tech.link.pkg.help: 'Ex: https://pkg.go.dev/mon-package'
+tech.link.other: Lien officiel
+tech.link.other.help: Devrait être le site officiel de cette technologie.
+
+## Request
+request.status: Statut
+request.status.pending: En attente
+request.status.accepted: Accepté
+request.status.rejected: Rejeté
+
+## Tech
+tech.collection: Techs
+
+## Tech picture
+tech_picture.file: Image
+tech_picture.file.help: Les dimensions recommandées pour une photo technique sont de 200x200. La taille de téléchargement maximale est de 2 Mo.
+tech_picture.current_picture: L'image actuelle de cette technologie.
+
+## Category
+category.name: Nom
+category.collection: Categories
+category.name.help: Le nom d'une catégorie doit contenir entre 2 et 30 caractères, en utilisant uniquement des lettres et des espaces blancs.
+
+# Components
+## Deletion prompt modal
 component.deletion_prompt_modal.label: Pour continuer, tapez "{ prompt }".

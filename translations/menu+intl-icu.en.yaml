@@ -1,6 +1,13 @@
 # Back office
 back_office.home: Home
 back_office.users: Users
+back_office.stacks: Stacks
+back_office.techs: Techs
+back_office.votes: Votes
+back_office.categories: Categories
+back_office.requests: Requests
 
 # Global search
+global_search.techs: Techs
+global_search.stacks: Stacks
 global_search.profiles: Profiles

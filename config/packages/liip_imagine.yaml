@@ -36,3 +36,16 @@ liip_imagine:
                 thumbnail:
                     size: [24, 24]
                     mode: outbound
+
+        # Tech picture
+        tech_picture:
+            quality: 90
+            filters:
+                thumbnail:
+                    size: [200, 200]
+
+        tech_picture_side:
+            quality: 90
+            filters:
+                thumbnail:
+                    size: [64, 64]
