@@ -60,3 +60,5 @@ data/*
 ###> Fixtures ###
 /src/DataFixtures/tmp
 ###< Fixtures ###
+
+.idea
