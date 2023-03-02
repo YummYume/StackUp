@@ -370,17 +370,14 @@ page.create_tech.add_category: Ajouter une nouvelle catégorie
 page.create_tech.add_category.description: Vous ne trouvez pas la catégorie souhaitée ? Alors ajoutez-en une nouvelle !
 page.create_tech.add_category.no_script: Attention. Soumettre ce formulaire rechargera la page car Javascript n'est pas disponible. Assurez-vous de bien sauvegarder.
 
-## Create stack
-page.create_stack.title: Créer une stack
-page.create_stack.description: Selectionner les attributs de votre nouvelle stack.
+## Review and publish
+page.review_and_publish.title: Étape 3 - Réviser et publier
+page.review_and_publish.description: Passez en revue votre technologie avant de la publier.
+page.review_and_publish.guide: C'est la dernière étape ! Passez en revue votre technologie et lorsque vous pensez être prêt, publiez-la ! Vous pouvez revenir ici à tout moment, votre technologie a été sauvegardée.
+page.review_and_publish.publish: Publier
 
-## Edit Stack
-page.edit_stack.title: Paramètres de { name }
-page.edit_stack.see: Voir la stack
-
-## Delete
-page.stack_delete.title: Supprimer la stack
-page.stack_delete.content: Voulez-vous vraiment supprimer cette stack ?
+## Show Tech
+page.show_tech.default_description: Tout ce que vous devez savoir sur { name }.
 
 ## Edit Tech
 page.edit_tech.see: Voir la technologie
@@ -389,11 +386,20 @@ page.edit_tech.see: Voir la technologie
 page.tech_delete.title: Supprimer la tech
 page.tech_delete.content: Voulez-vous vraiment supprimer cette tech ?
 
-## Review and publish
-page.review_and_publish.title: Étape 3 - Réviser et publier
-page.review_and_publish.description: Passez en revue votre technologie avant de la publier.
-page.review_and_publish.guide: C'est la dernière étape ! Passez en revue votre technologie et lorsque vous pensez être prêt, publiez-la ! Vous pouvez revenir ici à tout moment, votre technologie a été sauvegardée.
-page.review_and_publish.publish: Publier
+## Show Stack
+page.show_stack.default_description: Découvrez quelles technologies { name } utilise et pourquoi.
+
+## Create stack
+page.create_stack.title: Créer une stack
+page.create_stack.description: Selectionner les attributs de votre nouvelle stack.
+
+## Edit Stack
+page.edit_stack.title: Paramètres de { name }
+page.edit_stack.see: Voir la stack
+
+## Delete Stack
+page.stack_delete.title: Supprimer la stack
+page.stack_delete.content: Voulez-vous vraiment supprimer cette stack ?
 
 # Entities
 ## User

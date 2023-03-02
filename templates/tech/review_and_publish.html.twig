@@ -43,20 +43,22 @@
     {% endif %}
     <div class="flex items-center justify-center gap-4">
         {% for icon, link in tech.activeLinks %}
-            {{
-                component(
-                    "button",
-                    {
-                        icon: icon,
-                        href: link,
-                        target: "_blank",
-                        externalLink: true,
-                        circle: true,
-                        centered: false,
-                        ariaLabel: ("tech.link.#{icon}")|trans
-                    }
-                )
-            }}
+            <div class="tooltip" data-tip="{{ ("tech.link.#{icon}")|trans }}">
+                {{
+                    component(
+                        "button",
+                        {
+                            icon: icon,
+                            href: link,
+                            target: "_blank",
+                            externalLink: true,
+                            circle: true,
+                            centered: false,
+                            ariaLabel: ("tech.link.#{icon}")|trans
+                        }
+                    )
+                }}
+            </div>
         {% endfor %}
     </div>
     <p class="my-2 text-center max-w-5xl mx-auto">{{ "page.review_and_publish.guide"|trans }}</p>

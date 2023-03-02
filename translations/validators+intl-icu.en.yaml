@@ -36,6 +36,7 @@ profile_picture.file.corrupted: This image is corrupted and cannot be proceeded.
 profile_picture.file.size_not_detected: The size of the image could not be detected. Please try again.
 
 ## Tech
+tech.name.not_blank: Please enter a name.
 tech.name.unique: This tech already exists.
 tech.name.invalid: A tech's name must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
 tech.description.max_length: A tech's description must contain up to { limit } characters.
@@ -61,10 +62,12 @@ tech_picture.file.size_not_detected: The size of the image could not be detected
 vote.unique: This vote has already been registered.
 
 ## Category
+category.name.not_blank: Please enter a name.
 category.name.unique: This category already exists.
 category.name.invalid: A category's name must contain between 2 and 30 characters and can only contain letters and whitespaces.
 
 ## Stack
+stack.name.not_blank: Please enter a name.
 stack.name.unique: You already have an existing stack with this name.
 stack.name.invalid: A stack's name must contain between 2 and 50 characters and can only contain letters, numbers and whitespaces.
 stack.description.max_length: A stack's description must contain up to { limit } characters.

@@ -59,6 +59,7 @@ class Tech
     private ?Uuid $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: 'tech.name.not_blank')]
     #[Assert\Regex(pattern: '/^[A-zÀ-ú\d ]{2,50}$/', message: 'tech.name.invalid')]
     #[Groups('searchable')]
     private ?string $name = null;
@@ -361,7 +362,7 @@ class Tech
     #[Groups('searchable')]
     public function isIndexable(): bool
     {
-        return $this->request->isCreated() && RequestStatusEnum::Accepted === $this->request->getStatus();
+        return $this->request->isCreated() && RequestStatusEnum::Rejected !== $this->request->getStatus();
     }
 
     public function getActiveLinks(): array
