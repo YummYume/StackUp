@@ -26,20 +26,22 @@
             </p>
             {% if profile.githubLink %}
                 <div class="card-actions justify-end">
-                    {{
-                        component(
-                            "button",
-                            {
-                                icon: "github",
-                                href: profile.githubLink,
-                                target: "_blank",
-                                externalLink: true,
-                                circle: true,
-                                centered: false,
-                                ariaLabel: "page.show_profile.github_link"|trans({ username: profile.username })
-                            }
-                        )
-                    }}
+                    <div class="tooltip" data-tip="{{ "tech.link.github"|trans }}">
+                        {{
+                            component(
+                                "button",
+                                {
+                                    icon: "github",
+                                    href: profile.githubLink,
+                                    target: "_blank",
+                                    externalLink: true,
+                                    circle: true,
+                                    centered: false,
+                                    ariaLabel: "page.show_profile.github_link"|trans({ username: profile.username })
+                                }
+                            )
+                        }}
+                    </div>
                 </div>
             {% endif %}
         </div>

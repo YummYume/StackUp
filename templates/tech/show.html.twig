@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block description %}
-
+    {{ (tech.description ?? "page.show_tech.default_description"|trans({ name: tech.name }))|u.truncate(150, '...') }}
 {% endblock %}
 
 {% block main_body %}

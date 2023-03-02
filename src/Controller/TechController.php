@@ -18,6 +18,7 @@ use App\Repository\TechRepository;
 use App\Repository\VoteRepository;
 use App\Security\Voter\TechVoter;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +39,7 @@ final class TechController extends AbstractController
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(
-            $this->techRepository->createQueryBuilder('t'),
+            $this->techRepository->getSearchableTechs(),
             $request->query->getInt('page', 1),
             10,
             ['defaultSortFieldName' => 't.createdAt', 'defaultSortDirection' => 'desc']
@@ -154,6 +155,7 @@ final class TechController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_tech_show', methods: ['GET'])]
+    #[Entity('tech', expr: 'repository.findSearchableTech(slug)')]
     public function show(Tech $tech): Response
     {
         return $this->render('tech/show.html.twig', [

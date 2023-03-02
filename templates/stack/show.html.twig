@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block description %}
-
+    {{ (stack.description ?? "page.show_stack.default_description"|trans({ name: stack.name }))|u.truncate(150, '...') }}
 {% endblock %}
 
 {% block main_title %}
@@ -15,20 +15,13 @@
 {% block main_body %}
     <div class="flex md:flex-row flex-col gap-4 justify-between">
         <a href="{{ path('app_profile_show', { slug: stack.profile.slug }) }}">
-            <div class="card w-96 bg-secondary text-primary-content">
+            <div class="card bg-secondary text-primary-content">
                 <div class="card-body">
                     <div class="card-title gap-6">
-                        {{ "common.author"|trans }} :
+                        <span class="flex-grow">{{ "common.author"|trans }} :</span>
                         <div class="flex gap-2 items-center">
-                            {{ component('image', {
-                                alt: "user.profile.picture"|trans({ username: stack.profile.username }),
-                                class: "rounded-full",
-                                filter: "avatar_small",
-                                height: 32,
-                                src: stack.profile.picture ? vich_uploader_asset(stack.profile.picture, "file") : null,
-                                width: 32
-                            }) }}
-                            {{ stack.profile.username }}
+                            {{ component("avatar", { user: stack.profile.user }) }}
+                            <span>{{ stack.profile.username }}</span>
                         </div>
                     </div>
                 </div>
