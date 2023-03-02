@@ -49,6 +49,8 @@ final class ButtonComponent
 
     public string $variant = 'primary';
 
+    public array $additionalProps = [];
+
     #[ExposeInTemplate]
     private bool $button = true;
 

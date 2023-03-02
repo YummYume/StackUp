@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+      - 3000:3000
     volumes:
       - ./public:/app/public
       - ./docker/dev/nginx/logs:/var/log/nginx
@@ -60,9 +61,8 @@ services:
     image: mariadb:10.10.2
     restart: unless-stopped
     container_name: su-db
-    # TODO look into it, seems to not work properly
-    # volumes:
-    #   - ./data/mysql:/var/lib/mysql/data
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     environment:
       MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASSWORD:?err}"
     healthcheck:
@@ -124,15 +124,15 @@ services:
     restart: unless-stopped
     environment:
       # Uncomment the following line to disable HTTPS
-      SERVER_NAME: ":80"
+      SERVER_NAME: ":3000"
       MERCURE_PUBLISHER_JWT_KEY: "${MERCURE_JWT_SECRET:?err}"
       MERCURE_SUBSCRIBER_JWT_KEY: "${MERCURE_JWT_SECRET:?err}"
+      MERCURE_EXTRA_DIRECTIVES: |
+        cors_origins http://localhost
+        use_forwarded_headers "1"
     # Uncomment the following line to enable the development mode
     command: /usr/bin/caddy run --config /etc/caddy/Caddyfile.dev
     container_name: su-mercure
-    ports:
-      - 3000:80
-      # - 443:443
     volumes:
       - ./data/mercure/data:/data
       - ./data/mercure/config:/config

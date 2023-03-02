@@ -117,6 +117,31 @@ final class TechRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getSearchableTechs(): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+            ->leftJoin('t.request', 'r')
+            ->where($qb->expr()->eq('r.created', true))
+        ;
+    }
+
+    public function findSearchableTech(string $slug): ?Tech
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        return $qb
+            ->leftJoin('t.request', 'r')
+            ->where($qb->expr()->eq('r.created', true))
+            ->andWhere($qb->expr()->eq('t.slug', ':slug'))
+            ->setParameter('slug', $slug)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     public function findUnreleasedTechForUser(User $user): ?Tech
     {
         $qb = $this->createQueryBuilder('t');

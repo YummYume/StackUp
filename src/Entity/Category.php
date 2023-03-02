@@ -34,6 +34,7 @@ class Category
     private ?Uuid $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: 'category.name.not_blank')]
     #[Assert\Regex(pattern: '/^[A-zÀ-ú ]{2,30}$/', message: 'category.name.invalid')]
     private ?string $name = null;
 

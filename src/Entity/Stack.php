@@ -36,6 +36,7 @@ class Stack
     private ?Uuid $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: 'stack.name.not_blank')]
     #[Assert\Regex(pattern: '/^[A-zÀ-ú\d ]{2,50}$/', message: 'stack.name.invalid')]
     #[Groups('searchable')]
     private ?string $name = null;

@@ -67,6 +67,8 @@ class Request
     public function setStatus(RequestStatusEnum $status): self
     {
         $this->status = $status;
+        // Update the tech for Meilisearch
+        $this->tech?->setUpdatedAt(new \DateTime());
 
         return $this;
     }

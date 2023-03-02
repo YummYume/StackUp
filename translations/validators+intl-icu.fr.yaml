@@ -36,6 +36,7 @@ profile_ picture.file.corrupted: Cette image est corrompue et ne peut pas être 
 profile_picture.file.size_not_detected: La taille de l'image n'a pas pu être détectée. Veuillez réessayer.
 
 ## Tech
+tech.name.not_blank: Veuillez saisir un nom.
 tech.name.unique: Cette technologie existe déjà.
 tech.name.invalid: Le nom d'une technologie doit contenir entre 2 et 50 caractères et ne peut contenir que des lettres, des chiffres et des espaces.
 tech.description.max_length: La description d'une technologie doit contenir jusqu'à { limit } caractères.
@@ -61,10 +62,12 @@ tech_picture.file.size_not_detected: La taille de l'image n'a pas pu être déte
 vote.unique: Ce vote a déjà été enregistré.
 
 ## Category
+category.name.not_blank: Veuillez saisir un nom.
 category.name.unique: Cette catégorie existe déjà.
 category.name.invalid: Le nom d'une catégorie doit contenir entre 2 et 30 caractères et ne peut contenir que des lettres et des espaces.
 
 ## Stack
+stack.name.not_blank: Veuillez saisir un nom.
 stack.name.unique: Vous avez déjà une stack existante portant ce nom.
 stack.name.invalid: Le nom d'une stack doit contenir entre 2 et 50 caractères et ne peut contenir que des lettres, des chiffres et des espaces.
 stack.description.max_length: La description d'une stack doit contenir jusqu'à { limit } caractères.
