@@ -70,6 +70,7 @@ common.delete.cannot_be_undone: Cette action est irréversible.
 common.author: Créateur
 common.created_at: Créé le
 common.updated_at: Mis à jour le
+common.loading: Chargement
 
 # Icons
 icon.eye: Afficher
