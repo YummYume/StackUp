@@ -16,57 +16,10 @@
     <p class="mx-auto max-w-3xl">
         {{ "page.homepage.main_description"|trans }}
     </p>
-    <div class="grid gap-6 lg:grid-cols-2">
-        {% component shortList with { items: trendingTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index"), moreText: "common.more_techs"|trans } %}
-        {% block header %}
-            <div class="flex items-center gap-2">
-                <div class="text-error">
-                    {% include "icon/fire.html.twig" %}
-                </div>
-                <h2>
-                    {{ "page.homepage.trending_techs"|trans }}
-                </h2>
-            </div>
-        {% endblock %}
-        {% endcomponent %}
-
-        {% component shortList with { items: recentTechs, itemPictureProperty: "picture", itemFileProperty: "file", link: path("app_tech_index"), moreText: "common.more_techs"|trans } %}
-        {% block header %}
-            <div class="flex items-center gap-2">
-                <div class="text-info">
-                    {% include "icon/clock.html.twig" %}
-                </div>
-                <h2>
-                    {{ "page.homepage.recently_added_techs"|trans }}
-                </h2>
-            </div>
-        {% endblock %}
-        {% endcomponent %}
-
-        {% component shortList with { items: trendingCategories } %}
-        {% block header %}
-            <div class="flex items-center gap-2">
-                <div class="text-error">
-                    {% include "icon/fire.html.twig" %}
-                </div>
-                <h2>
-                    {{ "page.homepage.trending_categories"|trans }}
-                </h2>
-            </div>
-        {% endblock %}
-        {% endcomponent %}
-
-        {% component shortList with { items: recentStacks, link: path("app_stack_index"), moreText: "common.more_stacks"|trans } %}
-        {% block header %}
-            <div class="flex items-center gap-2">
-                <div class="text-info">
-                    {% include "icon/clock.html.twig" %}
-                </div>
-                <h2>
-                    {{ "page.homepage.recently_added_stacks"|trans }}
-                </h2>
-            </div>
-        {% endblock %}
-        {% endcomponent %}
-    </div>
+    <turbo-frame id="homepage-trending-and-recent" src="{{ path("app_homepage_trending_and_recent") }}" loading="lazy" class="grid gap-6 lg:grid-cols-2" aria-busy="true">
+        <div role="progressbar" aria-label="{{ "common.loading"|trans }}" class="h-[24.75rem] w-full animate-pulse rounded-2xl bg-base-100"></div>
+        <div role="progressbar" aria-label="{{ "common.loading"|trans }}" class="h-[24.75rem] w-full animate-pulse rounded-2xl bg-base-100"></div>
+        <div role="progressbar" aria-label="{{ "common.loading"|trans }}" class="h-[24.75rem] w-full animate-pulse rounded-2xl bg-base-100"></div>
+        <div role="progressbar" aria-label="{{ "common.loading"|trans }}" class="h-[24.75rem] w-full animate-pulse rounded-2xl bg-base-100"></div>
+    </turbo-frame>
 {% endblock %}

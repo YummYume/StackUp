@@ -70,6 +70,7 @@ common.go_back: Go back
 common.author: Author
 common.created_at: Created at
 common.updated_at: Updated at
+common.loading: Loading
 
 # Icons
 icon.eye: Show
