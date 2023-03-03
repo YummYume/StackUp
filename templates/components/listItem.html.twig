@@ -1,5 +1,5 @@
 {% if route is not null %}
-    <a href="{{path(route, {}|merge(slug))}}">
+    <a href="{{ path(route, {}|merge(slug)) }}">
 {% endif %}
     <div class="flex h-12 items-center gap-8 rounded-full py-3 px-6 hover:bg-base-200">
         <div class="flex gap-4 font-medium" aria-label="{{ "common.position"|trans({ position: index }) }}">
