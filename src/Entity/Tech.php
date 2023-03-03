@@ -137,6 +137,7 @@ class Tech
 
     #[ORM\OneToOne(inversedBy: 'tech', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull]
     #[Assert\Valid]
     private ?Request $request = null;
 
